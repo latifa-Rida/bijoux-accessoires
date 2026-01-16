@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-landing',
+  templateUrl: './landing.html',
+  styleUrls: ['./landing.css'],
+  standalone: true, // <-- marque standalone
+  imports: [CommonModule, RouterModule] // <-- *ngIf, *ngFor, routerLink
+})
+export class LandingComponent {
+  products = [
+    { id: 1, name: 'Montre Design', price: 120, image: 'https://picsum.photos/300/300?random=5' },
+    { id: 2, name: 'Sac Élégant', price: 80, image: 'https://picsum.photos/300/300?random=6' },
+    { id: 3, name: 'Palette Maquillage', price: 45, image: 'https://picsum.photos/300/300?random=7' },
+    { id: 4, name: 'Bracelet Élégant', price: 35, image: 'https://picsum.photos/300/300?random=8' }
+  ];
+}

@@ -1,0 +1,15 @@
+<nav class="bg-pink-600 text-white p-4 flex justify-between items-center">
+  <div class="font-bold text-xl">
+    Bijoux & Accessoires
+  </div>
+
+  <div class="flex gap-4 items-center">
+    <a routerLink="/" class="hover:underline">Home</a>
+    <a routerLink="/cart" class="hover:underline">Panier</a>
+      <a routerLink="/orders" classe="hover:underline">Mes commandes</a>
+      <span class="bg-white text-pink-600 px-2 py-0.5 rounded-full text-sm font-bold">
+        {{ cartCount }}
+      </span>
+
+  </div>
+</nav>

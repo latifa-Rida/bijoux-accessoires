@@ -1,0 +1,204 @@
+<!-- HERO -->
+<section class="min-h-screen flex items-center justify-center  bg-cover bg-center relative "  style="background-image: url('assets/hero.jpg')">
+  <!-- Overlay for better text readability -->
+  <div class="absolute bg-cover inset-0 bg-[url('assets/hero.jpg')]"></div>
+  <div class="text-center max-w-2xl px-4 relative z-10">
+    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+      Bijoux & Accessoires Shop
+    </h1>
+    <p class="text-white text-lg mb-8 drop-shadow-md">
+      Découvrez des bijoux élégants et accessoires modernes pour sublimer votre style
+    </p>
+    <div class="flex justify-center gap-4">
+
+      <button routerLink="/cart"
+        class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full transition duration-300">
+        Voir le panier
+      </button>
+      <button routerLink="/product-detail"class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition duration-300">
+        Voir les produits
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
+      Nos Catégories
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
+        <img src="assets/hero.jpg" alt="Bijoux" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Bijoux'">
+        <div class="p-4 text-center">
+          <h3 class="font-semibold text-lg text-gray-800">Bijoux</h3>
+        </div>
+      </div>
+
+      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
+        <img src="https://picsum.photos/300/200?random=2" alt="Montres" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Montres'">
+        <div class="p-4 text-center">
+          <h3 class="font-semibold text-lg text-gray-800">Montres</h3>
+        </div>
+      </div>
+
+      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
+        <img src="https://picsum.photos/300/200?random=3" alt="Sacs" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Sacs'">
+        <div class="p-4 text-center">
+          <h3 class="font-semibold text-lg text-gray-800">Sacs</h3>
+        </div>
+      </div>
+
+      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
+        <img src="https://picsum.photos/300/200?random=4" alt="Maquillage" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Maquillage'">
+        <div class="p-4 text-center">
+          <h3 class="font-semibold text-lg text-gray-800">Maquillage</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUITS VEDETTES -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
+      Produits Vedettes
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <div *ngFor="let product of products" class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
+        <img [src]="product.image" [alt]="product.name" class="w-full h-48 object-cover">
+        <div class="p-4 text-center">
+          <h3 class="font-semibold text-lg text-gray-800 mb-2">{{ product.name }}</h3>
+          <p class="text-pink-600 font-bold mb-4">{{ product.price }}€</p>
+          <div class="flex justify-center gap-2">
+            <button [routerLink]="'/product/' + product.id" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full">
+              Voir détails
+            </button>
+            <button routerLink="/cart" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full">
+              Panier
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
+      Pourquoi Nous Choisir
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
+        <span class="text-4xl mb-4">🚚</span>
+        <h3 class="font-semibold text-lg mb-2">Livraison rapide</h3>
+        <p class="text-gray-600">Recevez vos produits en quelques jours seulement</p>
+      </div>
+
+      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
+        <span class="text-4xl mb-4">💎</span>
+        <h3 class="font-semibold text-lg mb-2">Produits de qualité</h3>
+        <p class="text-gray-600">Bijoux et accessoires sélectionnés avec soin</p>
+      </div>
+
+      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
+        <span class="text-4xl mb-4">💳</span>
+        <h3 class="font-semibold text-lg mb-2">Paiement sécurisé</h3>
+        <p class="text-gray-600">Vos transactions sont protégées à 100%</p>
+      </div>
+
+      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
+        <span class="text-4xl mb-4">📞</span>
+        <h3 class="font-semibold text-lg mb-2">Service client</h3>
+        <p class="text-gray-600">Nous sommes là pour vous aider à tout moment</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-16 bg-pink-600">
+  <div class="max-w-4xl mx-auto px-4 text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+      Trouvez l’accessoire parfait pour vous
+    </h2>
+    <p class="mb-8 text-lg md:text-xl">
+      Parcourez notre collection et découvrez vos bijoux et accessoires préférés
+    </p>
+    <button routerLink="/cart" class="bg-white text-pink-600 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300">
+      Commencer vos achats
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-800 text-white py-8">
+  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+    <div class="mb-4 md:mb-0">
+      <h3 class="text-xl font-bold">Bijoux & Accessories Shop</h3>
+      <p class="text-gray-400">© 2026 Tous droits réservés</p>
+    </div>
+    <div class="card">
+  <ul>
+    <!-- Facebook -->
+    <li class="iso-pro">
+      <a href="#">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M22 12a10 10 0 1 0-11 9.95V14h-3v-2h3v-1.5c0-3 1.79-4.65 4.52-4.65 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.95.93-1.95 1.88V12h3.32l-.53 2h-2.79v7.95A10 10 0 0 0 22 12z"/>
+        </svg>
+        <span class="text">Facebook</span>
+      </a>
+      <span></span>
+      <span></span>
+      <span></span>
+    </li>
+
+    <!-- Instagram -->
+    <li class="iso-pro">
+      <a href="#">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.96.24 2.416.403a4.92 4.92 0 0 1 1.75 1.074 4.92 4.92 0 0 1 1.074 1.75c.163.455.347 1.247.403 2.416.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.96-.403 2.416a4.92 4.92 0 0 1-1.074 1.75 4.92 4.92 0 0 1-1.75 1.074c-.455.163-1.247.347-2.416.403-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.96-.24-2.416-.403a4.92 4.92 0 0 1-1.75-1.074 4.92 4.92 0 0 1-1.074-1.75c-.163-.455-.347-1.247-.403-2.416C2.212 15.584 2.2 15.2 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.96.403-2.416a4.92 4.92 0 0 1 1.074-1.75 4.92 4.92 0 0 1 1.75-1.074c.455-.163 1.247-.347 2.416-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.735 0 8.332.013 7.052.072 5.76.131 4.63.327 3.678.675a7.12 7.12 0 0 0-2.556 1.64A7.12 7.12 0 0 0 .675 4.871C.327 5.823.131 6.953.072 8.244.013 9.524 0 9.927 0 12s.013 2.476.072 3.756c.059 1.291.255 2.421.603 3.373a7.12 7.12 0 0 0 1.64 2.556 7.12 7.12 0 0 0 2.556 1.64c.952.348 2.082.544 3.373.603C8.332 23.987 8.735 24 12 24s3.668-.013 4.948-.072c1.291-.059 2.421-.255 3.373-.603a7.12 7.12 0 0 0 2.556-1.64 7.12 7.12 0 0 0 1.64-2.556c.348-.952.544-2.082.603-3.373C23.987 14.668 24 14.265 24 12s-.013-2.476-.072-3.756c-.059-1.291-.255-2.421-.603-3.373a7.12 7.12 0 0 0-1.64-2.556A7.12 7.12 0 0 0 19.32.675C18.368.327 17.238.131 15.947.072 14.667.013 14.264 0 12 0z"/>
+        </svg>
+        <span class="text">Instagram</span>
+      </a>
+      <span></span>
+      <span></span>
+      <span></span>
+    </li>
+
+    <!-- Twitter -->
+    <li class="iso-pro">
+      <a href="#">
+        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.864 9.864 0 0 1-3.127 1.195 4.918 4.918 0 0 0-8.384 4.482C7.69 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 0 0-.666 2.475 4.92 4.92 0 0 0 2.188 4.096 4.903 4.903 0 0 1-2.228-.616v.062a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-1.292.172c-.316 0-.623-.03-.924-.086a4.937 4.937 0 0 0 4.604 3.417 9.868 9.868 0 0 1-6.102 2.104c-.396 0-.788-.023-1.175-.068a13.945 13.945 0 0 0 7.548 2.212c9.056 0 14.01-7.496 14.01-13.986 0-.213-.004-.425-.014-.637A10.025 10.025 0 0 0 24 4.557z"/>
+        </svg>
+        <span class="text">Twitter</span>
+      </a>
+      <span></span>
+      <span></span>
+      <span></span>
+    </li>
+  </ul>
+</div>
+
+  </div>
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+

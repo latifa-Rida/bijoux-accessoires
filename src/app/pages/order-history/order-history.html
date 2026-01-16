@@ -1,0 +1,16 @@
+<h2 class="text-2xl font-bold mb-4">Historique des commandes</h2>
+
+<div *ngIf="commandes.length === 0">Vous n'avez aucune commande pour l'instant.</div>
+
+<div *ngFor="let order of commandes" class="border p-4 rounded mb-4">
+  <h3>Nom: {{ order.nom }}</h3>
+  <p>Téléphone: {{ order.tel }}</p>
+  <p>Adresse: {{ order.adresse }}</p>
+
+  <h4 class="font-semibold mt-2">Produits:</h4>
+  <ul>
+    <li *ngFor="let produit of order.produits">
+      {{ produit.name }} - {{ produit.price }}€
+    </li>
+  </ul>
+</div>

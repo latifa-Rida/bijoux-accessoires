@@ -1,0 +1,31 @@
+<section class="py-16 max-w-6xl mx-auto px-4">
+  <h2 class="text-3xl font-bold mb-8">Votre Panier</h2>
+
+  <div *ngIf="cart.length === 0" class="text-gray-500">Votre panier est vide</div>
+
+  <div *ngFor="let item of cart; let i = index" class="flex justify-between items-center bg-gray-100 p-4 mb-4 rounded hover:bg-gray-200 transition-all">
+    <div>
+      <h3 class="font-semibold">{{ item.name }}</h3>
+      <p class="text-pink-600 font-bold">{{ item.price }}€</p>
+
+      <!-- Quantity Controls -->
+      <div class="flex items-center mt-2">
+        <button (click)="decreaseQuantity(item)">-</button>
+<span>{{ item.quantity || 1 }}</span>
+<button (click)="increaseQuantity(item)">+</button>
+
+      </div>
+    </div>
+
+    <button (click)="remove(i)" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Supprimer</button>
+  </div>
+
+  <!-- Total -->
+  <div *ngIf="cart.length > 0" class="mt-4 flex justify-between items-center">
+    <h3 class="text-xl font-bold">Total: {{ getTotal() }}€</h3>
+    <button routerLink="/order" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded">Passer commande</button>
+  </div>
+
+
+
+</section>

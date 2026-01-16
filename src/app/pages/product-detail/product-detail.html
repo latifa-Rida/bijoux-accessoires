@@ -1,0 +1,35 @@
+<section class="py-16 bg-gray-50">
+  <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- Image produit -->
+    <div>
+      <img src="https://via.placeholder.com/400x400" alt="Produit" class="w-full rounded-lg shadow">
+    </div>
+
+    <!-- Details produit -->
+    <div class="flex flex-col justify-center">
+      <h1 class="text-3xl font-bold mb-4">Nom du Produit</h1>
+      <p class="text-pink-600 font-bold text-2xl mb-4">120€</p>
+      <p class="text-gray-600 mb-6">Description détaillée du produit, ses caractéristiques et options disponibles.</p>
+
+      <!-- Options (ex: couleur, taille) -->
+      <div class="mb-4">
+        <label class="font-semibold mr-2">Couleur:</label>
+        <select class="border rounded px-2 py-1">
+          <option>Rouge</option>
+          <option>Bleu</option>
+          <option>Noir</option>
+        </select>
+      </div>
+
+      <!-- Ajouter au panier -->
+       <button (click)="addToCart()" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full transition duration-300">
+  Ajouter au panier
+</button>
+    </div>
+
+  </div>
+
+
+
+</section>
