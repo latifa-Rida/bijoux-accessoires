@@ -15,8 +15,7 @@ interface Product {
   imports: [CommonModule , RouterModule]
 })
 export class ProductsComponent {
-
-products = [
+ products = [
   { id: 1, name: 'Collier Doré', price: 120, image: 'assets/images/collier1.jpg', category: 'bijoux' },
   { id: 2, name: 'Bracelet Élégant', price: 80, image: 'assets/images/bracelet1.jpg', category: 'bijoux' },
   { id: 3, name: 'Boucles d’Oreilles Perle', price: 60, image: 'assets/images/boucles1.jpg', category: 'bijoux' },
@@ -58,4 +57,25 @@ products = [
   addToCart(product: Product) {
     console.log('Ajout au panier :', product);
   }
+
+  filteredProducts: any[] = [];
+
+  selectedCategory = 'all';
+
+  ngOnInit() {
+    this.filteredProducts = this.products;
+  }
+
+  filterByCategory(category: string) {
+    this.selectedCategory = category;
+
+    if (category === 'all') {
+      this.filteredProducts = this.products;
+    } else {
+      this.filteredProducts = this.products.filter(
+        product => product.category === category
+      );
+    }
+  }
+
 }

@@ -1,18 +1,76 @@
 <div class="max-w-7xl mx-auto px-6 py-12">
-
   <!-- Titre -->
-  <h1 class="text-3xl md:text-4xl font-bold text-pink-600 text-center mb-10">
-    Nos Produits
-  </h1>
+  <h1 class="text-3xl md:text-4xl font-bold text-pink-600 text-center mb-10">Nos Produits</h1>
+  <div class="flex gap-3 mb-6 items-center justify-center">
+    <!-- Tous -->
+    <button
+      (click)="filterByCategory('all')"
+      [ngClass]="{
+        'bg-gray-800 text-white': selectedCategory === 'all',
+        'bg-gray-200 text-gray-700': selectedCategory !== 'all',
+      }"
+      class="px-4 py-2 rounded transition"
+    >
+      Tous
+    </button>
+
+    <!-- Sacs -->
+    <button
+      (click)="filterByCategory('sacs')"
+      [ngClass]="{
+        'bg-pink-600 text-white': selectedCategory === 'sacs',
+        'bg-pink-100 text-pink-700': selectedCategory !== 'sacs',
+      }"
+      class="px-4 py-2 rounded transition"
+    >
+    <a href="https://www.flaticon.com/fr/icones-gratuites/sac-a-main" title="sac à main icônes"></a>
+    </button>
+
+    <!-- Bijoux -->
+    <button
+      (click)="filterByCategory('bijoux')"
+      [ngClass]="{
+        'bg-pink-600 text-white': selectedCategory === 'bijoux',
+        'bg-pink-100 text-pink-700': selectedCategory !== 'bijoux',
+      }"
+      class="px-4 py-2 rounded transition"
+    >
+    <i class="fa-solid fa-gem"></i>
+    </button>
+
+    <!-- Maquillages -->
+    <button
+      (click)="filterByCategory('maquillages')"
+      [ngClass]="{
+        'bg-pink-600 text-white': selectedCategory === 'maquillages',
+        'bg-pink-100 text-pink-700': selectedCategory !== 'maquillages',
+      }"
+      class="px-4 py-2 rounded transition"
+    >
+     <i class="fa-solid fa-palette"></i>
+    </button>
+
+    <!-- Montres -->
+    <button
+      (click)="filterByCategory('montres')"
+      [ngClass]="{
+        'bg-pink-600 text-white': selectedCategory === 'montres',
+        'bg-pink-100 text-pink-700': selectedCategory !== 'montres',
+      }"
+      class="px-4 py-2 rounded transition"
+    >
+     <i class="fa-solid fa-clock"></i>
+    </button>
+  </div>
 
   <!-- Grid produits -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4 py-2 rounded transition duration-300 ease-in-out"
+  >
     <div
-      *ngFor ="let product of products"
+      *ngFor="let product of filteredProducts"
       class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden group"
     >
-
       <!-- Image -->
       <div class="relative overflow-hidden">
         <img
@@ -28,19 +86,23 @@
           {{ product.name }}
         </h3>
 
-        <p class="text-pink-600 font-bold text-xl mb-4">
-          {{ product.price }} DH
-        </p>
+        <p class="text-pink-600 font-bold text-xl mb-4">{{ product.price }} DH</p>
 
-      <div class="flex justify-center gap-2">
-            <button [routerLink]="'/product/' + product.id" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full">
-              Voir détails
-            </button>
-            <button routerLink="/cart" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full">
-              Panier
-            </button>
-          </div>
+        <div class="flex justify-center gap-2">
+          <button
+            [routerLink]="'/product/' + product.id"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full"
+          >
+            Voir détails
+          </button>
+          <button
+            routerLink="/cart"
+            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full"
+          >
+            Panier
+          </button>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>
