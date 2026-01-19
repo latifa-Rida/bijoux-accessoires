@@ -1,20 +1,37 @@
 <!-- HERO -->
-<section class="min-h-screen flex items-center justify-center  bg-cover bg-center relative "  style="background-image: url('assets/hero.jpg')">
-  <!-- Overlay for better text readability -->
-  <div class="absolute bg-cover inset-0 bg-[url('assets/hero.jpg')]"></div>
-  <div class="text-center max-w-2xl px-4 relative z-10">
-    <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 drop-shadow-lg">
-      Bijoux & Accessoires Shop
+<section
+  class="relative w-full min-h-[70vh] flex items-center justify-center px-4 md:px-10 lg:px-40 py-20 overflow-hidden"
+>
+  <div class="absolute inset-0 z-0">
+    <div
+      class="min-h-screen flex items-center justify-center bg-cover bg-center relative"
+      style="background-image: url('assets/hero.jpg')"
+    ></div>
+    <div class="absolute inset-0 bg-[#E3D5CA]/30 backdrop-blur-[2px]"></div>
+  </div>
+  <div class="relative z-10 max-w-240 text-center">
+    <h1
+      class="text-[#3D312B] text-5xl md:text-7xl font-black leading-tight tracking-tighter mb-6 drop-shadow-sm"
+    >
+      Bijoux &amp; Accessoires Shop
     </h1>
-    <p class="text-white text-lg mb-8 drop-shadow-md">
-      Découvrez des bijoux élégants et accessoires modernes pour sublimer votre style
+    <p
+      class="text-[#3D312B]/90 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10 leading-relaxed"
+    >
+      Découvrez notre collection exclusive de bijoux et accessoires élégants conçus pour sublimer
+      votre style quotidien avec une touche de luxe minimal.
     </p>
-    <div class="flex justify-center gap-4">
-      <button routerLink="/cart"
-        class="bg-pink-600 hover:bg-pink-700 text-white px-8 py-3 rounded-full transition duration-300">
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button
+        routerLink="/cart"
+        class="bg-[#D63384] hover:bg-[#D63384]/90 text-white px-10 py-4 rounded-4xl font-bold text-base transition-all transform hover:scale-105 shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+      >
         Voir le panier
       </button>
-      <button routerLink="/product"class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full transition duration-300">
+      <button
+        routerLink="/product"
+        class="bg-white/80 backdrop-blur-sm hover:bg-white text-[#3D312B] px-10 py-4 rounded-4xl font-bold text-base border border-[#D5BDAF]/30 transition-all transform hover:scale-105 shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+      >
         Voir les produits
       </button>
     </div>
@@ -22,182 +39,376 @@
 </section>
 
 <!-- CATEGORIES -->
-<section class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
+<section class="px-4 md:px-10 lg:px-40 py-20 bg-[#F5EBE0]">
+  <div class="flex items-center gap-4 mb-10">
+    <div class="h-1 w-12 bg-[#C1664C] rounded-full"></div>
+    <h2 class="text-[#3D312B] text-3xl font-black leading-tight tracking-tight uppercase">
       Nos Catégories
     </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img src="assets/hero.jpg" alt="Bijoux" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Bijoux'">
-        <div class="p-4 text-center">
-          <h3 class="font-semibold text-lg text-gray-800">Bijoux</h3>
-        </div>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhwHQ0uQzmGMGNd8UdXeWoh1HuinGmVgbRcmYsi1A4n_UBSrfY9SsMktN9eTAZ9dhkno5BRI1B8mbHd01UfMus0A_yrH7Ck4pb-wCb178UPStggPWcGBXogZmEB3s3Ln8xU_181hlILiZdJL0YQEN3A8Zxgavgm5nrxOMVpLLTgxFuWxaELbE81GHeSvR3L9YTyW1EekgUr4E1YwqGl-hlecHyqdB71t26zp9QYocYAtEiKov-TOqePdDYFpNl5V-QIra3xIwQ-bs');
+      "
+    >
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
+      <div class="absolute bottom-6 left-6">
+        <p class="text-white text-xl font-bold tracking-wide">Bijoux</p>
+        <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-
-      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img src="https://picsum.photos/300/200?random=2" alt="Montres" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Montres'">
-        <div class="p-4 text-center">
-          <h3 class="font-semibold text-lg text-gray-800">Montres</h3>
-        </div>
+    </div>
+    <div
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEr2BfMEN8Gw_aw_-qrChq5G-16Xgx47GLLkXLxtK60XYFLqzg4ZXZJebSyaQa-ytYE3Pm0EEuQM19XnArNi36ciIxSykkMOjAn0-vplolIDbFSG_lLCbJUU6ypCwvwhponaVoS5vlPphpVMF8usIaaI1OhLYecpxZQS7JPCl375s4oScfF1qQrda1qzCNrgmgduB7bACZUYTMyiH2-hWECHpoCd0Ns4oWW_HLzyg_TiKirwtS3Jh-AEL5oqWhNrPQYWzXGKyaSrk');
+      "
+    >
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
+      <div class="absolute bottom-6 left-6">
+        <p class="text-white text-xl font-bold tracking-wide">Montres</p>
+        <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-
-      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img src="https://picsum.photos/300/200?random=3" alt="Sacs" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Sacs'">
-        <div class="p-4 text-center">
-          <h3 class="font-semibold text-lg text-gray-800">Sacs</h3>
-        </div>
+    </div>
+    <div
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQx_iq00N60obHg1vYNtzisXfcCcfJhr4Lp7YWX37qIgpvhceCGAm5kszNMQr7804uGfKTkzsGbDXJ7QY8Kgsr-pYI9uLxD72PDb4EWmK9syqqpeu8POeQbdXn_dWeK8wuB6OdDgFns3QbKdsmgzm-Vibz5DU6_FQvrkmXo95W5kRVDnUWQJE7YNHChSvmVLP5Q2SGeeUCivwR5phMbP17IzboxoakNNngCoaOKyZYJaq4L95WVvYyYgtLZ5ZZwZp0aF4SI52dHQg');
+      "
+    >
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
+      <div class="absolute bottom-6 left-6">
+        <p class="text-white text-xl font-bold tracking-wide">Sacs</p>
+        <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-
-      <div class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img src="https://picsum.photos/300/200?random=4" alt="Maquillage" class="w-full h-48 object-cover" onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Maquillage'">
-        <div class="p-4 text-center">
-          <h3 class="font-semibold text-lg text-gray-800">Maquillage</h3>
-        </div>
+    </div>
+    <div
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCDQ4vsYyeGU9ODdaK1X5UioIEn8d6aAV1rLPkjDOdkuko-eRjnHMt7tGErORLnbAVGcH2XC47PuitqQbtrKiGEDTjgoY1gfrJKumiFcDJSF37OqlUlgyLdRZ7-s50H2apm_5U8CQ_Sr4PCfwD436fZxtE5stkyMh2o6AclRW7hi4WZcVJK4Lsipy_kStj9P8voD6XsioEBnltip0s9qKnWaWYIV6-hXTv6wkFnRRzN5tDSNQlX_IsbvzHQVgEzbIJqr7qVlDaLEA');
+      "
+    >
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
+      <div class="absolute bottom-6 left-6">
+        <p class="text-white text-xl font-bold tracking-wide">Maquillage</p>
+        <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PRODUITS VEDETTES -->
-<section class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
-      Produits Vedettes
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      <div *ngFor="let product of products" class="bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition duration-300">
-        <img [src]="product.image" [alt]="product.name" class="w-full h-48 object-cover">
-        <div class="p-4 text-center">
-          <h3 class="font-semibold text-lg text-gray-800 mb-2">{{ product.name }}</h3>
-          <p class="text-pink-600 font-bold mb-4">{{ product.price }}€</p>
-          <div class="flex justify-center gap-2">
-            <button [routerLink]="'/product/' + product.id" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full">
-              Voir détails
-            </button>
-            <button routerLink="/cart" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-full">
-              Panier
-            </button>
+<section class="px-4 md:px-10 lg:px-40 py-20 bg-[#E3D5CA]/30">
+        <div class="flex items-center gap-4 mb-10">
+          <div class="h-1 w-12 bg-[#C1664C] rounded-full"></div>
+          <h2
+            class="text-[#3D312B] text-3xl font-black leading-tight tracking-tight uppercase"
+          >
+            Produits Vedettes
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
+          >
+            <div class="h-72 overflow-hidden relative group">
+              <div
+                class="absolute top-3 right-3 bg-[#C1664C] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter z-10"
+              >
+                Premium
+              </div>
+              <img
+                alt="Minimalist Watch"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgDU6yVqX6y8BvAUNHjV1dnHRIzZAH8R9gY23IelD2zGC_Vk7czbMlgOoWt-ikSpjO-v-Opws0jiOzodgc5PqhNkjntCFlJn2lO8YcG36JI-qHEzdVOW--vEq4JioiWu-SXECTnKNXa7YpS8_PmZdxCigrbh_HmaexI40BE6rlkA1IYMZlJ_3FjYhLy69YoatuLCCQCwSAE_6d0PfUU0tVG6UHhxGHEGH4gP5Tza2HO3qDCh4tMETGlLxHFMa4s900QsFfg2hGvDM"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
+                Montre Design
+              </h3>
+              <p class="text-[#C1664C] font-black text-xl mb-4">120€</p>
+              <div class="flex gap-2">
+                <button
+                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
+                >
+                  Voir détails
+                </button>
+                <button
+                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
+          >
+            <div class="h-72 overflow-hidden relative group">
+              <img
+                alt="Elegant Bag"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7JZTDthZ9o7PsJ0mxCCX_r4vB-THBs4rpHB9vzW8Ep3cVS7pmrjEwbwPFNwURw5h3WJh3aE71fhxocOiUDMMnGVVN3YDTV6sCF2L1WmYvYqRAHma-wk9-f6uaNMo1cUZc3OLA1qX2JvTHQMC5BQuM3GoIk8-rh8QY_VfQxS7yDX63hAmuyzAoRWCGA-WF4HMhRzlDqbw-PmYaGtZ5inCksj_-lsLk2qoLbqBnHdxB3WUPbkKGEymPSLXwxGrwbwJ54SgxRVl9ccY"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
+                Sac Élégant
+              </h3>
+              <p class="text-[#C1664C] font-black text-xl mb-4">80€</p>
+              <div class="flex gap-2">
+                <button
+                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
+                >
+                  Voir détails
+                </button>
+                <button
+                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
+          >
+            <div class="h-72 overflow-hidden relative group">
+              <img
+                alt="Gold Earrings"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuWxRsJz62CZiSUvFXeolTu8qzHCn0TzBqcqxbjpBI4J_kQNcOB2T1uQ45fKo1Fo6-U7djGPecAQaFD-Tpp0hnQuhUcFvzFSSUovaG2avK5KH9ggfbt9UauKSGoUqzmQuoxsEnsT8xYQV2XX4NTCFFZ4hKNlmriPbDdm996OkgHk9ElbpChAP5dLX7b0Iwkqey8U6LZ4IHsn7FWBlwCBCl-PmWvCmIqPtBMPo71wnhFNiDu6TTho3XO0WIX4Y0bVdqzgVd6E2z8KQ"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
+                Boucles d'Or
+              </h3>
+              <p class="text-[#C1664C] font-black text-xl mb-4">45€</p>
+              <div class="flex gap-2">
+                <button
+                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
+                >
+                  Voir détails
+                </button>
+                <button
+                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
+          >
+            <div class="h-72 overflow-hidden relative group">
+              <img
+                alt="Perfume"
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVBc6Ucz9Bdte9f6oW8zDQXLdA_BrPG77BOKJDNF_37BnGgQqcuLqrgA9D0Upg84VJ8L0ikhQDmhiXCjqRfBWE2oTiEbim6xpx2x0AdcF7c6vHM-vlQBY7e1Lj0QgDOJ7tS1tDeJnq_i7Hp6VcUEkPHBMakaSREHCjoRKc6cuvLijXS-5mIotkB_kDIy2O8OtX1F-sm2trOA4ysOD_KQKUNDsjV6xrzs32NMwjwEf4LXHz28bgxXXcL9frRa4T1OAtX9jY68iNF-M"
+              />
+            </div>
+            <div class="p-6">
+              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
+                Parfum de Luxe
+              </h3>
+              <p class="text-[#C1664C] font-black text-xl mb-4">95€</p>
+              <div class="flex gap-2">
+                <button
+                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
+                >
+                  Voir détails
+                </button>
+                <button
+                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
+                >
+                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
+
+<!-- AVANTAGES -->
+<section class="px-4 md:px-10 lg:px-40 py-24 bg-[#F5EBE0]">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+    <div
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
+            font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 0,
+              'opsz' 24;
+          "
+          >local_shipping</span
+        >
       </div>
+      <h4 class="font-bold text-[#3D312B] mb-2">Livraison Rapide</h4>
+      <p class="text-sm text-[#3D312B]/60">Expédition sous 24/48h avec suivi complet.</p>
     </div>
-  </div>
-</section>
-
-<!-- WHY CHOOSE -->
-<section class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-gray-800 text-center mb-12">
-      Pourquoi Nous Choisir
-    </h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
-        <span class="text-4xl mb-4">🚚</span>
-        <h3 class="font-semibold text-lg mb-2">Livraison rapide</h3>
-        <p class="text-gray-600">Recevez vos produits en quelques jours seulement</p>
+    <div
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
+            font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 0,
+              'opsz' 24;
+          "
+          >verified</span
+        >
       </div>
-
-      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
-        <span class="text-4xl mb-4">💎</span>
-        <h3 class="font-semibold text-lg mb-2">Produits de qualité</h3>
-        <p class="text-gray-600">Bijoux et accessoires sélectionnés avec soin</p>
+      <h4 class="font-bold text-[#3D312B] mb-2">Qualité Premium</h4>
+      <p class="text-sm text-[#3D312B]/60">Matériaux sélectionnés pour leur durabilité.</p>
+    </div>
+    <div
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
+            font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 0,
+              'opsz' 24;
+          "
+          >lock</span
+        >
       </div>
-
-      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
-        <span class="text-4xl mb-4">💳</span>
-        <h3 class="font-semibold text-lg mb-2">Paiement sécurisé</h3>
-        <p class="text-gray-600">Vos transactions sont protégées à 100%</p>
+      <h4 class="font-bold text-[#3D312B] mb-2">Paiement Sécurisé</h4>
+      <p class="text-sm text-[#3D312B]/60">Transactions encryptées et 100% sécurisées.</p>
+    </div>
+    <div
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
+            font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 0,
+              'opsz' 24;
+          "
+          >support_agent</span
+        >
       </div>
-
-      <div class="flex flex-col items-center p-6 bg-gray-100 rounded-lg shadow hover:shadow-lg transition duration-300">
-        <span class="text-4xl mb-4">📞</span>
-        <h3 class="font-semibold text-lg mb-2">Service client</h3>
-        <p class="text-gray-600">Nous sommes là pour vous aider à tout moment</p>
-      </div>
+      <h4 class="font-bold text-[#3D312B] mb-2">Support 24/7</h4>
+      <p class="text-sm text-[#3D312B]/60">Une équipe à votre écoute à tout moment.</p>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="py-16 bg-pink-600">
-  <div class="max-w-4xl mx-auto px-4 text-center text-white">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6">
-      Trouvez l’accessoire parfait pour vous
-    </h2>
-    <p class="mb-8 text-lg md:text-xl">
-      Parcourez notre collection et découvrez vos bijoux et accessoires préférés
-    </p>
-    <button routerLink="/cart" class="bg-white text-pink-600 font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition duration-300">
-      Commencer vos achats
-    </button>
-  </div>
-</section>
+<section
+        class="px-4 md:px-10 lg:px-40 py-28 bg-[#C1664C] text-center relative overflow-hidden"
+      >
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+          <svg
+            class="w-full h-full"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
+          >
+            <path d="M0,0 L50,0 L0,50 Z" fill="black"></path>
+            <path d="M100,100 L50,100 L100,50 Z" fill="black"></path>
+          </svg>
+        </div>
+        <div class="relative z-10">
+          <h2
+            class="text-white text-3xl md:text-5xl font-black mb-6 leading-tight tracking-tight uppercase"
+          >
+            Trouvez l’accessoire parfait pour vous
+          </h2>
+          <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto font-medium">
+            Rejoignez des milliers de clients satisfaits et sublimez votre
+            quotidien avec nos pièces uniques.
+          </p>
+          <button
+            class="bg-white text-[#C1664C] hover:bg-[#D4AF37] hover:text-white px-12 py-5 rounded-4xl font-black text-lg transition-all transform hover:scale-105 shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] uppercase tracking-widest"
+          >
+            Commencer vos achats
+          </button>
+        </div>
+      </section>
 
 <!-- FOOTER -->
-<footer class="bg-gray-800 text-white py-8">
-  <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-    <div class="mb-4 md:mb-0">
-      <h3 class="text-xl font-bold">Bijoux & Accessories Shop</h3>
-      <p class="text-gray-400">© 2026 Tous droits réservés</p>
-    </div>
-    <div class="card">
-  <ul>
-    <!-- Facebook -->
-    <li class="iso-pro">
-      <a href="#">
-        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M22 12a10 10 0 1 0-11 9.95V14h-3v-2h3v-1.5c0-3 1.79-4.65 4.52-4.65 1.31 0 2.68.24 2.68.24v2.95h-1.51c-1.49 0-1.95.93-1.95 1.88V12h3.32l-.53 2h-2.79v7.95A10 10 0 0 0 22 12z"/>
-        </svg>
-        <span class="text">Facebook</span>
-      </a>
-      <span></span>
-      <span></span>
-      <span></span>
-    </li>
-
-    <!-- Instagram -->
-    <li class="iso-pro">
-      <a href="#">
-        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.96.24 2.416.403a4.92 4.92 0 0 1 1.75 1.074 4.92 4.92 0 0 1 1.074 1.75c.163.455.347 1.247.403 2.416.058 1.266.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.96-.403 2.416a4.92 4.92 0 0 1-1.074 1.75 4.92 4.92 0 0 1-1.75 1.074c-.455.163-1.247.347-2.416.403-1.266.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.96-.24-2.416-.403a4.92 4.92 0 0 1-1.75-1.074 4.92 4.92 0 0 1-1.074-1.75c-.163-.455-.347-1.247-.403-2.416C2.212 15.584 2.2 15.2 2.2 12s.012-3.584.07-4.85c.056-1.17.24-1.96.403-2.416a4.92 4.92 0 0 1 1.074-1.75 4.92 4.92 0 0 1 1.75-1.074c.455-.163 1.247-.347 2.416-.403C8.416 2.212 8.8 2.2 12 2.2zm0-2.2C8.735 0 8.332.013 7.052.072 5.76.131 4.63.327 3.678.675a7.12 7.12 0 0 0-2.556 1.64A7.12 7.12 0 0 0 .675 4.871C.327 5.823.131 6.953.072 8.244.013 9.524 0 9.927 0 12s.013 2.476.072 3.756c.059 1.291.255 2.421.603 3.373a7.12 7.12 0 0 0 1.64 2.556 7.12 7.12 0 0 0 2.556 1.64c.952.348 2.082.544 3.373.603C8.332 23.987 8.735 24 12 24s3.668-.013 4.948-.072c1.291-.059 2.421-.255 3.373-.603a7.12 7.12 0 0 0 2.556-1.64 7.12 7.12 0 0 0 1.64-2.556c.348-.952.544-2.082.603-3.373C23.987 14.668 24 14.265 24 12s-.013-2.476-.072-3.756c-.059-1.291-.255-2.421-.603-3.373a7.12 7.12 0 0 0-1.64-2.556A7.12 7.12 0 0 0 19.32.675C18.368.327 17.238.131 15.947.072 14.667.013 14.264 0 12 0z"/>
-        </svg>
-        <span class="text">Instagram</span>
-      </a>
-      <span></span>
-      <span></span>
-      <span></span>
-    </li>
-
-    <!-- Twitter -->
-    <li class="iso-pro">
-      <a href="#">
-        <svg class="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724 9.864 9.864 0 0 1-3.127 1.195 4.918 4.918 0 0 0-8.384 4.482C7.69 8.094 4.066 6.13 1.64 3.161a4.822 4.822 0 0 0-.666 2.475 4.92 4.92 0 0 0 2.188 4.096 4.903 4.903 0 0 1-2.228-.616v.062a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-1.292.172c-.316 0-.623-.03-.924-.086a4.937 4.937 0 0 0 4.604 3.417 9.868 9.868 0 0 1-6.102 2.104c-.396 0-.788-.023-1.175-.068a13.945 13.945 0 0 0 7.548 2.212c9.056 0 14.01-7.496 14.01-13.986 0-.213-.004-.425-.014-.637A10.025 10.025 0 0 0 24 4.557z"/>
-        </svg>
-        <span class="text">Twitter</span>
-      </a>
-      <span></span>
-      <span></span>
-      <span></span>
-    </li>
-  </ul>
-</div>
-
-  </div>
-
-</footer>
-
-
-
-
-
-
-
-
-
-
-
+<footer class="bg-[#3D312B] text-[#E3D5CA]/60 py-16 px-4 md:px-10 lg:px-40">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center gap-10 mb-12"
+      >
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[#D4AF37] text-3xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">diamond</span>
+          <span class="text-white text-lg font-black uppercase tracking-tight"
+            >Bijoux &amp; Accessoires</span
+          >
+        </div>
+        <div class="flex gap-8">
+          <a class="hover:text-[#D4AF37] transition-colors" href="#">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+              ></path>
+            </svg>
+          </a>
+          <a class="hover:text-[#D4AF37] transition-colors" href="#">
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div
+        class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between text-xs font-semibold tracking-[0.2em] uppercase"
+      >
+        <p>© 2024 Bijoux &amp; Accessoires Shop. Tous droits réservés.</p>
+        <div class="flex gap-8 mt-6 md:mt-0">
+          <a class="hover:text-white transition-colors" href="#"
+            >Confidentialité</a
+          >
+          <a class="hover:text-white transition-colors" href="#">CGV</a>
+          <a class="hover:text-white transition-colors" href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
