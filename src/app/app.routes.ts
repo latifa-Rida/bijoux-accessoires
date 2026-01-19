@@ -4,6 +4,8 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail';
 import { CartComponent } from './pages/cart/cart';
 import { OrderComponent } from './pages/order/order';
 import { OrderHistoryComponent } from './pages/order-history/order-history';
+import path from 'path';
+import { Authentification } from './pages/authentification/authentification';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -11,6 +13,6 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'order', component: OrderComponent },
   { path: 'orders', component: OrderHistoryComponent },
-
+  { path: 'authentification', component: Authentification },
 ];
 
