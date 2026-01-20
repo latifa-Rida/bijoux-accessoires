@@ -1,1 +1,295 @@
-<p>authentification works!</p>
+<body
+    class="min-h-screen flex items-center justify-center p-4 md:p-8 font-['Plus_Jakarta_Sans'] bg-[#f5ece4]"
+  >
+    <button
+      class="fixed top-8 right-8 p-3 rounded-full bg-white/50 backdrop-blur-md shadow-sm text-[#6b5e54] z-50 hover:bg-white transition-all"
+      onclick="document.documentElement.classList.toggle('dark')"
+    >
+      <span
+        class="material-symbols-outlined"
+        style="
+          font-variation-settings:
+            &quot;FILL&quot; 0,
+            &quot;wght&quot; 300,
+            &quot;GRAD&quot; 0,
+            &quot;opsz&quot; 24;
+        "
+        >dark_mode</span
+      >
+    </button>
+    <div
+      class="max-w-7xl w-full bg-white/40 dark:bg-zinc-900/40 rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-212.5 backdrop-blur-sm border border-white/20"
+    >
+      <div class="hidden md:block md:w-1/2 relative overflow-hidden group">
+        <img
+          alt="Elegant jewelry collection"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy7tnndqYXTwiE4gQW_MpqJBcn3NVK6Rzkwrepk36WjZrxTC8yNtMDx_swqftIf4X3AanOL3LE5WNtUSl1Va27ijb069A846KBQtcEYNIGIn6G2xZn8LJb-ooY7pwp6jQH6gCA9H3RdQY0shnkxKIv1uGxpv6pqEjcyL_NLF3Q_gCmmRhfd7TXXemrUBlFoHBaXHn7jSVvxjCsuTYX65l57QA6FmiYVxLbJiuQDZ6nzqPNLQZVxOJXDYrdyDA-9gK8BW3F1JvgnvU"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent flex flex-col justify-end p-16 text-white"
+        >
+          <div class="mb-6">
+            <span
+              class="px-4 py-1.5 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-bold tracking-[0.2em] uppercase"
+              >Bijoux de Créateurs</span
+            >
+          </div>
+          <h1 class="text-5xl font-extrabold mb-6 leading-[1.1] tracking-tight">
+            L'éclat qui révèle votre véritable élégance.
+          </h1>
+          <p class="text-white/90 text-xl font-light leading-relaxed max-w-md">
+            Plongez dans un univers où chaque pièce raconte une histoire de
+            lumière et de raffinement.
+          </p>
+        </div>
+        <div class="absolute top-12 left-12 flex items-center gap-3 text-white">
+          <span
+            class="material-symbols-outlined text-4xl"
+            style="
+              font-variation-settings:
+                &quot;FILL&quot; 0,
+                &quot;wght&quot; 300,
+                &quot;GRAD&quot; 0,
+                &quot;opsz&quot; 24;
+            "
+            >diamond</span
+          >
+          <span class="font-extrabold tracking-tighter text-xl uppercase"
+            >Bijoux &amp; Accessoires</span
+          >
+        </div>
+      </div>
+      <div
+        class="w-full md:w-1/2 p-10 md:p-20 flex flex-col justify-center bg-[#fdfaf7]/80 dark:bg-zinc-900/90 relative"
+      >
+        <div class="max-w-md mx-auto w-full">
+          <div
+            class="flex md:hidden items-center justify-center gap-3 mb-12 text-[#c06c50]"
+          >
+            <span
+              class="material-symbols-outlined text-4xl"
+              style="
+                font-variation-settings:
+                  &quot;FILL&quot; 0,
+                  &quot;wght&quot; 300,
+                  &quot;GRAD&quot; 0,
+                  &quot;opsz&quot; 24;
+              "
+              >diamond</span
+            >
+            <span class="font-extrabold tracking-tighter text-xl uppercase"
+              >Bijoux &amp; Accessoires</span
+            >
+          </div>
+          <div class="mb-12 text-center md:text-left">
+            <h2
+              class="text-4xl font-extrabold text-[#2d2a26] dark:text-zinc-100 mb-4 tracking-tight"
+            >
+              Bienvenue
+            </h2>
+            <p class="text-[#6b5e54] dark:text-zinc-400 font-medium">
+              Connectez-vous pour retrouver votre univers.
+            </p>
+          </div>
+          <div
+            class="flex p-1.5 bg-[#f0e4d8] dark:bg-zinc-800 rounded-2xl mb-10"
+          >
+            <button
+            routerLink="/registration"
+              class="flex-1 py-3 text-sm font-bold rounded-xl bg-white dark:bg-zinc-700 shadow-md text-[#2d2a26] dark:text-zinc-100 transition-all duration-300"
+              id="loginTab"
+              onclick="toggleAuth('login')"
+            >
+              Connexion
+            </button>
+            <button
+              routerLink="/registration"
+              class="flex-1 py-3 text-sm font-bold rounded-xl text-[#6b5e54] dark:text-zinc-400 hover:text-[#c06c50] dark:hover:text-zinc-200 transition-all duration-300"
+              id="signupTab"
+              onclick="toggleAuth('signup')"
+            >
+              Inscription
+            </button>
+          </div>
+          <form class="space-y-6 block" id="loginForm">
+            <div class="space-y-2">
+              <label
+                class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300 ml-1"
+                >Email</label
+              >
+              <input
+                class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
+                placeholder="votre@email.com"
+                type="email"
+              />
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between items-center ml-1">
+                <label
+                  class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300"
+                  >Mot de passe</label
+                >
+                <a
+                  class="text-sm font-semibold text-[#c06c50] hover:text-[#6b5e54] transition-colors"
+                  href="#"
+                  >Oublié ?</a
+                >
+              </div>
+              <input
+                class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
+                placeholder="••••••••"
+                type="password"
+              />
+            </div>
+            <button
+              class="w-full bg-[#d63384] text-white hover:bg-[#be2972] transition-all duration-300 hover:-translate-y-px hover:shadow-[0_4px_12px_rgba(214,51,132,0.3)] font-bold py-5 rounded-[1.25rem] text-lg mt-4 shadow-xl shadow-[#d63384]/10"
+              type="submit"
+            >
+              Se connecter
+            </button>
+          </form>
+          <form class="space-y-6 hidden" id="signupForm">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <label
+                  class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300 ml-1"
+                  >Prénom</label
+                >
+                <input
+                  class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
+                  placeholder="Sophie"
+                  type="text"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300 ml-1"
+                  >Nom</label
+                >
+                <input
+                  class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
+                  placeholder="Martin"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label
+                class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300 ml-1"
+                >Email</label
+              >
+              <input
+                class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
+                placeholder="votre@email.com"
+                type="email"
+              />
+            </div>
+            <div class="space-y-2">
+              <label
+                class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300 ml-1"
+                >Mot de passe</label
+              >
+              <input
+                class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
+                placeholder="••••••••"
+                type="password"
+              />
+            </div>
+            <button
+              class="w-full bg-[#d63384] text-white hover:bg-[#be2972] transition-all duration-300 hover:-translate-y-px hover:shadow-[0_4px_12px_rgba(214,51,132,0.3)] font-bold py-5 rounded-[1.25rem] text-lg mt-4 shadow-xl shadow-[#d63384]/10"
+              type="submit"
+            >
+              Créer un compte
+            </button>
+          </form>
+          <div class="relative my-12">
+            <div class="absolute inset-0 flex items-center">
+              <div
+                class="w-full border-t border-[#e8dfd5] dark:border-zinc-800"
+              ></div>
+            </div>
+            <div
+              class="relative flex justify-center text-sm uppercase tracking-widest font-bold"
+            >
+              <span class="px-6 bg-[#fdfaf7] dark:bg-zinc-900 text-[#a3978b]"
+                >Ou continuer avec</span
+              >
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <button
+              class="flex items-center justify-center gap-3 py-4 px-4 bg-white dark:bg-zinc-800 border border-[#eee4da] dark:border-zinc-700 rounded-2xl hover:bg-[#faf6f2] dark:hover:bg-zinc-700 transition-all duration-300 text-[#6b5e54] dark:text-zinc-200 font-bold text-sm shadow-sm"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24">
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4"
+                ></path>
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853"
+                ></path>
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                  fill="#FBBC05"
+                ></path>
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                  fill="#EA4335"
+                ></path>
+              </svg>
+              Google
+            </button>
+            <button
+              class="flex items-center justify-center gap-3 py-4 px-4 bg-white dark:bg-zinc-800 border border-[#eee4da] dark:border-zinc-700 rounded-2xl hover:bg-[#faf6f2] dark:hover:bg-zinc-700 transition-all duration-300 text-[#6b5e54] dark:text-zinc-200 font-bold text-sm shadow-sm"
+            >
+              <svg class="w-5 h-5" viewBox="0 0 24 24">
+                <path
+                  d="M17.05 20.28c-.96 0-2.04-.68-3.32-.68-1.29 0-2.38.68-3.32.68-1.66 0-4.08-2.58-4.08-6.17 0-3.59 2.42-6.17 4.08-6.17.96 0 2.04.68 3.32.68 1.28 0 2.37-.68 3.32-.68 1.66 0 4.08 2.58 4.08 6.17 0 3.59-2.42 6.17-4.08 6.17zM15.42 3c-1.28 0-2.37.68-3.32.68-1.28 0-2.37-.68-3.32-.68.68-1.28 2.04-2.18 3.32-2.18 1.28 0 2.64.9 3.32 2.18z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+              Apple
+            </button>
+          </div>
+        </div>
+        <div
+          class="mt-20 text-center text-[10px] font-bold text-[#6b5e54]/50 dark:text-zinc-500 tracking-[0.2em] uppercase"
+        >
+          © 2024 BIJOUX &amp; ACCESSOIRES SHOP. TOUS DROITS RÉSERVÉS.
+        </div>
+      </div>
+    </div>
+    <script>
+      function toggleAuth(type) {
+        const loginForm = document.getElementById("loginForm");
+        const signupForm = document.getElementById("signupForm");
+        const loginTab = document.getElementById("loginTab");
+        const signupTab = document.getElementById("signupTab");
+        const activeClasses = [
+          "bg-white",
+          "dark:bg-zinc-700",
+          "shadow-md",
+          "text-[#2d2a26]",
+          "dark:text-zinc-100",
+        ];
+        const inactiveClasses = ["text-[#6b5e54]", "dark:text-zinc-400"];
+        if (type === "login") {
+          loginForm.classList.remove("hidden");
+          signupForm.classList.add("hidden");
+          loginTab.classList.add(...activeClasses);
+          loginTab.classList.remove(...inactiveClasses);
+          signupTab.classList.remove(...activeClasses);
+          signupTab.classList.add(...inactiveClasses);
+        } else {
+          loginForm.classList.add("hidden");
+          signupForm.classList.remove("hidden");
+          signupTab.classList.add(...activeClasses);
+          signupTab.classList.remove(...inactiveClasses);
+          loginTab.classList.remove(...activeClasses);
+          loginTab.classList.add(...inactiveClasses);
+        }
+      }
+    </script>
+  </body>

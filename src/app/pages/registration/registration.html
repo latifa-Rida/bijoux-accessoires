@@ -1,0 +1,209 @@
+<body
+    class="bg-[#fcf8fc] dark:bg-[#221022] font-['Inter'] text-[#1b0d1b] antialiased"
+  >
+    <div class="flex min-h-screen w-full flex-col lg:flex-row">
+      <!-- Left Side: Hero Image Section -->
+      <div class="relative hidden w-1/2 lg:block">
+        <div
+          class="absolute inset-0 bg-cover bg-center"
+          data-alt="Close-up of elegant gold jewelry in soft natural sunlight"
+          style="
+            background-image: url(&quot;https://lh3.googleusercontent.com/aida-public/AB6AXuBQF1NfqCuUwnAu0PUVERVr6zOw57H9Gp3qe5mCNicLXVrqka_58KnqEFhJ-g1liIWkc2JgOLD99-51qO2rDvU_0bWjPrAqQCS7PfgY0aTDYUqnksMevW7lyYPApdMY0RoHBvOw9FuPRCpzOlkGkmKCq5gyt-_Sf1b7aKhtFh2v139FysVk60lNVjUUKtwLtwYh_h0pBvcu_CBEBUfZWxDExBaPIF07ZEuXnPOy4X4MxSnkWYnHTg2KC1MUaE_QMm4S8RbvbgctG1o&quot;);
+          "
+        ></div>
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute bottom-12 left-12 right-12 text-white">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-[#ee2bee] text-3xl"
+              >diamond</span
+            >
+            <h2 class="text-2xl font-bold tracking-tight">
+              Bijoux &amp; Accessoires
+            </h2>
+          </div>
+          <p class="max-w-md text-lg font-light leading-relaxed">
+            Découvrez une collection de pièces uniques, conçues pour sublimer
+            votre quotidien avec élégance et simplicité.
+          </p>
+        </div>
+      </div>
+      <!-- Right Side: Registration Form Section -->
+      <div
+        class="flex flex-1 flex-col justify-center bg-[#FDFBF7] dark:bg-[#221022] px-6 py-12 lg:px-24"
+      >
+        <div class="mx-auto w-full max-w-md">
+          <!-- Branding for Mobile -->
+          <div class="flex items-center gap-3 mb-8 lg:hidden">
+            <span class="material-symbols-outlined text-[#ee2bee] text-3xl"
+              >diamond</span
+            >
+            <h2 class="text-[#1b0d1b] dark:text-white text-xl font-bold">
+              Bijoux &amp; Accessoires
+            </h2>
+          </div>
+          <!-- Page Heading -->
+          <div class="mb-10">
+            <h1
+              class="text-[#1b0d1b] dark:text-white text-4xl font-black leading-tight tracking-tight mb-3"
+            >
+              Rejoignez l'univers Bijoux
+            </h1>
+            <p class="text-[#6d5a52] dark:text-gray-400 text-base">
+              Créez votre compte pour une expérience personnalisée et exclusive.
+            </p>
+          </div>
+          <!-- Form -->
+          <form class="space-y-5">
+            <!-- Full Name -->
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-[#1b0d1b] dark:text-gray-200 text-sm font-semibold"
+                >Nom complet</label
+              >
+              <input
+                class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
+                placeholder="Votre nom"
+                type="text"
+              />
+            </div>
+            <!-- Email -->
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-[#1b0d1b] dark:text-gray-200 text-sm font-semibold"
+                >E-mail</label
+              >
+              <input
+                class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
+                placeholder="exemple@bijoux.com"
+                type="email"
+              />
+            </div>
+            <!-- Password -->
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-[#1b0d1b] dark:text-gray-200 text-sm font-semibold"
+                >Mot de passe</label
+              >
+              <input
+                class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
+                placeholder="••••••••"
+                type="password"
+              />
+            </div>
+            <!-- Confirm Password -->
+            <div class="flex flex-col gap-2">
+              <label
+                class="text-[#1b0d1b] dark:text-gray-200 text-sm font-semibold"
+                >Confirmer le mot de passe</label
+              >
+              <input
+                class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
+                placeholder="••••••••"
+                type="password"
+              />
+            </div>
+            <!-- Terms Checkbox -->
+            <div class="flex items-start gap-3 py-2">
+              <div class="flex h-5 items-center">
+                <input
+                  class="h-5 w-5 rounded border-[#e7cfe7] text-[#c66b52] focus:ring-[#c66b52] cursor-pointer transition-all"
+                  id="terms"
+                  name="terms"
+                  type="checkbox"
+                />
+              </div>
+              <label
+                class="text-sm text-[#6d5a52] dark:text-gray-400 leading-tight cursor-pointer"
+                for="terms"
+              >
+                J'accepte les
+                <a
+                  class="underline decoration-[#c66b52]/40 hover:text-[#c66b52] transition-colors"
+                  href="#"
+                  >conditions générales</a
+                >
+                et la politique de confidentialité.
+              </label>
+            </div>
+            <!-- Primary CTA -->
+            <button
+              class="w-full h-14 bg-[#ee2bee] hover:bg-[#ee2bee]/90 text-white font-bold text-lg rounded-lg shadow-lg shadow-[#ee2bee]/20 transition-all active:scale-[0.98] mt-4"
+              type="submit"
+            >
+              Créer mon compte
+            </button>
+          </form>
+          <!-- Divider -->
+          <div class="relative my-10">
+            <div aria-hidden="true" class="absolute inset-0 flex items-center">
+              <div
+                class="w-full border-t border-[#e7cfe7] dark:border-gray-700"
+              ></div>
+            </div>
+            <div
+              class="relative flex justify-center text-sm uppercase tracking-widest"
+            >
+              <span
+                class="bg-[#FDFBF7] dark:bg-[#221022] px-4 text-[#6d5a52] dark:text-gray-400 font-medium"
+                >Ou continuer avec</span
+              >
+            </div>
+          </div>
+          <!-- Social Registration -->
+          <div class="flex justify-center gap-6">
+            <button
+              class="flex h-14 w-14 items-center justify-center rounded-full border border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+            >
+              <svg class="h-6 w-6" viewbox="0 0 24 24">
+                <path
+                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                  fill="#4285F4"
+                ></path>
+                <path
+                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                  fill="#34A853"
+                ></path>
+                <path
+                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                  fill="#FBBC05"
+                ></path>
+                <path
+                  d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 12-4.53z"
+                  fill="#EA4335"
+                ></path>
+              </svg>
+            </button>
+            <button
+              class="flex h-14 w-14 items-center justify-center rounded-full border border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm"
+            >
+              <svg
+                class="h-6 w-6 fill-[#1b0d1b] dark:fill-white"
+                viewbox="0 0 24 24"
+              >
+                <path
+                  d="M17.05 20.28c-.96 0-2.04-.6-3.23-.6-1.16 0-2.14.58-3.13.58-1.78 0-4.04-2.48-4.04-5.32 0-2.81 1.83-4.3 3.56-4.3 1.01 0 1.8.63 2.52.63.66 0 1.57-.68 2.76-.68 1.12 0 2.22.48 2.94 1.35-2.31 1.04-1.94 4.1.44 5.12-.52 1.34-1.25 2.62-1.82 3.22zM14.7 6.4c-.06 2.04-1.68 3.52-3.4 3.52-.1 0-.16 0-.25-.01.12-2.02 1.76-3.56 3.42-3.56.09 0 .16 0 .23.05z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <!-- Footer Link -->
+          <div class="mt-12 text-center">
+            <p class="text-[#6d5a52] dark:text-gray-400 font-medium">
+              Déjà inscrit ?
+              <a
+                routerLink="/authentification"
+                class="text-[#1b0d1b] dark:text-white font-bold hover:underline ml-1"
+                >Se connecter</a
+              >
+            </p>
+          </div>
+        </div>
+        <!-- Simple Footer Info -->
+        <div
+          class="mt-auto pt-10 text-center text-xs text-[#6d5a52]/60 dark:text-gray-500 uppercase tracking-widest"
+        >
+          © 2024 Bijoux &amp; Accessoires. Handcrafted Excellence.
+        </div>
+      </div>
+    </div>
+  </body>

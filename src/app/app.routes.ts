@@ -5,6 +5,10 @@ import { CartComponent } from './pages/cart/cart';
 import { OrderComponent } from './pages/order/order';
 import { OrderHistoryComponent } from './pages/order-history/order-history';
 import { ProductsComponent } from './pages/product/product';
+import { Authentification } from './pages/authentification/authentification';
+import { Registration } from './pages/registration/registration';
+
+
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -13,5 +17,7 @@ export const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'orders', component: OrderHistoryComponent },
   { path: 'product', component: ProductsComponent },
+  { path: 'authentification', component: Authentification },
+  { path: 'registration', component: Registration },
 ];
 
