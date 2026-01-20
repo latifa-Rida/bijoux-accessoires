@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -7,15 +8,15 @@ import { CartService } from '../../services/cart';
   styleUrls: ['./product-detail.css']
 })
 export class ProductDetailComponent {
-  product = {
-    id: 1,
-    name: 'Montre Design',
-    price: 120,
-    description: 'Description détaillée du produit',
-    color: 'Rouge'
-  };
 
-  constructor(private cartService: CartService) {}
+  product: any;
+
+  constructor(
+    private cartService: CartService,
+    private router: Router
+  ) {
+    this.product = history.state;
+  }
 
   addToCart() {
     this.cartService.addToCart(this.product);
