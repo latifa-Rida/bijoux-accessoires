@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 interface Product {
   id: number;
@@ -77,5 +78,11 @@ export class ProductsComponent {
       );
     }
   }
+  constructor(private router: Router) {}
+
+ goToDetails(id: number) {
+  this.router.navigate(['/product', id]);
+}
+
 
 }

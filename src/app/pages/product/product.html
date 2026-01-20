@@ -91,7 +91,7 @@
           <p class="text-[#C1664C] font-black text-xl mb-4">{{ product.price }} DH</p>
           <div class="flex gap-2">
             <button
-              [routerLink]="['/product', product.id]"
+              (click)="goToDetails(product.id)"
               class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
             >
               Voir détails
