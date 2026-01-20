@@ -47,8 +47,10 @@
     </h2>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'bijoux' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -62,9 +64,11 @@
         <p class="text-white text-xl font-bold tracking-wide">Bijoux</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    </a>
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'montres' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -78,9 +82,11 @@
         <p class="text-white text-xl font-bold tracking-wide">Montres</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    </a>
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'sacs' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -94,9 +100,11 @@
         <p class="text-white text-xl font-bold tracking-wide">Sacs</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    </a>
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'maquillages' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -110,7 +118,7 @@
         <p class="text-white text-xl font-bold tracking-wide">Maquillage</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
