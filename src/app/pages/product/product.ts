@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { Router } from '@angular/router';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 
 interface Product {
   id: number;
@@ -15,7 +14,7 @@ interface Product {
   templateUrl: './product.html',
   imports: [CommonModule , RouterModule]
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
  products = [
   { id: 1, name: 'Collier Doré', price: 120, image: 'assets/images/collier1.jpg', category: 'bijoux' },
   { id: 2, name: 'Bracelet Élégant', price: 80, image: 'assets/images/bracelet1.jpg', category: 'bijoux' },
@@ -64,7 +63,13 @@ export class ProductsComponent {
   selectedCategory = 'all';
 
   ngOnInit() {
-    this.filteredProducts = this.products;
+    // Check for category in route params
+    const category = this.route.snapshot.queryParams['category'];
+    if (category) {
+      this.filterByCategory(category);
+    } else {
+      this.filteredProducts = this.products;
+    }
   }
 
   filterByCategory(category: string) {
@@ -77,8 +82,18 @@ export class ProductsComponent {
         product => product.category === category
       );
     }
+
+    // Update URL without navigation
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: category !== 'all' ? { category } : {},
+      queryParamsHandling: 'merge'
+    });
   }
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
  goToDetails(id: number) {
   this.router.navigate(['/product', id]);
