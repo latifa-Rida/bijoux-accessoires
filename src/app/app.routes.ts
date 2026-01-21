@@ -7,6 +7,7 @@ import { OrderHistoryComponent } from './pages/order-history/order-history';
 import { ProductsComponent } from './pages/product/product';
 import { Authentification } from './pages/authentification/authentification';
 import { Registration } from './pages/registration/registration';
+import { authGuard } from './guards/auth.guard';
 
 
 
@@ -14,7 +15,7 @@ export const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'product/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'order', component: OrderComponent },
+  { path: 'order', component: OrderComponent, canActivate: [authGuard] },
   { path: 'orders', component: OrderHistoryComponent },
   { path: 'product', component: ProductsComponent },
   { path: 'authentification', component: Authentification },

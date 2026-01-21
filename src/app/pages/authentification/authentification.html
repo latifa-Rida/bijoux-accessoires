@@ -112,16 +112,22 @@
               Inscription
             </button>
           </div>
-          <form class="space-y-6 block" id="loginForm">
+          <form class="space-y-6 block" id="loginForm" (ngSubmit)="login()">
+            <div *ngIf="errorMessage" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm">
+              {{ errorMessage }}
+            </div>
             <div class="space-y-2">
               <label
                 class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300 ml-1"
                 >Email</label
               >
               <input
+                [(ngModel)]="email"
+                name="email"
                 class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
                 placeholder="votre@email.com"
                 type="email"
+                required
               />
             </div>
             <div class="space-y-2">
@@ -137,9 +143,12 @@
                 >
               </div>
               <input
+                [(ngModel)]="password"
+                name="password"
                 class="w-full px-5 py-4 bg-white/80 border-transparent rounded-2xl transition-all duration-300 shadow-[0_2px_10px_rgba(0,0,0,0.02)] focus:outline-none focus:border-transparent focus:ring-2 focus:ring-[#c06c50] focus:bg-white focus:shadow-[0_0_15px_rgba(192,108,80,0.15)] text-[#2d2a26] dark:text-zinc-100 dark:bg-zinc-800"
                 placeholder="••••••••"
                 type="password"
+                required
               />
             </div>
             <button
