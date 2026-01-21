@@ -1,1 +1,280 @@
-<p>order-management works!</p>
+<body class="bg-[#faf7f2] dark:bg-[#1c1917] text-slate-800 dark:text-slate-200 min-h-screen transition-colors duration-300 font-['Plus_Jakarta_Sans',sans-serif]">
+<nav class="sticky top-0 z-40 w-full border-b border-stone-200 dark:border-stone-800 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md">
+    <div class="max-w-400 mx-auto px-6 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[#d2618e] text-3xl">diamond</span>
+            <h1 class="font-['Playfair_Display',serif] text-2xl font-extrabold tracking-tight text-stone-900 dark:text-white uppercase">Her Corner</h1>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+            <a class="text-stone-500 dark:text-stone-400 hover:text-[#d2618e] transition-colors font-medium" href="#">Dashboard</a>
+            <a class="text-[#d2618e] font-bold border-b-2 border-[#d2618e] pb-1" href="#">Commandes</a>
+            <a class="text-stone-500 dark:text-stone-400 hover:text-[#d2618e] transition-colors font-medium" href="#">Produits</a>
+            <a class="text-stone-500 dark:text-stone-400 hover:text-[#d2618e] transition-colors font-medium" href="#">Clients</a>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="p-2 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+                <span class="material-symbols-outlined">dark_mode</span>
+            </button>
+            <div class="h-10 w-10 rounded-full bg-stone-200 dark:bg-stone-700 flex items-center justify-center overflow-hidden">
+                <img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlnC30C9dIUtIiX56d5NXTYmYAoQP9TaxVLOnOIFSMwoLTQyR3JQiuf79yPsn2w_PTLc5dJRpkE6WATbnBy_wtReLQtGDyK-bJ9uOSJrKeyc-peKrtm9PSuOStA5NO-Sidwoin33hOsUzId-kmMaR7O6warHq61f9bFs6bKHYdL6UZHUBLVJ63geLkumOAxfiIHTx_khMl6OlP7Lwrw8PVbNcaDSegYqFJSqURfbmGvPrApcEEXRm2FeVpegVPilzY_TgDn5eqKsg"/>
+            </div>
+        </div>
+    </div>
+</nav>
+<main class="max-w-400 mx-auto p-6 md:p-10">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+        <div>
+            <h2 class="text-3xl font-['Playfair_Display',serif] font-bold text-stone-900 dark:text-white">Gestion des Commandes</h2>
+            <p class="text-stone-500 dark:text-stone-400 mt-1">Gérez vos ventes et suivez vos expéditions.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+            <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+                <input class="pl-10 pr-4 py-2.5 w-64 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 focus:ring-2 focus:ring-[#d2618e] focus:border-transparent outline-none transition-all" placeholder="Rechercher une commande..." type="text"/>
+            </div>
+            <button class="flex items-center gap-2 px-5 py-2.5 rounded-3xl border border-stone-200 dark:border-stone-800 bg-white dark:bg-stone-900 font-medium hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors shadow-sm">
+                <span class="material-symbols-outlined text-sm">filter_list</span>
+                Filtrer
+            </button>
+            <button class="bg-[#d2618e] text-white px-6 py-2.5 rounded-3xl font-bold shadow-lg shadow-[#d2618e]/20 hover:opacity-90 transition-opacity">
+                Exporter
+            </button>
+        </div>
+    </div>
+    <div class="relative grid grid-cols-12 gap-8">
+        <div class="col-span-12 xl:col-span-8">
+            <div class="bg-white dark:bg-stone-900 rounded-4xl shadow-xl shadow-stone-200/50 dark:shadow-none border border-stone-100 dark:border-stone-800 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left">
+                        <thead>
+                        <tr class="bg-stone-50/50 dark:bg-stone-800/30 border-b border-stone-100 dark:border-stone-800">
+                            <th class="px-6 py-4 font-bold text-stone-600 dark:text-stone-400 uppercase text-xs tracking-wider">Commande</th>
+                            <th class="px-6 py-4 font-bold text-stone-600 dark:text-stone-400 uppercase text-xs tracking-wider">Date</th>
+                            <th class="px-6 py-4 font-bold text-stone-600 dark:text-stone-400 uppercase text-xs tracking-wider">Client</th>
+                            <th class="px-6 py-4 font-bold text-stone-600 dark:text-stone-400 uppercase text-xs tracking-wider">Statut</th>
+                            <th class="px-6 py-4 font-bold text-stone-600 dark:text-stone-400 uppercase text-xs tracking-wider">Total</th>
+                            <th class="px-6 py-4 font-bold text-stone-600 dark:text-stone-400 uppercase text-xs tracking-wider text-right">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-stone-100 dark:divide-stone-800">
+                        <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 cursor-pointer transition-colors group">
+                            <td class="px-6 py-5">
+                                <span class="font-bold text-stone-900 dark:text-white">#HC-2041</span>
+                            </td>
+                            <td class="px-6 py-5 text-stone-500 dark:text-stone-400">14 Oct, 2024</td>
+                            <td class="px-6 py-5 font-medium">Sophie Martin</td>
+                            <td class="px-6 py-5">
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">En attente</span>
+                            </td>
+                            <td class="px-6 py-5 font-bold text-stone-900 dark:text-white">128.00 €</td>
+                            <td class="px-6 py-5 text-right">
+                                <span class="material-symbols-outlined text-stone-400 group-hover:text-[#d2618e]">visibility</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 cursor-pointer transition-colors group border-l-4 border-[#d2618e] bg-[#d2618e]/5">
+                            <td class="px-6 py-5">
+                                <span class="font-bold text-stone-900 dark:text-white">#HC-2040</span>
+                            </td>
+                            <td class="px-6 py-5 text-stone-500 dark:text-stone-400">13 Oct, 2024</td>
+                            <td class="px-6 py-5 font-medium">Léa Dubois</td>
+                            <td class="px-6 py-5">
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-stone-200 text-stone-700 dark:bg-stone-700 dark:text-stone-300">Expédié</span>
+                            </td>
+                            <td class="px-6 py-5 font-bold text-stone-900 dark:text-white">450.50 €</td>
+                            <td class="px-6 py-5 text-right">
+                                <span class="material-symbols-outlined text-[#d2618e]">visibility</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 cursor-pointer transition-colors group">
+                            <td class="px-6 py-5">
+                                <span class="font-bold text-stone-900 dark:text-white">#HC-2039</span>
+                            </td>
+                            <td class="px-6 py-5 text-stone-500 dark:text-stone-400">12 Oct, 2024</td>
+                            <td class="px-6 py-5 font-medium">Marie Lefebvre</td>
+                            <td class="px-6 py-5">
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400">Terminé</span>
+                            </td>
+                            <td class="px-6 py-5 font-bold text-stone-900 dark:text-white">95.00 €</td>
+                            <td class="px-6 py-5 text-right">
+                                <span class="material-symbols-outlined text-stone-400 group-hover:text-[#d2618e]">visibility</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 cursor-pointer transition-colors group">
+                            <td class="px-6 py-5">
+                                <span class="font-bold text-stone-900 dark:text-white">#HC-2038</span>
+                            </td>
+                            <td class="px-6 py-5 text-stone-500 dark:text-stone-400">12 Oct, 2024</td>
+                            <td class="px-6 py-5 font-medium">Emma Roussel</td>
+                            <td class="px-6 py-5">
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-400">Terminé</span>
+                            </td>
+                            <td class="px-6 py-5 font-bold text-stone-900 dark:text-white">215.00 €</td>
+                            <td class="px-6 py-5 text-right">
+                                <span class="material-symbols-outlined text-stone-400 group-hover:text-[#d2618e]">visibility</span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 dark:hover:bg-stone-800/50 cursor-pointer transition-colors group">
+                            <td class="px-6 py-5">
+                                <span class="font-bold text-stone-900 dark:text-white">#HC-2037</span>
+                            </td>
+                            <td class="px-6 py-5 text-stone-500 dark:text-stone-400">11 Oct, 2024</td>
+                            <td class="px-6 py-5 font-medium">Chloé Blanc</td>
+                            <td class="px-6 py-5">
+                                <span class="px-3 py-1 text-xs font-bold rounded-full bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400">En attente</span>
+                            </td>
+                            <td class="px-6 py-5 font-bold text-stone-900 dark:text-white">78.00 €</td>
+                            <td class="px-6 py-5 text-right">
+                                <span class="material-symbols-outlined text-stone-400 group-hover:text-[#d2618e]">visibility</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="px-6 py-5 flex items-center justify-between border-t border-stone-100 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-900">
+                    <p class="text-sm text-stone-500 dark:text-stone-400">Affichage de 1 à 5 sur 24 commandes</p>
+                    <div class="flex gap-2">
+                        <button class="px-4 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-800 hover:bg-white dark:hover:bg-stone-800 transition-colors">Précédent</button>
+                        <button class="px-4 py-2 text-sm rounded-lg bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 font-bold">1</button>
+                        <button class="px-4 py-2 text-sm rounded-lg hover:bg-white dark:hover:bg-stone-800 transition-colors">2</button>
+                        <button class="px-4 py-2 text-sm rounded-lg hover:bg-white dark:hover:bg-stone-800 transition-colors">3</button>
+                        <button class="px-4 py-2 text-sm rounded-lg border border-stone-200 dark:border-stone-800 hover:bg-white dark:hover:bg-stone-800 transition-colors">Suivant</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <aside class="col-span-12 xl:col-span-4 sticky top-28 h-fit">
+            <div class="bg-white dark:bg-stone-900 rounded-4xl shadow-xl border border-stone-100 dark:border-stone-800 overflow-hidden">
+                <div class="p-6 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between bg-stone-50/50 dark:bg-stone-800/30">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 rounded-lg bg-[#d2618e]/10 text-[#d2618e]">
+                            <span class="material-symbols-outlined">receipt_long</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-stone-900 dark:text-white">Détails de la Commande</h3>
+                            <p class="text-xs text-stone-500 dark:text-stone-400">#HC-2040 • Passée le 13/10/2024 à 14:32</p>
+                        </div>
+                    </div>
+                    <button class="text-stone-400 hover:text-stone-600 dark:hover:text-stone-200 transition-colors">
+                        <span class="material-symbols-outlined">close</span>
+                    </button>
+                </div>
+                <div class="p-6 space-y-8">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-stone-400">Client</h4>
+                            <button class="text-[#d2618e] text-xs font-bold hover:underline">Modifier</button>
+                        </div>
+                        <div class="flex items-center gap-4 bg-stone-50 dark:bg-stone-800/50 p-4 rounded-3xl">
+                            <div class="h-12 w-12 rounded-full bg-[#8c5643]/20 flex items-center justify-center text-[#8c5643] font-bold text-lg">
+                                LD
+                            </div>
+                            <div>
+                                <p class="font-bold text-stone-900 dark:text-white">Léa Dubois</p>
+                                <p class="text-sm text-stone-500 dark:text-stone-400">lea.dubois@email.com</p>
+                                <p class="text-xs text-stone-400 mt-0.5">+33 6 12 34 56 78</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-stone-400 mb-4">Adresse de Livraison</h4>
+                        <div class="p-4 rounded-3xl border border-stone-100 dark:border-stone-800 bg-stone-50/30 dark:bg-stone-800/20">
+                            <p class="text-stone-700 dark:text-stone-300">12 Rue de la Paix</p>
+                            <p class="text-stone-700 dark:text-stone-300">75002 Paris, France</p>
+                            <div class="mt-3 pt-3 border-t border-stone-200 dark:border-stone-700 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-stone-400 text-sm">local_shipping</span>
+                                <p class="text-xs text-stone-500 dark:text-stone-400">Standard - Colissimo (48h)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-stone-400 mb-4">Articles (2)</h4>
+                        <div class="space-y-4">
+                            <div class="flex gap-4">
+                                <div class="h-16 w-16 rounded-lg bg-stone-100 dark:bg-stone-800 overflow-hidden shrink-0">
+                                    <img alt="Montre Design" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEuMPWDULc0kJeiUReOvhXHAKR2I_1w2lDyGoUX__81Fgm_7RBHXWei7vQOklpu2D82wBok-CC0hb7OuTEgOeATXxrDRoTMWA3Vbm2U8S9eDNYyALZdkOlmAy6UYVzoDcnCinp4jgljCv3P50fZH5FAz_VLpAKvP2UHZ-VNNafvsV1ylAN4BpnZO7hTzVvQyGK519yUPdxcPjrehe8CqK6WT79KofBcKhbYeOYolfjYqGlFpp2H11vSf0ppJhIM9LHNOVWCy7dtIQ"/>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-stone-900 dark:text-white line-clamp-1">Montre Design Premium</p>
+                                    <p class="text-xs text-stone-500 dark:text-stone-400">Quantité: 1 • Noir/Or</p>
+                                    <p class="text-sm font-bold text-stone-900 dark:text-white mt-1">120.00 €</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="h-16 w-16 rounded-lg bg-stone-100 dark:bg-stone-800 overflow-hidden shrink-0">
+                                    <img alt="Sac élégant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR2ZBdjVpyrh6Z8F9qzFASwXC8T9rU6jQCIH0p0sf3i8dCYv4XeKcKFibgipzKXRlfPJMl5_tdhuhAHRURDIx7jY26Hrzr2nSvMsJmfwdH-kWRnxThGaU48vOD5MG2ZbcmTIlGCvrWFYsM0deDQTdJA_Chq7GqVCVdsOEQTCUBclvvux4vaVNbPCfQOlO2qEBNCaICizsUyWTpz1LwcRffoSp7AubOmRoTBkbv6JLjiEC7OeET8zN_wfYenfktV5aaUkmQAS6hTq0"/>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-stone-900 dark:text-white line-clamp-1">Sac à Main Élégant</p>
+                                    <p class="text-xs text-stone-500 dark:text-stone-400">Quantité: 1 • Beige Craie</p>
+                                    <p class="text-sm font-bold text-stone-900 dark:text-white mt-1">330.50 €</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-stone-100 dark:border-stone-800 space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-stone-500 dark:text-stone-400">Sous-total</span>
+                            <span class="font-medium text-stone-900 dark:text-white">450.50 €</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-stone-500 dark:text-stone-400">Livraison</span>
+                            <span class="text-green-600 font-medium">Offert</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-extrabold pt-2">
+                            <span class="text-stone-900 dark:text-white">Total</span>
+                            <span class="text-[#d2618e]">450.50 €</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 border-t border-stone-100 dark:border-stone-800">
+                        <h4 class="text-sm font-bold uppercase tracking-wider text-stone-400 mb-4">Statut de la commande</h4>
+                        <div class="space-y-4">
+                            <div class="flex gap-3">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="h-2.5 w-2.5 rounded-full bg-[#d2618e] z-10"></div>
+                                    <div class="h-full w-0.5 bg-stone-200 dark:bg-stone-700 absolute top-2.5"></div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-stone-900 dark:text-white leading-none">Expédié</p>
+                                    <p class="text-[10px] text-stone-500 dark:text-stone-400 mt-1">14 Oct, 2024 à 10:15</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div class="relative flex flex-col items-center">
+                                    <div class="h-2.5 w-2.5 rounded-full bg-stone-300 dark:bg-stone-600 z-10"></div>
+                                    <div class="h-full w-0.5 bg-stone-200 dark:bg-stone-700 absolute top-2.5"></div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-stone-500 dark:text-stone-400 leading-none">Paiement Accepté</p>
+                                    <p class="text-[10px] text-stone-500 dark:text-stone-400 mt-1">13 Oct, 2024 à 14:35</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-3">
+                                <div class="h-2.5 w-2.5 rounded-full bg-stone-300 dark:bg-stone-600"></div>
+                                <div>
+                                    <p class="text-sm font-medium text-stone-500 dark:text-stone-400 leading-none">Commande Créée</p>
+                                    <p class="text-[10px] text-stone-500 dark:text-stone-400 mt-1">13 Oct, 2024 à 14:32</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex gap-3 pt-2">
+                        <button class="flex-1 bg-stone-900 dark:bg-white dark:text-stone-900 text-white py-3 rounded-3xl font-bold text-sm hover:opacity-90 transition-opacity">Imprimer la facture</button>
+                        <button class="flex-1 bg-[#d2618e] text-white py-3 rounded-3xl font-bold text-sm hover:opacity-90 transition-opacity">Marquer comme Terminé</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>
+<footer class="mt-20 border-t border-stone-200 dark:border-stone-800 py-10 px-6">
+    <div class="max-w-400 mx-auto flex flex-col md:flex-row items-center justify-between text-stone-400 text-sm">
+        <p>© 2024 Her Corner Admin. Tous droits réservés.</p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+            <a class="hover:text-[#d2618e] transition-colors" href="#">Documentation</a>
+            <a class="hover:text-[#d2618e] transition-colors" href="#">Support</a>
+            <a class="hover:text-[#d2618e] transition-colors" href="#">Paramètres</a>
+        </div>
+    </div>
+</footer>
+
+</body>
