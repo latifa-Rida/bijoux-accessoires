@@ -15,10 +15,10 @@ export class NavbarComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
-    this.cartCount = this.cartService.getCart().length;
+    this.cartCount = this.cartService.getCartCount();
 
     this.cartService.cartChanged.subscribe(() => {
-      this.cartCount = this.cartService.getCart().length;
+      this.cartCount = this.cartService.getCartCount();
     });
   }
 }

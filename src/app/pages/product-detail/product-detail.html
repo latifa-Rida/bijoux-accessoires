@@ -1,35 +1,81 @@
-<section class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+<section class="py-16 bg-gray-50 min-h-[60vh] flex items-center">
+  <div class="max-w-6xl mx-auto px-4 w-full">
+    <ng-container *ngIf="product; else notFound">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Image -->
+        <div class="flex justify-center">
+          <img
+            [src]="product.image"
+            [alt]="product.name"
+            class="w-full max-w-md rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.15)] object-cover"
+          />
+        </div>
 
-    <!-- Image produit -->
-    <div>
-      <img src="https://via.placeholder.com/400x400" alt="Produit" class="w-full rounded-lg shadow">
-    </div>
+        <!-- Details -->
+        <div class="flex flex-col justify-center space-y-5">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#C1664C]/80 mb-2">
+              Détails du produit
+            </p>
+            <h1 class="text-3xl md:text-4xl font-black text-[#3D312B] leading-tight mb-3">
+              {{ product.name }}
+            </h1>
+            <p class="text-[#C1664C] font-black text-3xl">
+              {{ product.price }} DH
+            </p>
+          </div>
 
-    <!-- Details produit -->
-    <div class="flex flex-col justify-center">
-      <h1 class="text-3xl font-bold mb-4">Nom du Produit</h1>
-      <p class="text-pink-600 font-bold text-2xl mb-4">125896</p>
-      <p class="text-gray-600 mb-6">Description détaillée du produit, ses caractéristiques et options disponibles.</p>
+          <p class="text-[#3D312B]/70 leading-relaxed">
+            {{ product.description }}
+          </p>
 
-      <!-- Options (ex: couleur, taille) -->
-      <div class="mb-4">
-        <label class="font-semibold mr-2">Couleur:</label>
-        <select class="border rounded px-2 py-1">
-          <option>Rouge</option>
-          <option>Bleu</option>
-          <option>Noir</option>
-        </select>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <div class="flex flex-col gap-1">
+              <span class="font-semibold text-[#3D312B]">Couleur</span>
+              <span class="inline-flex items-center justify-center px-3 py-1 rounded-full bg-[#F5EBE0] text-[#3D312B] font-medium w-fit">
+                {{ product.color || '—' }}
+              </span>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <span class="font-semibold text-[#3D312B]">Disponibilité</span>
+              <span class="inline-flex items-center gap-2 text-sm">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="font-medium text-emerald-700">En stock</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-4">
+            <button
+              (click)="addToCart()"
+              class="flex-1 bg-[#D63384] hover:bg-[#D63384]/90 text-white px-6 py-3 rounded-3xl font-bold text-sm md:text-base transition-all transform hover:scale-[1.02] shadow-[0_12px_30px_rgba(214,51,132,0.35)]"
+            >
+              Ajouter au panier
+            </button>
+          </div>
+        </div>
       </div>
+    </ng-container>
 
-      <!-- Ajouter au panier -->
-       <button (click)="addToCart()" class="bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full transition duration-300">
-  Ajouter au panier
-</button>
-    </div>
-
+    <ng-template #notFound>
+      <div class="flex flex-col items-center justify-center text-center py-20 space-y-4">
+        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#C1664C]/80">
+          Produit introuvable
+        </p>
+        <h1 class="text-2xl md:text-3xl font-black text-[#3D312B]">
+          Oups, ce produit n'existe pas ou n'est plus disponible.
+        </h1>
+        <p class="text-[#3D312B]/70 max-w-xl">
+          Vérifiez le lien ou explorez notre collection pour découvrir d'autres bijoux et accessoires.
+        </p>
+        <a
+          routerLink="/"
+          class="mt-4 inline-flex items-center px-6 py-3 rounded-3xl bg-[#3D312B] text-white font-semibold text-sm hover:bg-[#3D312B]/90 transition-colors"
+        >
+          Retour à l'accueil
+        </a>
+      </div>
+    </ng-template>
   </div>
-
-
-
 </section>

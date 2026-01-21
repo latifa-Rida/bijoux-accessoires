@@ -1,49 +1,158 @@
-<h2 class="text-3xl font-extrabold mb-6 text-gray-800 border-b pb-3">
-  🧾 Historique des commandes
-</h2>
+<section class="min-h-screen bg-gradient-to-br from-[#F5EBE0] via-[#E3D5CA]/30 to-[#F5EBE0] py-8 md:py-12 px-4 md:px-6">
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8 md:mb-12">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="h-1 w-12 bg-[#C1664C] rounded-full"></div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-[#3D312B] tracking-tight uppercase">
+          Mes Commandes
+        </h1>
+      </div>
+      <p class="text-[#3D312B]/70 text-sm md:text-base font-medium ml-16">
+        Consultez l'historique de vos commandes
+      </p>
+    </div>
 
-<!-- Aucun commande -->
-<div
-  *ngIf="commandes.length === 0"
-  class="bg-yellow-100 text-yellow-800 p-4 rounded-lg border border-yellow-300"
->
-  Vous n'avez aucune commande pour l'instant.
-</div>
-
-<!-- Commandes -->
-<div
-  *ngFor="let order of commandes"
-  class="bg-white border border-gray-200 rounded-xl p-6 mb-6 shadow-sm hover:shadow-md transition"
->
-  <!-- Infos client -->
-  <div class="mb-4 space-y-1">
-    <p class="text-lg font-semibold text-gray-800">
-      👤 {{ order.nom }}
-    </p>
-    <p class="text-gray-600">
-      📞 <span class="font-medium">{{ order.tel }}</span>
-    </p>
-    <p class="text-gray-600">
-      📍 <span class="font-medium">{{ order.adresse }}</span>
-    </p>
-  </div>
-
-  <!-- Produits -->
-  <h4 class="font-semibold text-gray-700 mb-3">
-    🛒 Produits
-  </h4>
-
-  <ul class="space-y-2">
-    <li
-      *ngFor="let produit of order.produits"
-      class="flex justify-between items-center bg-gray-50 px-4 py-2 rounded-lg border"
+    <!-- Empty State -->
+    <div
+      *ngIf="commandes.length === 0"
+      class="bg-white rounded-3xl shadow-lg p-12 md:p-16 text-center"
     >
-      <span class="text-gray-800 font-medium">
-        {{ produit.name }}
+      <span class="material-symbols-outlined text-7xl md:text-8xl text-[#D5BDAF] mb-6 block" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+        receipt_long
       </span>
-      <span class="text-green-600 font-bold">
-        {{ produit.price }} €
-      </span>
-    </li>
-  </ul>
-</div>
+      <h2 class="text-2xl md:text-3xl font-bold text-[#3D312B] mb-3">
+        Aucune commande
+      </h2>
+      <p class="text-[#3D312B]/60 mb-8 max-w-md mx-auto">
+        Vous n'avez pas encore passé de commande. Explorez notre collection et commencez vos achats.
+      </p>
+      <a
+        routerLink="/product"
+        class="inline-flex items-center gap-2 bg-[#C1664C] hover:bg-[#C1664C]/90 text-white px-8 py-4 rounded-2xl font-bold transition-all hover:scale-105 shadow-lg hover:shadow-xl"
+      >
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+          shopping_bag
+        </span>
+        Découvrir nos produits
+      </a>
+    </div>
+
+    <!-- Orders List -->
+    <div *ngIf="commandes.length > 0" class="space-y-6">
+      <div
+        *ngFor="let order of commandes; let i = index"
+        class="bg-white rounded-3xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300 hover:shadow-xl overflow-hidden"
+      >
+        <!-- Order Header -->
+        <div class="p-6 md:p-8 border-b border-[#D5BDAF]/20">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+              <div class="flex items-center gap-3 mb-2">
+                <span class="material-symbols-outlined text-[#C1664C]" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                  receipt_long
+                </span>
+                <h3 class="text-xl md:text-2xl font-bold text-[#3D312B]">
+                  Commande #{{ i + 1 }}
+                </h3>
+              </div>
+              <p class="text-sm text-[#3D312B]/60">
+                Passée le {{ order.date || 'Date non disponible' }}
+              </p>
+            </div>
+            <!-- Status Badge -->
+            <span
+              [ngClass]="{
+                'bg-emerald-100 text-emerald-700 border-emerald-200': order.status === 'livrée' || order.status === 'completed',
+                'bg-blue-100 text-blue-700 border-blue-200': order.status === 'en cours' || order.status === 'processing',
+                'bg-yellow-100 text-yellow-700 border-yellow-200': order.status === 'en attente' || order.status === 'pending',
+                'bg-red-100 text-red-700 border-red-200': order.status === 'annulée' || order.status === 'cancelled',
+                'bg-purple-100 text-purple-700 border-purple-200': !order.status
+              }"
+              class="px-4 py-2 rounded-xl font-bold text-sm border-2 flex items-center gap-2"
+            >
+              <span class="w-2 h-2 rounded-full bg-current"></span>
+              {{ order.status || 'En attente' }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Customer Info -->
+        <div class="p-6 md:p-8 border-b border-[#D5BDAF]/20 bg-[#F5EBE0]/30">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-[#C1664C] mt-1" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                person
+              </span>
+              <div>
+                <p class="text-xs text-[#3D312B]/60 mb-1">Client</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.nom }}</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-[#C1664C] mt-1" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                phone
+              </span>
+              <div>
+                <p class="text-xs text-[#3D312B]/60 mb-1">Téléphone</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.tel }}</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-[#C1664C] mt-1" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                location_on
+              </span>
+              <div>
+                <p class="text-xs text-[#3D312B]/60 mb-1">Adresse</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.adresse }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products List -->
+        <div class="p-6 md:p-8">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-[#C1664C]" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+              shopping_bag
+            </span>
+            <h4 class="text-lg font-bold text-[#3D312B]">
+              Produits ({{ order.produits?.length || 0 }})
+            </h4>
+          </div>
+          <div class="space-y-3">
+            <div
+              *ngFor="let produit of order.produits"
+              class="flex items-center justify-between p-4 bg-[#F5EBE0]/50 rounded-xl border border-[#D5BDAF]/20 hover:bg-[#F5EBE0] transition-colors"
+            >
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[#C1664C]" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                    inventory_2
+                  </span>
+                </div>
+                <div>
+                  <p class="font-semibold text-[#3D312B]">{{ produit.name }}</p>
+                  <p class="text-xs text-[#3D312B]/60">
+                    Quantité: {{ produit.quantity || 1 }}
+                  </p>
+                </div>
+              </div>
+              <p class="text-lg font-black text-[#C1664C]">
+                {{ (produit.price * (produit.quantity || 1)).toFixed(2) }} DH
+              </p>
+            </div>
+          </div>
+
+          <!-- Order Total -->
+          <div class="mt-6 pt-6 border-t border-[#D5BDAF]/20 flex justify-between items-center">
+            <span class="text-lg font-bold text-[#3D312B]">Total:</span>
+            <span class="text-2xl md:text-3xl font-black text-[#C1664C]">
+              {{ getOrderTotal(order) }} DH
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

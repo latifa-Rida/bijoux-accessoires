@@ -1,6 +1,6 @@
 <!-- HERO -->
 <section
-  class="relative w-full min-h-[70vh] flex items-center justify-center px-4 md:px-10 lg:px-40 py-20 overflow-hidden"
+  class="relative w-full min-h-[70vh] flex items-center justify-center px-4 md:px-10 lg:px-40 py-20  overflow-hidden"
 >
   <div class="absolute inset-0 z-0">
     <div
@@ -48,8 +48,10 @@
     </h2>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'bijoux' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -63,9 +65,11 @@
         <p class="text-white text-xl font-bold tracking-wide">Bijoux</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    </a>
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'montres' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -79,9 +83,11 @@
         <p class="text-white text-xl font-bold tracking-wide">Montres</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    </a>
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'sacs' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -95,9 +101,11 @@
         <p class="text-white text-xl font-bold tracking-wide">Sacs</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
-    <div
-      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)]"
+    </a>
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'maquillages' }"
+      class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
       style="
         background-image:
           linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
@@ -111,144 +119,70 @@
         <p class="text-white text-xl font-bold tracking-wide">Maquillage</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
-    </div>
+    </a>
   </div>
 </section>
 
 <!-- PRODUITS VEDETTES -->
 <section class="px-4 md:px-10 lg:px-40 py-20 bg-[#E3D5CA]/30">
-        <div class="flex items-center gap-4 mb-10">
-          <div class="h-1 w-12 bg-[#C1664C] rounded-full"></div>
-          <h2
-            class="text-[#3D312B] text-3xl font-black leading-tight tracking-tight uppercase"
-          >
-            Produits Vedettes
-          </h2>
+  <div class="flex items-center gap-4 mb-10">
+    <div class="h-1 w-12 bg-[#C1664C] rounded-full"></div>
+    <h2
+      class="text-[#3D312B] text-3xl font-black leading-tight tracking-tight uppercase"
+    >
+      Produits Vedettes
+    </h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div
+      *ngFor="let product of products"
+      class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
+    >
+      <div class="h-72 overflow-hidden relative group">
+        <div
+          class="absolute top-3 right-3 bg-[#C1664C] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter z-10"
+        >
+          Vedette
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div
-            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
-          >
-            <div class="h-72 overflow-hidden relative group">
-              <div
-                class="absolute top-3 right-3 bg-[#C1664C] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter z-10"
-              >
-                Premium
-              </div>
-              <img
-                alt="Minimalist Watch"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgDU6yVqX6y8BvAUNHjV1dnHRIzZAH8R9gY23IelD2zGC_Vk7czbMlgOoWt-ikSpjO-v-Opws0jiOzodgc5PqhNkjntCFlJn2lO8YcG36JI-qHEzdVOW--vEq4JioiWu-SXECTnKNXa7YpS8_PmZdxCigrbh_HmaexI40BE6rlkA1IYMZlJ_3FjYhLy69YoatuLCCQCwSAE_6d0PfUU0tVG6UHhxGHEGH4gP5Tza2HO3qDCh4tMETGlLxHFMa4s900QsFfg2hGvDM"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
-                Montre Design
-              </h3>
-              <p class="text-[#C1664C] font-black text-xl mb-4">120€</p>
-              <div class="flex gap-2">
-                <button
-                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
-                >
-                  Voir détails
-                </button>
-                <button
-                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
-                >
-                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div
-            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
-          >
-            <div class="h-72 overflow-hidden relative group">
-              <img
-                alt="Elegant Bag"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7JZTDthZ9o7PsJ0mxCCX_r4vB-THBs4rpHB9vzW8Ep3cVS7pmrjEwbwPFNwURw5h3WJh3aE71fhxocOiUDMMnGVVN3YDTV6sCF2L1WmYvYqRAHma-wk9-f6uaNMo1cUZc3OLA1qX2JvTHQMC5BQuM3GoIk8-rh8QY_VfQxS7yDX63hAmuyzAoRWCGA-WF4HMhRzlDqbw-PmYaGtZ5inCksj_-lsLk2qoLbqBnHdxB3WUPbkKGEymPSLXwxGrwbwJ54SgxRVl9ccY"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
-                Sac Élégant
-              </h3>
-              <p class="text-[#C1664C] font-black text-xl mb-4">80€</p>
-              <div class="flex gap-2">
-                <button
-                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
-                >
-                  Voir détails
-                </button>
-                <button
-                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
-                >
-                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div
-            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
-          >
-            <div class="h-72 overflow-hidden relative group">
-              <img
-                alt="Gold Earrings"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuWxRsJz62CZiSUvFXeolTu8qzHCn0TzBqcqxbjpBI4J_kQNcOB2T1uQ45fKo1Fo6-U7djGPecAQaFD-Tpp0hnQuhUcFvzFSSUovaG2avK5KH9ggfbt9UauKSGoUqzmQuoxsEnsT8xYQV2XX4NTCFFZ4hKNlmriPbDdm996OkgHk9ElbpChAP5dLX7b0Iwkqey8U6LZ4IHsn7FWBlwCBCl-PmWvCmIqPtBMPo71wnhFNiDu6TTho3XO0WIX4Y0bVdqzgVd6E2z8KQ"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
-                Boucles d'Or
-              </h3>
-              <p class="text-[#C1664C] font-black text-xl mb-4">45€</p>
-              <div class="flex gap-2">
-                <button
-                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
-                >
-                  Voir détails
-                </button>
-                <button
-                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
-                >
-                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div
-            class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
-          >
-            <div class="h-72 overflow-hidden relative group">
-              <img
-                alt="Perfume"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVBc6Ucz9Bdte9f6oW8zDQXLdA_BrPG77BOKJDNF_37BnGgQqcuLqrgA9D0Upg84VJ8L0ikhQDmhiXCjqRfBWE2oTiEbim6xpx2x0AdcF7c6vHM-vlQBY7e1Lj0QgDOJ7tS1tDeJnq_i7Hp6VcUEkPHBMakaSREHCjoRKc6cuvLijXS-5mIotkB_kDIy2O8OtX1F-sm2trOA4ysOD_KQKUNDsjV6xrzs32NMwjwEf4LXHz28bgxXXcL9frRa4T1OAtX9jY68iNF-M"
-              />
-            </div>
-            <div class="p-6">
-              <h3 class="text-[#3D312B] font-bold text-lg mb-1">
-                Parfum de Luxe
-              </h3>
-              <p class="text-[#C1664C] font-black text-xl mb-4">95€</p>
-              <div class="flex gap-2">
-                <button
-                  class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
-                >
-                  Voir détails
-                </button>
-                <button
-                  class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
-                >
-                  <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">shopping_cart</span>
-                </button>
-              </div>
-            </div>
-          </div>
+        <img
+          [alt]="product.name"
+          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          [src]="product.image"
+        />
+      </div>
+      <div class="p-6 flex flex-col gap-3">
+        <div>
+          <h3 class="text-[#3D312B] font-bold text-lg mb-1">
+            {{ product.name }}
+          </h3>
+          <p class="text-[#C1664C] font-black text-xl">
+            {{ product.price }} DH
+          </p>
         </div>
-      </section>
+        <div class="flex gap-2 mt-2">
+          <button
+            class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
+            [routerLink]="['/product', product.id]"
+          >
+            Voir détails
+          </button>
+          <button
+            routerLink="/cart"
+            class="bg-[#D63384] hover:bg-[#D63384]/90 text-white py-3 px-4 rounded-[1.25rem] transition-colors flex items-center justify-center"
+          >
+            <span
+              class="material-symbols-outlined text-xl"
+              style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;"
+            >
+              shopping_cart
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- AVANTAGES -->
 <section class="px-4 md:px-10 lg:px-40 py-24 bg-[#F5EBE0]">
@@ -364,7 +298,7 @@
             Rejoignez des milliers de clients satisfaits et sublimez votre
             quotidien avec nos pièces uniques.
           </p>
-          <button
+          <button routerLink="/cart" routerLinkActive="router-link-active"
             class="bg-white text-[#C1664C] hover:bg-[#D4AF37] hover:text-white px-12 py-5 rounded-4xl font-black text-lg transition-all transform hover:scale-105 shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] uppercase tracking-widest"
           >
             Commencer vos achats

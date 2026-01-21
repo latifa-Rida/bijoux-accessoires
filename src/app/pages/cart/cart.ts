@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../../services/cart';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -10,12 +11,24 @@ import { RouterModule } from '@angular/router';
   templateUrl: './cart.html',
   styleUrls: ['./cart.css']
 })
-export class CartComponent {
+export class CartComponent implements OnInit, OnDestroy {
   cart: any[] = [];
+  private cartSubscription?: Subscription;
 
-  constructor(private cartService: CartService) {
-    // جلب الكارت من CartService
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
     this.cart = this.cartService.getCart();
+    // Subscribe to cart changes
+    this.cartSubscription = this.cartService.cartChanged.subscribe(() => {
+      this.cart = this.cartService.getCart();
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
   }
 
   // تزيد الكمية
