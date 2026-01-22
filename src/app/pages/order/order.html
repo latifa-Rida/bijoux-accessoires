@@ -1,36 +1,274 @@
-<div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-lg mt-10">
-  <!-- Titre -->
-  <h2 class="text-2xl font-bold text-pink-600 mb-6 text-center">🧾 Commande</h2>
+<section class="min-h-screen bg-gradient-to-br from-[#F5EBE0] via-[#E3D5CA]/30 to-[#F5EBE0] py-8 md:py-12 px-4 md:px-6">
+  <div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8 md:mb-12 text-center">
+      <div class="flex items-center justify-center gap-4 mb-4">
+        <div class="h-1 w-12 bg-[#C1664C] rounded-full"></div>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-[#3D312B] tracking-tight uppercase">
+          Finaliser la Commande
+        </h1>
+        <div class="h-1 w-12 bg-[#C1664C] rounded-full"></div>
+      </div>
+      <p class="text-[#3D312B]/70 text-sm md:text-base font-medium">
+        Complétez vos informations pour confirmer votre commande
+      </p>
+    </div>
 
-  <!-- Formulaire -->
-  <div class="space-y-4">
-    <!-- Nom -->
-    <input
-      [(ngModel)]="nom"
-      placeholder="Nom complet"
-      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-    />
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+      <!-- Left Column: Order Form -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- Customer Information Card -->
+        <div class="bg-white rounded-3xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10 p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-[#C1664C] text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+              person
+            </span>
+            <h2 class="text-xl md:text-2xl font-bold text-[#3D312B]">Informations Client</h2>
+          </div>
 
-    <!-- Téléphone -->
-    <input
-      [(ngModel)]="tel"
-      placeholder="Téléphone" 
-      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-    />
+          <form [formGroup]="orderForm" class="space-y-5">
+            <!-- Full Name -->
+            <div>
+              <label for="fullName" class="block text-sm font-semibold text-[#3D312B] mb-2">
+                Nom complet <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="fullName"
+                type="text"
+                formControlName="fullName"
+                placeholder="Jean Dupont"
+                [class.border-red-500]="hasError('fullName')"
+                [class.border-green-500]="fullName?.valid && fullName?.touched"
+                class="w-full px-4 py-3
+                rounded-xl border-2 border-[#D5BDAF]/30 bg-white focus:outline-none focus:border-[#C1664C] focus:ring-2 focus:ring-[#C1664C]/20 transition-all duration-200 text-[#3D312B]"
+              />
+              <p *ngIf="hasError('fullName')" class="mt-1 text-sm text-red-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">error</span>
+                {{ getErrorMessage('fullName') }}
+              </p>
+              <p *ngIf="fullName?.valid && fullName?.touched" class="mt-1 text-sm text-green-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+                Valide
+              </p>
+            </div>
 
-    <!-- Adresse -->
-    <input
-      [(ngModel)]="adresse"
-      placeholder="Adresse"
-      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-    />
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-semibold text-[#3D312B] mb-2">
+                Email <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                formControlName="email"
+                placeholder="jean.dupont@example.com"
+                [class.border-red-500]="hasError('email')"
+                [class.border-green-500]="email?.valid && email?.touched"
+                class="w-full px-4 py-3 rounded-xl border-2 border-[#D5BDAF]/30 bg-white focus:outline-none focus:border-[#C1664C] focus:ring-2 focus:ring-[#C1664C]/20 transition-all duration-200 text-[#3D312B]"
+              />
+              <p *ngIf="hasError('email')" class="mt-1 text-sm text-red-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">error</span>
+                {{ getErrorMessage('email') }}
+              </p>
+              <p *ngIf="email?.valid && email?.touched" class="mt-1 text-sm text-green-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+                Email valide
+              </p>
+            </div>
 
-    <!-- Bouton Confirmer -->
-    <button
-      (click)="confirmOrder()"
-      class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-full transition duration-300 shadow-md"
-    >
-      ✅ Confirmer la commande
-    </button>
+            <!-- Phone -->
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-[#3D312B] mb-2">
+                Téléphone <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                placeholder="+212 6 12 34 56 78"
+                [class.border-red-500]="hasError('phone')"
+                [class.border-green-500]="phone?.valid && phone?.touched"
+                class="w-full px-4 py-3 rounded-xl border-2 border-[#D5BDAF]/30 bg-white focus:outline-none focus:border-[#C1664C] focus:ring-2 focus:ring-[#C1664C]/20 transition-all duration-200 text-[#3D312B]"
+              />
+              <p *ngIf="hasError('phone')" class="mt-1 text-sm text-red-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">error</span>
+                {{ getErrorMessage('phone') }}
+              </p>
+              <p *ngIf="phone?.valid && phone?.touched" class="mt-1 text-sm text-green-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+                Téléphone valide
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- Shipping Details Card -->
+        <div class="bg-white rounded-3xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10 p-6 md:p-8">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-[#C1664C] text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+              location_on
+            </span>
+            <h2 class="text-xl md:text-2xl font-bold text-[#3D312B]">Adresse de Livraison</h2>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Address -->
+            <div>
+              <label for="address" class="block text-sm font-semibold text-[#3D312B] mb-2">
+                Adresse <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="address"
+                type="text"
+                formControlName="address"
+                placeholder="123 Rue de la République"
+                [class.border-red-500]="hasError('address')"
+                [class.border-green-500]="address?.valid && address?.touched"
+                class="w-full px-4 py-3 rounded-xl border-2 border-[#D5BDAF]/30 bg-white focus:outline-none focus:border-[#C1664C] focus:ring-2 focus:ring-[#C1664C]/20 transition-all duration-200 text-[#3D312B]"
+              />
+              <p *ngIf="hasError('address')" class="mt-1 text-sm text-red-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">error</span>
+                {{ getErrorMessage('address') }}
+              </p>
+              <p *ngIf="address?.valid && address?.touched" class="mt-1 text-sm text-green-600 flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+                Valide
+              </p>
+            </div>
+
+            <!-- City and Postal Code Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <!-- City -->
+              <div>
+                <label for="city" class="block text-sm font-semibold text-[#3D312B] mb-2">
+                  Ville <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="city"
+                  type="text"
+                  formControlName="city"
+                  placeholder="Casablanca"
+                  [class.border-red-500]="hasError('city')"
+                  [class.border-green-500]="city?.valid && city?.touched"
+                  class="w-full px-4 py-3 rounded-xl border-2 border-[#D5BDAF]/30 bg-white focus:outline-none focus:border-[#C1664C] focus:ring-2 focus:ring-[#C1664C]/20 transition-all duration-200 text-[#3D312B]"
+                />
+                <p *ngIf="hasError('city')" class="mt-1 text-sm text-red-600 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">error</span>
+                  {{ getErrorMessage('city') }}
+                </p>
+                <p *ngIf="city?.valid && city?.touched" class="mt-1 text-sm text-green-600 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+                  Valide
+                </p>
+              </div>
+
+              <!-- Postal Code -->
+              <div>
+                <label for="postalCode" class="block text-sm font-semibold text-[#3D312B] mb-2">
+                  Code Postal <span class="text-red-500">*</span>
+                </label>
+                <input
+                  id="postalCode"
+                  type="text"
+                  formControlName="postalCode"
+                  placeholder="20000"
+                  maxlength="5"
+                  [class.border-red-500]="hasError('postalCode')"
+                  [class.border-green-500]="postalCode?.valid && postalCode?.touched"
+                  class="w-full px-4 py-3 rounded-xl border-2 border-[#D5BDAF]/30 bg-white focus:outline-none focus:border-[#C1664C] focus:ring-2 focus:ring-[#C1664C]/20 transition-all duration-200 text-[#3D312B]"
+                />
+                <p *ngIf="hasError('postalCode')" class="mt-1 text-sm text-red-600 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">error</span>
+                  {{ getErrorMessage('postalCode') }}
+                </p>
+                <p *ngIf="postalCode?.valid && postalCode?.touched" class="mt-1 text-sm text-green-600 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">check_circle</span>
+                  Valide
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Order Summary -->
+      <div class="lg:col-span-1">
+        <div class="bg-white rounded-3xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10 p-6 md:p-8 sticky top-6">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-[#C1664C] text-2xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+              receipt_long
+            </span>
+            <h2 class="text-xl md:text-2xl font-bold text-[#3D312B]">Résumé</h2>
+          </div>
+
+          <!-- Cart Items List -->
+          <div class="space-y-3 mb-6 max-h-64 overflow-y-auto">
+            <div
+              *ngFor="let item of getCartItems()"
+              class="flex items-start gap-3 p-3 bg-[#F5EBE0]/50 rounded-xl"
+            >
+              <div class="w-16 h-16 rounded-lg overflow-hidden bg-[#F5EBE0] flex-shrink-0">
+                <img
+                  [src]="item.image || 'https://via.placeholder.com/64'"
+                  [alt]="item.name"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="flex-grow min-w-0">
+                <p class="font-semibold text-sm text-[#3D312B] truncate">{{ item.name }}</p>
+                <p class="text-xs text-[#3D312B]/60">
+                  Qté: {{ item.quantity || 1 }} × {{ item.price }} DH
+                </p>
+                <p class="text-sm font-bold text-[#C1664C] mt-1">
+                  {{ ((item.quantity || 1) * item.price).toFixed(2) }} DH
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Totals -->
+          <div class="border-t border-[#D5BDAF]/30 pt-4 space-y-3">
+            <div class="flex justify-between text-[#3D312B]">
+              <span class="font-semibold">Sous-total</span>
+              <span class="font-bold">{{ getCartTotal().toFixed(2) }} DH</span>
+            </div>
+            <div class="flex justify-between text-[#3D312B]">
+              <span class="font-semibold">Livraison</span>
+              <span class="font-bold text-green-600">Gratuite</span>
+            </div>
+            <div class="border-t border-[#D5BDAF]/30 pt-3 flex justify-between">
+              <span class="text-lg font-bold text-[#3D312B]">Total</span>
+              <span class="text-2xl font-black text-[#C1664C]">{{ getCartTotal().toFixed(2) }} DH</span>
+            </div>
+          </div>
+
+          <!-- Confirm Button -->
+          <button
+            type="button"
+            (click)="confirmOrder()"
+            [disabled]="!isFormValid() || isSubmitting"
+            [class.opacity-50]="!isFormValid() || isSubmitting"
+            [class.cursor-not-allowed]="!isFormValid() || isSubmitting"
+            class="w-full mt-6 bg-[#C1664C] hover:bg-[#C1664C]/90 disabled:hover:bg-[#C1664C] text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 hover:scale-105 disabled:hover:scale-100 shadow-lg hover:shadow-xl disabled:shadow-lg flex items-center justify-center gap-2"
+          >
+            <span *ngIf="!isSubmitting" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+              check_circle
+            </span>
+            <span *ngIf="isSubmitting" class="material-symbols-outlined animate-spin" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+              sync
+            </span>
+            <span>{{ isSubmitting ? 'Traitement...' : 'Confirmer la commande' }}</span>
+          </button>
+
+          <!-- Back to Cart Link -->
+          <a
+            routerLink="/cart"
+            class="block mt-4 text-center text-sm text-[#C1664C] hover:text-[#C1664C]/80 font-semibold transition-colors"
+          >
+            ← Retour au panier
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>

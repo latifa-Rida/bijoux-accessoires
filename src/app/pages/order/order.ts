@@ -1,45 +1,163 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CartService } from '../../services/cart';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-order',
   templateUrl: './order.html',
   styleUrls: ['./order.css'],
-  imports: [CommonModule, FormsModule, RouterModule]
+  imports: [CommonModule, ReactiveFormsModule, RouterModule]
 })
-export class OrderComponent {
-  nom = '';
-  tel = '';
-  adresse = '';
+export class OrderComponent implements OnInit {
+  orderForm!: FormGroup;
+  isSubmitting = false;
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private cartService: CartService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.initForm();
+  }
 
-  confirmOrder() {
-    if (!this.nom || !this.tel || !this.adresse) {
-      alert('Merci de remplir tous les champs');
+  ngOnInit(): void {
+    // Check if cart is empty
+    if (this.cartService.getCart().length === 0) {
+      this.router.navigate(['/cart']);
+      return;
+    }
+  }
+
+  private initForm(): void {
+    this.orderForm = this.fb.group({
+      fullName: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern(/^(\+?212|0)[5-7][0-9]{8}$|^(\+?33|0)[1-9][0-9]{8}$/)]],
+      address: ['', [Validators.required ]],
+      city: ['', [Validators.required]],
+      postalCode: ['', [Validators.required, Validators.pattern(/^[0-9]{5}$/)]]
+    });
+  }
+
+  // Getter methods for easy access in template
+  get fullName() {
+    return this.orderForm.get('fullName');
+  }
+
+  get email() {
+    return this.orderForm.get('email');
+  }
+
+  get phone() {
+    return this.orderForm.get('phone');
+  }
+
+  get address() {
+    return this.orderForm.get('address');
+  }
+
+  get city() {
+    return this.orderForm.get('city');
+  }
+
+  get postalCode() {
+    return this.orderForm.get('postalCode');
+  }
+
+  // Check if field has error and was touched
+  hasError(fieldName: string): boolean {
+    const field = this.orderForm.get(fieldName);
+    return !!(field && field.invalid && (field.dirty || field.touched));
+  }
+
+  // Get error message for field
+  getErrorMessage(fieldName: string): string {
+    const field = this.orderForm.get(fieldName);
+    if (!field || !field.errors) return '';
+
+    if (field.errors['required']) {
+      return 'Ce champ est requis';
+    }
+    if (field.errors['email']) {
+      return 'Email invalide';
+    }
+    if (field.errors['minlength']) {
+      const minLength = field.errors['minlength'].requiredLength;
+      return `Minimum ${minLength} caractères requis`;
+    }
+    if (field.errors['pattern']) {
+      if (fieldName === 'phone') {
+        return 'Format de téléphone invalide';
+      }
+      if (fieldName === 'postalCode') {
+        return 'Code postal invalide (5 chiffres)';
+      }
+      return 'Format invalide';
+    }
+    return 'Champ invalide';
+  }
+
+  // Check if form is valid
+  isFormValid(): boolean {
+    return this.orderForm.valid;
+  }
+
+  confirmOrder(): void {
+    if (this.isSubmitting) return;
+
+    // Mark all fields as touched to show errors
+    if (!this.orderForm.valid) {
+      Object.keys(this.orderForm.controls).forEach(key => {
+        this.orderForm.get(key)?.markAsTouched();
+      });
       return;
     }
 
-    // save commande dans localStorage
+    this.isSubmitting = true;
+
+    // Get form values
+    const formValue = this.orderForm.value;
+
+    // Save order to localStorage
     const commandes = JSON.parse(localStorage.getItem('commandes') || '[]');
-    commandes.push({
-      nom: this.nom,
-      tel: this.tel,
-      adresse: this.adresse,
-      produits: this.cartService.getCart()
-    });
+    const newOrder = {
+      nom: formValue.fullName,
+      tel: formValue.phone,
+      email: formValue.email,
+      adresse: `${formValue.address}, ${formValue.city} ${formValue.postalCode}`,
+      produits: this.cartService.getCart(),
+      date: new Date().toLocaleDateString('fr-FR'),
+      status: 'en attente',
+      total: this.cartService.getTotal()
+    };
+
+    commandes.push(newOrder);
     localStorage.setItem('commandes', JSON.stringify(commandes));
 
-    // vider le panier
+    // Clear cart
     this.cartService.clearCart();
 
-    // message et redirection
-    alert('Commande envoyée avec succès!');
-    this.router.navigate(['/']);
+    // Show success message and redirect
+    setTimeout(() => {
+      alert('✅ Commande confirmée avec succès! Vous recevrez un email de confirmation.');
+      this.router.navigate(['/orders']);
+      this.isSubmitting = false;
+    }, 500);
+  }
+
+  getCartTotal(): number {
+    return this.cartService.getTotal();
+  }
+
+  getCartItems() {
+    return this.cartService.getCart();
+  }
+
+  getCartCount(): number {
+    return this.cartService.getCartCount();
   }
 }

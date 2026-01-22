@@ -50,6 +50,14 @@ export class CartService {
     return this.cart;
   }
 
+  // عدد العناصر في الشارة (مجموع الكميات)
+  getCartCount() {
+    return this.cart.reduce((count, item) => {
+      const qty = item?.quantity ? Number(item.quantity) : 1;
+      return count + (Number.isFinite(qty) && qty > 0 ? qty : 1);
+    }, 0);
+  }
+
   // المجموع الكلي
   getTotal() {
     return this.cart.reduce((sum, item) => {

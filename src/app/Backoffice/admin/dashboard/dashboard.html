@@ -1,267 +1,71 @@
-<body class="bg-[#faf7f2] dark:bg-[#1c1917] text-stone-800 dark:text-stone-200 min-h-screen transition-colors duration-300 font-['Plus_Jakarta_Sans',sans-serif]">
-<div class="flex min-h-screen">
-    <aside class="w-72 bg-[#f3eee5] dark:bg-stone-900 border-r border-stone-200/50 dark:border-stone-800 p-6 flex flex-col lg:flex">
-        <div class="flex items-center gap-3 mb-12 px-2">
-            <span class="material-icons-round text-[#d946ef] text-3xl">diamond</span>
-            <h1 class="text-xl font-extrabold tracking-tight text-stone-900 dark:text-white uppercase">Her Corner</h1>
-        </div>
-        <nav class="flex-1 space-y-2">
-            <a class="bg-[#d946ef] text-white flex items-center gap-4 px-4 py-3 rounded-3xl transition-all shadow-lg shadow-[#d946ef]/20" href="#">
-                <span class="material-icons-round">dashboard</span>
-                <span class="font-semibold">Tableau de bord</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-3xl text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-all" href="#">
-                <span class="material-icons-round">shopping_bag</span>
-                <span class="font-semibold">Produits</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-3xl text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-all" href="#">
-                <span class="material-icons-round">receipt_long</span>
-                <span class="font-semibold">Commandes</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-3xl text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-all" href="#">
-                <span class="material-icons-round">group</span>
-                <span class="font-semibold">Clients</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-3xl text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-all" href="#">
-                <span class="material-icons-round">insights</span>
-                <span class="font-semibold">Analyses</span>
-            </a>
-            <a class="flex items-center gap-4 px-4 py-3 rounded-3xl text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800 transition-all" href="#">
-                <span class="material-icons-round">settings</span>
-                <span class="font-semibold">Paramètres</span>
-            </a>
-        </nav>
-        <div class="mt-auto pt-6">
-            <button class="w-full flex items-center justify-center gap-2 p-3 rounded-3xl bg-stone-200/50 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700 transition-all" onclick="document.documentElement.classList.toggle('dark')">
-                <span class="material-icons-round text-sm">dark_mode</span>
-                <span class="text-sm font-medium">Changer de thème</span>
-            </button>
-        </div>
-    </aside>
-    <main class="flex-1 p-4 lg:p-10 overflow-y-auto">
-        <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
-            <div>
-                <h2 class="text-3xl font-extrabold text-stone-900 dark:text-white">Tableau de bord</h2>
-                <p class="text-stone-500 dark:text-stone-400 mt-1">Bienvenue, voici l'aperçu de votre boutique aujourd'hui.</p>
-            </div>
-            <div class="flex items-center gap-4 bg-white dark:bg-stone-900 p-2 pl-4 pr-2 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800">
-                <div class="hidden md:block text-right">
-                    <p class="text-sm font-bold text-stone-900 dark:text-white">Sophie Lambert</p>
-                    <p class="text-xs text-[#d946ef] font-medium">Administrateur</p>
-                </div>
-                <img alt="Profil Administrateur" class="w-10 h-10 rounded-3xl object-cover ring-2 ring-[#d946ef]/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkdi9k9aKy6G5ojH-vxqCHRQXnaSxaZj95RHKtkjVyI-mv0RHxenEhv3CnMSO6mQyQWTgDw2GprCVODU2upBFQB_depyoW2sGVTIRMSTt_ldqH_9pv9LeNZauSVmyqavrLCAoNmf1iBmdTdQKvKbgogH28vSOKX6-ema1Rgz1to_erjnon15jtFMf4Futw4oSDHQhfssT3NKNHaVDMy8osiRHpcpdRrjdBARaPN1KM9D3QeI7fmjHKa2x_2xzxp0SMZX-Exxg2P4A"/>
-                <button class="p-2 text-stone-400 hover:text-[#d946ef] transition-colors">
-                    <span class="material-icons-round">notifications</span>
-                </button>
-            </div>
-        </header>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-            <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-3xl bg-orange-100 dark:bg-orange-950/30 flex items-center justify-center text-[#c06c4d]">
-                        <span class="material-icons-round">shopping_cart</span>
-                    </div>
-                    <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
-                            +12% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
-                        </span>
-                </div>
-                <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Total Commandes</p>
-                <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">1,284</h3>
-            </div>
-            <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-3xl bg-purple-100 dark:bg-purple-950/30 flex items-center justify-center text-[#d946ef]">
-                        <span class="material-icons-round">diamond</span>
-                    </div>
-                    <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
-                            +5.4% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
-                        </span>
-                </div>
-                <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Produits Actifs</p>
-                <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">456</h3>
-            </div>
-            <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-3xl bg-yellow-100 dark:bg-yellow-950/30 flex items-center justify-center text-[#d4af37]">
-                        <span class="material-icons-round">payments</span>
-                    </div>
-                    <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
-                            +23% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
-                        </span>
-                </div>
-                <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Revenus Mensuels</p>
-                <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">€45,200</h3>
-            </div>
-            <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-3xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-600 dark:text-stone-300">
-                        <span class="material-icons-round">visibility</span>
-                    </div>
-                    <span class="text-rose-500 text-xs font-bold flex items-center bg-rose-50 dark:bg-rose-950/30 px-2 py-1 rounded-lg">
-                            -2.1% <span class="material-icons-round text-xs ml-0.5">trending_down</span>
-                        </span>
-                </div>
-                <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Visiteurs Uniques</p>
-                <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">12.5k</h3>
-            </div>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
-            <div class="lg:col-span-2 bg-white dark:bg-stone-900 p-8 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800">
-                <div class="flex items-center justify-between mb-8">
-                    <div>
-                        <h4 class="text-lg font-bold text-stone-900 dark:text-white">Analyse des Revenus</h4>
-                        <p class="text-sm text-stone-500 dark:text-stone-400">Évolution des ventes par semaine</p>
-                    </div>
-                    <select class="bg-stone-50 dark:bg-stone-800 border-none text-sm font-medium rounded-3xl focus:ring-[#d946ef]">
-                        <option>Derniers 7 jours</option>
-                        <option>Dernier mois</option>
-                    </select>
-                </div>
-                <div class="relative h-64 w-full flex items-end gap-2">
-                    <div class="flex-1 bg-stone-100 dark:bg-stone-800 rounded-t-lg h-24 hover:bg-[#c06c4d]/40 transition-colors"></div>
-                    <div class="flex-1 bg-stone-100 dark:bg-stone-800 rounded-t-lg h-32 hover:bg-[#c06c4d]/40 transition-colors"></div>
-                    <div class="flex-1 bg-[#c06c4d] rounded-t-lg h-48 relative group">
-                        <div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-stone-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">€8.4k</div>
-                    </div>
-                    <div class="flex-1 bg-stone-100 dark:bg-stone-800 rounded-t-lg h-36 hover:bg-[#c06c4d]/40 transition-colors"></div>
-                    <div class="flex-1 bg-stone-100 dark:bg-stone-800 rounded-t-lg h-44 hover:bg-[#c06c4d]/40 transition-colors"></div>
-                    <div class="flex-1 bg-[#d4af37] rounded-t-lg h-56 hover:bg-[#d4af37]/80 transition-colors"></div>
-                    <div class="flex-1 bg-stone-100 dark:bg-stone-800 rounded-t-lg h-28 hover:bg-[#c06c4d]/40 transition-colors"></div>
-                </div>
-                <div class="flex justify-between mt-4 px-2 text-xs font-bold text-stone-400 uppercase tracking-widest">
-                    <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
-                </div>
-            </div>
-            <div class="bg-white dark:bg-stone-900 p-8 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800">
-                <h4 class="text-lg font-bold text-stone-900 dark:text-white mb-6">Activité Récente</h4>
-                <div class="space-y-6">
-                    <div class="flex gap-4">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                                <span class="material-icons-round text-[#d946ef] text-lg">add_shopping_cart</span>
-                            </div>
-                            <div class="absolute top-10 -bottom-6 left-1/2 w-px bg-stone-200 dark:bg-stone-700"></div>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-stone-900 dark:text-white">Nouvelle commande</p>
-                            <p class="text-xs text-stone-500 mt-0.5">#ORD-4921 par Marie Curie</p>
-                            <p class="text-[10px] text-stone-400 font-medium uppercase mt-1">Il y a 2 minutes</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div class="relative">
-                            <div class="w-10 h-10 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                                <span class="material-icons-round text-[#c06c4d] text-lg">favorite</span>
-                            </div>
-                            <div class="absolute top-10 -bottom-6 left-1/2 w-px bg-stone-200 dark:bg-stone-700"></div>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-stone-900 dark:text-white">Nouveau favori</p>
-                            <p class="text-xs text-stone-500 mt-0.5">Collier 'Éclat d'Or' ajouté au panier</p>
-                            <p class="text-[10px] text-stone-400 font-medium uppercase mt-1">Il y a 15 minutes</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-4">
-                        <div>
-                            <div class="w-10 h-10 rounded-full bg-stone-100 dark:bg-stone-800 flex items-center justify-center">
-                                <span class="material-icons-round text-[#d4af37] text-lg">star</span>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-stone-900 dark:text-white">Avis client 5★</p>
-                            <p class="text-xs text-stone-500 mt-0.5">"Magnifique emballage, merci !"</p>
-                            <p class="text-[10px] text-stone-400 font-medium uppercase mt-1">Il y a 1 heure</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="bg-white dark:bg-stone-900 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 overflow-hidden">
-            <div class="p-6 border-b border-stone-100 dark:border-stone-800 flex items-center justify-between">
-                <h4 class="text-lg font-bold text-stone-900 dark:text-white">Produits Populaires</h4>
-                <button class="text-[#d946ef] text-sm font-bold hover:underline">Tout voir</button>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                    <tr class="bg-stone-50/50 dark:bg-stone-800/50 text-stone-400 text-xs font-bold uppercase tracking-wider">
-                        <th class="px-6 py-4">Produit</th>
-                        <th class="px-6 py-4">Catégorie</th>
-                        <th class="px-6 py-4">Prix</th>
-                        <th class="px-6 py-4">Ventes</th>
-                        <th class="px-6 py-4 text-right">Statut</th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-stone-100 dark:divide-stone-800">
-                    <tr class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-lg bg-stone-100 overflow-hidden">
-                                    <img alt="Montre Design" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4uJfomeLsUexyp2XbtyFPhC1PFnw5ArVyMxiom8tntXVzxOGYh8-mEzVIuGDx8ZviGtfrd9WPVIaND6JY3Qt8o8sAuvi_WnRRsvv7ia-MFjNPcbhwdex_y5rVbB682JKBt3sCeBjiksQ3vbZ_-0d_9rLwODe9AbmQcEVmdiNJRrEIP-JlppoeTQ5nmBWWulVkmJDApq1TomiKImEUTKVID9NUtov0sat-4xpml0pVDSoo_IEfaNmCeFrxtlAZRIO6mVjmSiZ5DVE"/>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold text-stone-900 dark:text-white">Montre Design Minimal</p>
-                                    <p class="text-xs text-stone-400">ID: #W-100</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-sm font-medium text-stone-600 dark:text-stone-400">Montres</td>
-                        <td class="px-6 py-4 text-sm font-bold text-stone-900 dark:text-white">120 €</td>
-                        <td class="px-6 py-4 text-sm font-medium">152</td>
-                        <td class="px-6 py-4 text-right">
-                            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-full uppercase">En Stock</span>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-lg bg-stone-100 overflow-hidden">
-                                    <img alt="Sac élégant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbEwoi3jElYLWuZFfAfeQZRAFKENzqCNuY8FCpyTem36oA7IfbRJjUwsnYFh2GKqNr_Nm4jWYTA5IpvDu8CIBmxQPLGw53gxEAy6ffI8DBPXRvl2Yk7pFN_voJAnxWw-5Gw2Ms_Ji7pJy4u5H4bF-zRvzMP-A-gV0OLrdWg3Vc5DE-XfzOJkj5pJfMg3K_inpZhVQ5ck3GPkEV4J25h8J8Nh5-BG7H10Ju4ju_fiNbTEUh6K1akT4XPu6ZnuzlDHA3FJVTTo937Eo"/>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold text-stone-900 dark:text-white">Sac Élégant Ivoire</p>
-                                    <p class="text-xs text-stone-400">ID: #B-204</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-sm font-medium text-stone-600 dark:text-stone-400">Sacs</td>
-                        <td class="px-6 py-4 text-sm font-bold text-stone-900 dark:text-white">80 €</td>
-                        <td class="px-6 py-4 text-sm font-medium">94</td>
-                        <td class="px-6 py-4 text-right">
-                            <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-full uppercase">En Stock</span>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 rounded-lg bg-stone-100 overflow-hidden">
-                                    <img alt="Boucles d'or" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSwXu_8nh89YgEh6-UY02_CjjtuL4Xo4Dfbjgl5h2n1M1Udw9hUVYv4ivXYz7sfYFVxPY5-tGM0C7sHmr2s737BZP-14uCZrsPSFtP7wjkGjjFz-OK0Q8qEaS-kMKkwkZ3_N37hFKC-akoBAvc1FJ18sXU3Wdmamwx_ejgT1nppUZs9HbdEB4cH3PqMjSsUe4tRYC3CO_ywUhNsit8Sm0TdNvDBhzUg3plsgHuYUJW7YL-BtpziXRHTTphdD-sXttoM5K7uWiMbc8"/>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold text-stone-900 dark:text-white">Boucles d'Or Cercles</p>
-                                    <p class="text-xs text-stone-400">ID: #E-55</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-sm font-medium text-stone-600 dark:text-stone-400">Bijoux</td>
-                        <td class="px-6 py-4 text-sm font-bold text-stone-900 dark:text-white">45 €</td>
-                        <td class="px-6 py-4 text-sm font-medium">210</td>
-                        <td class="px-6 py-4 text-right">
-                            <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-bold rounded-full uppercase">Stock Faible</span>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </main>
+<div class="mb-10">
+    <h2 class="text-3xl font-extrabold text-stone-900 dark:text-white">Tableau de bord</h2>
+    <p class="text-stone-500 dark:text-stone-400 mt-1">Bienvenue dans votre espace d'administration.</p>
 </div>
-<div class="fixed inset-0 bg-black/50 z-50 hidden lg:hidden" id="mobile-menu">
-    <div class="bg-[#f3eee5] dark:bg-stone-900 w-64 h-full p-6">
-        <div class="flex justify-end mb-8">
-            <button class="p-2" onclick="document.getElementById('mobile-menu').classList.add('hidden')"><span class="material-icons-round">close</span></button>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+    <!-- Card 1: Total Commands -->
+    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-3xl bg-orange-100 dark:bg-orange-950/30 flex items-center justify-center text-[#c06c4d]">
+                <span class="material-icons-round">shopping_cart</span>
+            </div>
+            <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
+                +12% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
+            </span>
         </div>
+        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Total Commandes</p>
+        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">1,284</h3>
+    </div>
+
+    <!-- Card 2: Total Users -->
+    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-3xl bg-purple-100 dark:bg-purple-950/30 flex items-center justify-center text-[#d946ef]">
+                <span class="material-icons-round">group</span>
+            </div>
+            <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
+                +5.4% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
+            </span>
+        </div>
+        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Utilisateurs</p>
+        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">2,456</h3>
+    </div>
+
+    <!-- Card 3: Placeholder (Revenue) -->
+    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-3xl bg-yellow-100 dark:bg-yellow-950/30 flex items-center justify-center text-[#d4af37]">
+                <span class="material-icons-round">payments</span>
+            </div>
+            <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
+                +23% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
+            </span>
+        </div>
+        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Revenus Mensuels</p>
+        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">€45,200</h3>
+    </div>
+
+    <!-- Card 4: Placeholder (Visits) -->
+    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 rounded-3xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-600 dark:text-stone-300">
+                <span class="material-icons-round">visibility</span>
+            </div>
+            <span class="text-rose-500 text-xs font-bold flex items-center bg-rose-50 dark:bg-rose-950/30 px-2 py-1 rounded-lg">
+                -2.1% <span class="material-icons-round text-xs ml-0.5">trending_down</span>
+            </span>
+        </div>
+        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Visiteurs Uniques</p>
+        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">12.5k</h3>
     </div>
 </div>
 
-</body>
+<!-- Simple Placeholder for Stats/Activity -->
+<div class="bg-white dark:bg-stone-900 p-8 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 min-h-75 flex flex-col items-center justify-center text-center">
+    <div class="w-16 h-16 bg-stone-100 dark:bg-stone-800 rounded-full flex items-center justify-center mb-4 text-stone-400">
+        <span class="material-icons-round text-3xl">bar_chart</span>
+    </div>
+    <h3 class="text-lg font-bold text-stone-900 dark:text-white">Statistiques détaillées</h3>
+    <p class="text-stone-500 dark:text-stone-400 max-w-sm mt-2">Les graphiques et analyses détaillées seront disponibles prochainement.</p>
+</div>
