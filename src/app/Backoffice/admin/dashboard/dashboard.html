@@ -1,65 +1,63 @@
 <div class="mb-10">
-    <h2 class="text-3xl font-extrabold text-stone-900 dark:text-white">Tableau de bord</h2>
-    <p class="text-stone-500 dark:text-stone-400 mt-1">Bienvenue dans votre espace d'administration.</p>
+    <h2 class="text-3xl font-black text-[#3D312B] tracking-tight">Tableau de Bord</h2>
+    <p class="text-[#3D312B]/60 mt-1 font-medium">Aperçu global de votre boutique Bijoux & Accessoires.</p>
 </div>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
     <!-- Card 1: Total Commands -->
-    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+    <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 hover:shadow-md transition-shadow">
         <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-3xl bg-orange-100 dark:bg-orange-950/30 flex items-center justify-center text-[#c06c4d]">
+            <div class="w-12 h-12 rounded-2xl bg-[#F5EBE0] flex items-center justify-center text-[#C1664C]">
                 <span class="material-icons-round">shopping_cart</span>
             </div>
-            <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
-                +12% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
+            <span class="text-[#C1664C] text-[10px] font-bold flex items-center bg-[#F5EBE0] px-2 py-1 rounded-lg uppercase tracking-wider">
+                Actif
             </span>
         </div>
-        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Total Commandes</p>
-        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">1,284</h3>
+        <p class="text-[#3D312B]/60 text-xs font-bold uppercase tracking-widest">Total Commandes</p>
+        <h3 class="text-3xl font-black text-[#3D312B] mt-1">{{ totalOrders }}</h3>
     </div>
 
     <!-- Card 2: Total Users -->
-    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+    <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 hover:shadow-md transition-shadow">
         <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-3xl bg-purple-100 dark:bg-purple-950/30 flex items-center justify-center text-[#d946ef]">
+            <div class="w-12 h-12 rounded-2xl bg-[#E3D5CA]/40 flex items-center justify-center text-[#3D312B]">
                 <span class="material-icons-round">group</span>
             </div>
-            <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
-                +5.4% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
+            <span class="text-[#3D312B] text-[10px] font-bold flex items-center bg-[#F5EBE0] px-2 py-1 rounded-lg uppercase tracking-wider">
+                Communauté
             </span>
         </div>
-        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Utilisateurs</p>
-        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">2,456</h3>
+        <p class="text-[#3D312B]/60 text-xs font-bold uppercase tracking-widest">Utilisateurs</p>
+        <h3 class="text-3xl font-black text-[#3D312B] mt-1">{{ totalUsers }}</h3>
     </div>
 
-    <!-- Card 3: Placeholder (Revenue) -->
-    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+    <!-- Card 3: Revenue -->
+    <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 hover:shadow-md transition-shadow">
         <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-3xl bg-yellow-100 dark:bg-yellow-950/30 flex items-center justify-center text-[#d4af37]">
+            <div class="w-12 h-12 rounded-2xl bg-[#C1664C]/10 flex items-center justify-center text-[#C1664C]">
                 <span class="material-icons-round">payments</span>
             </div>
-            <span class="text-emerald-500 text-xs font-bold flex items-center bg-emerald-50 dark:bg-emerald-950/30 px-2 py-1 rounded-lg">
-                +23% <span class="material-icons-round text-xs ml-0.5">trending_up</span>
+            <span class="text-[#C1664C] text-[10px] font-bold flex items-center bg-[#C1664C]/10 px-2 py-1 rounded-lg uppercase tracking-wider">
+                Chiffre d'Affaire
             </span>
         </div>
-        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Revenus Mensuels</p>
-        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">€45,200</h3>
+        <p class="text-[#3D312B]/60 text-xs font-bold uppercase tracking-widest">Revenus Totaux</p>
+        <h3 class="text-3xl font-black text-[#3D312B] mt-1">{{ totalRevenue }} DH</h3>
     </div>
 
     <!-- Card 4: Placeholder (Visits) -->
-    <div class="bg-white dark:bg-stone-900 p-6 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 hover:shadow-md transition-shadow">
+    <div class="bg-[#3D312B] p-6 rounded-3xl shadow-lg shadow-[#3D312B]/20 transition-shadow">
         <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-3xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center text-stone-600 dark:text-stone-300">
-                <span class="material-icons-round">visibility</span>
+            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
+                <span class="material-icons-round">diamond</span>
             </div>
-            <span class="text-rose-500 text-xs font-bold flex items-center bg-rose-50 dark:bg-rose-950/30 px-2 py-1 rounded-lg">
-                -2.1% <span class="material-icons-round text-xs ml-0.5">trending_down</span>
-            </span>
         </div>
-        <p class="text-stone-500 dark:text-stone-400 text-sm font-medium">Visiteurs Uniques</p>
-        <h3 class="text-2xl font-bold text-stone-900 dark:text-white mt-1">12.5k</h3>
+        <p class="text-white/60 text-xs font-bold uppercase tracking-widest">Status Boutique</p>
+        <h3 class="text-3xl font-black text-white mt-1">Ouvert</h3>
     </div>
 </div>
+
 
 <!-- Simple Placeholder for Stats/Activity -->
 <div class="bg-white dark:bg-stone-900 p-8 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 min-h-75 flex flex-col items-center justify-center text-center">

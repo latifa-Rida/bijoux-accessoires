@@ -53,7 +53,7 @@
             </p>
           </div>
           <!-- Form -->
-          <form class="space-y-5">
+          <form class="space-y-5" (submit)="register($event)">
             <!-- Full Name -->
             <div class="flex flex-col gap-2">
               <label
@@ -64,6 +64,9 @@
                 class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
                 placeholder="Votre nom"
                 type="text"
+                name="fullName"
+                [(ngModel)]="fullName"
+                required
               />
             </div>
             <!-- Email -->
@@ -76,6 +79,9 @@
                 class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
                 placeholder="exemple@bijoux.com"
                 type="email"
+                name="email"
+                [(ngModel)]="email"
+                required
               />
             </div>
             <!-- Password -->
@@ -88,6 +94,9 @@
                 class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
                 placeholder="••••••••"
                 type="password"
+                name="password"
+                [(ngModel)]="password"
+                required
               />
             </div>
             <!-- Confirm Password -->
@@ -100,8 +109,12 @@
                 class="w-full rounded-lg border-[#e7cfe7] dark:border-gray-700 bg-white dark:bg-gray-800 h-12 px-4 text-base focus:border-[#c66b52] focus:ring-1 focus:ring-[#c66b52] transition-colors placeholder:text-gray-400"
                 placeholder="••••••••"
                 type="password"
+                name="confirmPassword"
+                [(ngModel)]="confirmPassword"
+                required
               />
             </div>
+
             <!-- Terms Checkbox -->
             <div class="flex items-start gap-3 py-2">
               <div class="flex h-5 items-center">
