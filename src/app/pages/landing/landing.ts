@@ -53,4 +53,18 @@ export class LandingComponent {
   }
 ];
 
+items = [
+    { name: 'Collier', image: 'assets/hero.jpg', },
+    { name: 'Bracelet', image: 'assets/' },
+    { name: 'Bague', image: 'assets/hero.jpg' },
+    { name: 'Boucles', image: 'assets/hero.jpg' },
+    { name: 'Sac', image: 'assets/hero.jpg' },
+    { name: 'Montre', image: 'assets/hero.jpg' },
+    { name: 'Lunettes', image: 'assets/hero.jpg' },
+    { name: 'Palette', image: 'assets/hero.jpg' },
+    { name: 'Parfum', image: 'assets/hero.jpg' },
+    { name: 'Ceinture', image: 'assets/hero.jpg' }
+  ];
+
+
 }

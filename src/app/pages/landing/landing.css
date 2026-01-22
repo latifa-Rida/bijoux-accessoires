@@ -43,6 +43,19 @@
     transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(1turn);
   }
 }
+@keyframes spin3d {
+  from {
+    transform: perspective(900px) rotateY(-360deg);
+  }
+  to {
+    transform: perspective(900px) rotateY(0deg);
+  }
+}
+
+.animate-spin3d {
+  animation: spin3d 20s linear infinite;
+}
+
 
 .orbit-card {
   position: absolute;
