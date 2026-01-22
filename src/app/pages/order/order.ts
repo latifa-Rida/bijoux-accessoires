@@ -101,21 +101,14 @@ export class OrderComponent implements OnInit {
     return 'Champ invalide';
   }
 
-  // Check if form is valid
-  isFormValid(): boolean {
-    return this.orderForm.valid;
-  }
-
   confirmOrder(): void {
     if (this.isSubmitting) return;
 
-    // Mark all fields as touched to show errors
-    if (!this.orderForm.valid) {
-      Object.keys(this.orderForm.controls).forEach(key => {
-        this.orderForm.get(key)?.markAsTouched();
-      });
-      return;
-    }
+    // Mark all fields as touched to show errors and keep the Angular validators in control
+    this.orderForm.markAllAsTouched();
+    this.orderForm.updateValueAndValidity({ emitEvent: false });
+
+    if (this.orderForm.invalid) return;
 
     this.isSubmitting = true;
 

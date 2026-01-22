@@ -14,7 +14,12 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+    <form
+      [formGroup]="orderForm"
+      (ngSubmit)="confirmOrder()"
+      novalidate
+      class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8"
+    >
       <!-- Left Column: Order Form -->
       <div class="lg:col-span-2 space-y-6">
         <!-- Customer Information Card -->
@@ -26,7 +31,7 @@
             <h2 class="text-xl md:text-2xl font-bold text-[#3D312B]">Informations Client</h2>
           </div>
 
-          <form [formGroup]="orderForm" class="space-y-5">
+          <div class="space-y-5">
             <!-- Full Name -->
             <div>
               <label for="fullName" class="block text-sm font-semibold text-[#3D312B] mb-2">
@@ -99,7 +104,7 @@
                 Téléphone valide
               </p>
             </div>
-          </form>
+          </div>
         </div>
 
         <!-- Shipping Details Card -->
@@ -244,11 +249,10 @@
 
           <!-- Confirm Button -->
           <button
-            type="button"
-            (click)="confirmOrder()"
-            [disabled]="!isFormValid() || isSubmitting"
-            [class.opacity-50]="!isFormValid() || isSubmitting"
-            [class.cursor-not-allowed]="!isFormValid() || isSubmitting"
+            type="submit"
+            [disabled]="orderForm.invalid || isSubmitting"
+            [class.opacity-50]="orderForm.invalid || isSubmitting"
+            [class.cursor-not-allowed]="orderForm.invalid || isSubmitting"
             class="w-full mt-6 bg-[#C1664C] hover:bg-[#C1664C]/90 disabled:hover:bg-[#C1664C] text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 hover:scale-105 disabled:hover:scale-100 shadow-lg hover:shadow-xl disabled:shadow-lg flex items-center justify-center gap-2"
           >
             <span *ngIf="!isSubmitting" class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
@@ -269,6 +273,6 @@
           </a>
         </div>
       </div>
-    </div>
+    </form>
   </div>
 </section>
