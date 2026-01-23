@@ -40,6 +40,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart() {
+    if (!this.product) return;
     if (!this.product.inStock) {
       alert('Ce produit est en rupture de stock.');
       return;

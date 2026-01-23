@@ -7,7 +7,7 @@ import { routeAnimations } from './animations';
 @Component({
 
   selector: 'app-root',
-  imports: [RouterOutlet, CommonModule, NavbarComponent],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css',
   animations: [routeAnimations]
