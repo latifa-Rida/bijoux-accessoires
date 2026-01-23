@@ -11,11 +11,11 @@ import { Product } from '../../shared/models/product.model';
   imports: [CommonModule, RouterModule]
 })
 export class ProductsComponent implements OnInit {
- products = [
-  { id: 1, name: 'Collier Doré', price: 120, image: 'assets/hero.jpg', category: 'bijoux' },
-  { id: 2, name: 'Bracelet Élégant', price: 80, image: 'assets/images/bracelet1.jpg', category: 'bijoux' },
-  { id: 3, name: 'Boucles d’Oreilles Perle', price: 60, image: 'assets/images/boucles1.jpg', category: 'bijoux' },
-  { id: 4, name: 'Bague Argent', price: 90, image: 'assets/images/bague1.jpg', category: 'bijoux' },
+  products = [
+  { id: 1, name: 'Collier Doré', price: 120, image: 'assets/collier2.webp', category: 'bijoux' },
+  { id: 2, name: 'Bracelet Élégant', price: 80, image: 'assets/bracelet.webp', category: 'bijoux' },
+  { id: 3, name: 'Boucles d’Oreilles Perle', price: 60, image: 'assets/bcl.jfif', category: 'bijoux' },
+  { id: 4, name: 'Bague Argent', price: 90, image: 'assets/bagueA.jpg', category: 'bijoux' },
   { id: 5, name: 'Montre Femme Chic', price: 350, image: 'assets/images/montre1.jpg', category: 'montres' },
 
   { id: 6, name: 'Sac à Main Luxe', price: 420, image: 'assets/sac.webp', category: 'sacs' },
