@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
 import { CartService } from '../../services/cart';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -14,18 +20,37 @@ import { CommonModule } from '@angular/common';
   imports: [RouterModule, FormsModule, CommonModule]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  cartCount: number = 0;
+
+  isOpen = false;
   searchQuery: string = '';
+  cartCount: number = 0;
   isAuthenticated: boolean = false;
   currentUser: any = null;
   showUserMenu: boolean = false;
+
   private authSubscription: Subscription = new Subscription();
+
+  @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private cartService: CartService,
     private router: Router,
     private authService: AuthService
   ) {}
+
+  toggleSearch() {
+    this.isOpen = !this.isOpen;
+
+    if (this.isOpen) {
+      setTimeout(() => {
+        this.searchInput?.nativeElement.focus();
+      });
+    }
+  }
+
+  closeSearch() {
+    this.isOpen = false;
+  }
 
   ngOnInit() {
     this.cartCount = this.cartService.getCartCount();
@@ -36,10 +61,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.cartCount = this.cartService.getCartCount();
     });
 
-    this.authSubscription = this.authService.authChanged.subscribe((isAuth: boolean) => {
-      this.isAuthenticated = isAuth;
-      this.currentUser = isAuth ? this.authService.getCurrentUser() : null;
-    });
+    this.authSubscription =
+      this.authService.authChanged.subscribe((isAuth: boolean) => {
+        this.isAuthenticated = isAuth;
+        this.currentUser = isAuth
+          ? this.authService.getCurrentUser()
+          : null;
+      });
   }
 
   ngOnDestroy() {
@@ -55,6 +83,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.router.navigate(['/product'], {
         queryParams: { search: this.searchQuery.trim() }
       });
+      this.closeSearch();
     }
   }
 
