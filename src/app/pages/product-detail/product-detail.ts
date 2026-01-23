@@ -40,7 +40,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.product);
-    alert(`Produit ajouté au panier ! Couleur: ${this.product.selectedColor}, Taille: ${this.product.selectedSize}`);
+    if (this.product) {
+      this.cartService.addToCart(this.product);
+      alert(`Produit ajouté au panier ! Couleur: ${this.product.selectedColor}, Taille: ${this.product.selectedSize}`);
+    }
   }
 }
