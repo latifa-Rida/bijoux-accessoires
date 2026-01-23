@@ -74,10 +74,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authSubscription.unsubscribe();
   }
 
-  onSearchInput(event: any) {
-    this.searchQuery = event.target.value;
-  }
-
   performSearch() {
     if (this.searchQuery.trim()) {
       this.router.navigate(['/product'], {
