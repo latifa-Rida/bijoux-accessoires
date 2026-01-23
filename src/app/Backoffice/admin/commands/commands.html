@@ -1,20 +1,20 @@
 <div class="mb-10">
-    <h2 class="text-3xl font-extrabold text-stone-900 dark:text-white">Commandes</h2>
-    <p class="text-stone-500 dark:text-stone-400 mt-1">Gérez et suivez les commandes clients.</p>
+    <h2 class="text-3xl font-black text-[#3D312B] tracking-tight">Gestion des Commandes</h2>
+    <p class="text-[#3D312B]/60 mt-1 font-medium">Suivez et gérez l'ensemble des commandes de la boutique.</p>
 </div>
 
-<div class="bg-white dark:bg-stone-900 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 overflow-hidden">
-    <!-- Filter/Search Toolbar (Optional but good) -->
-    <div class="p-6 border-b border-stone-100 dark:border-stone-800 flex flex-col sm:flex-row gap-4 justify-between items-center">
-        <div class="relative w-full sm:w-64">
-             <span class="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm">search</span>
-             <input type="text" placeholder="Rechercher..." class="w-full pl-9 pr-4 py-2 bg-stone-50 dark:bg-stone-800 border-none rounded-3xl text-sm focus:ring-2 focus:ring-[#d946ef] text-stone-900 dark:text-white placeholder-stone-400">
+<div class="bg-white rounded-3xl shadow-sm border border-[#D5BDAF]/20 overflow-hidden">
+    <!-- Filter Bar -->
+    <div class="p-6 border-b border-[#D5BDAF]/10 flex flex-col sm:flex-row gap-4 justify-between items-center bg-[#FDFBF7]/50">
+        <div class="relative w-full sm:w-80">
+             <span class="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-[#3D312B]/40 text-sm">search</span>
+             <input type="text" placeholder="Rechercher une commande..." class="w-full pl-10 pr-4 py-3 bg-[#F5EBE0]/30 border-none rounded-2xl text-sm focus:ring-2 focus:ring-[#C1664C]/50 text-[#3D312B] placeholder-[#3D312B]/30 outline-none">
         </div>
         <div class="flex gap-2">
-             <button class="px-4 py-2 rounded-3xl bg-stone-50 dark:bg-stone-800 text-stone-600 dark:text-stone-400 text-xs font-bold uppercase hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors">
+             <button class="px-5 py-3 rounded-2xl bg-[#F5EBE0] text-[#3D312B] text-[10px] font-bold uppercase tracking-widest hover:bg-[#D5BDAF]/30 transition-colors">
                  Filtrer
              </button>
-             <button class="px-4 py-2 rounded-3xl bg-[#d946ef] text-white text-xs font-bold uppercase shadow-lg shadow-[#d946ef]/20 hover:opacity-90 transition-opacity">
+             <button class="px-5 py-3 rounded-2xl bg-[#C1664C] text-white text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-[#C1664C]/20 hover:opacity-90 transition-opacity">
                  Exporter
              </button>
         </div>
@@ -23,83 +23,52 @@
     <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
             <thead>
-            <tr class="bg-stone-50/50 dark:bg-stone-800/50 text-stone-400 text-xs font-bold uppercase tracking-wider">
-                <th class="px-6 py-4">ID Commande</th>
-                <th class="px-6 py-4">Client</th>
-                <th class="px-6 py-4">Date</th>
-                <th class="px-6 py-4">Total</th>
-                <th class="px-6 py-4">Statut</th>
-                <th class="px-6 py-4 text-right">Actions</th>
+            <tr class="bg-[#F5EBE0]/20 text-[#3D312B]/40 text-[10px] font-bold uppercase tracking-[0.2em]">
+                <th class="px-8 py-5">Référence</th>
+                <th class="px-8 py-5">Client</th>
+                <th class="px-8 py-5">Date</th>
+                <th class="px-8 py-5">Montant</th>
+                <th class="px-8 py-5">Statut</th>
+                <th class="px-8 py-5 text-right">Détails</th>
             </tr>
             </thead>
-            <tbody class="divide-y divide-stone-100 dark:divide-stone-800">
+            <tbody class="divide-y divide-[#D5BDAF]/10">
             
-            <!-- Row 1 [Confirmed] -->
-            <tr class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                <td class="px-6 py-4">
-                    <span class="text-sm font-bold text-stone-900 dark:text-white">#CMD-2024-001</span>
+            <tr *ngFor="let order of orders" class="hover:bg-[#FDFBF7] transition-colors group">
+                <td class="px-8 py-5">
+                    <span class="text-sm font-black text-[#3D312B]">#{{ order.id }}</span>
                 </td>
-                <td class="px-6 py-4">
+                <td class="px-8 py-5">
                     <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-stone-200 flex items-center justify-center text-xs font-bold text-stone-600">SL</div>
-                        <p class="text-sm font-medium text-stone-700 dark:text-stone-300">Sophie Lambert</p>
+                        <div class="w-9 h-9 rounded-xl bg-[#F5EBE0] flex items-center justify-center text-[10px] font-black text-[#C1664C] group-hover:bg-[#C1664C] group-hover:text-white transition-colors">
+                            {{ order.customerName.charAt(0) }}
+                        </div>
+                        <div>
+                            <p class="text-sm font-black text-[#3D312B]">{{ order.customerName }}</p>
+                            <p class="text-[10px] text-[#3D312B]/40 font-bold">{{ order.customerEmail }}</p>
+                        </div>
                     </div>
                 </td>
-                <td class="px-6 py-4 text-sm text-stone-500">22 Jan 2026</td>
-                <td class="px-6 py-4 text-sm font-bold text-stone-900 dark:text-white">124.50 €</td>
-                <td class="px-6 py-4">
-                    <span class="px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-full uppercase">Confirmé</span>
+                <td class="px-8 py-5 text-sm font-medium text-[#3D312B]/60">{{ order.date }}</td>
+                <td class="px-8 py-5 text-sm font-black text-[#3D312B]">{{ order.total }} DH</td>
+                <td class="px-8 py-5">
+                    <span [class]="'px-3 py-1 text-[10px] font-black rounded-lg uppercase tracking-wider ' + getStatusClass(order.status)">
+                        {{ order.status }}
+                    </span>
                 </td>
-                <td class="px-6 py-4 text-right">
-                    <button class="p-2 text-stone-400 hover:text-[#d946ef] transition-colors rounded-full hover:bg-stone-100 dark:hover:bg-stone-800">
-                        <span class="material-icons-round text-lg">visibility</span>
+                <td class="px-8 py-5 text-right">
+                    <button class="p-2 text-[#3D312B]/20 hover:text-[#C1664C] transition-colors rounded-xl bg-[#F5EBE0]/0 hover:bg-[#F5EBE0]">
+                        <span class="material-icons-round text-lg">arrow_forward</span>
                     </button>
                 </td>
             </tr>
 
-            <!-- Row 2 [Pending] -->
-            <tr class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                <td class="px-6 py-4">
-                    <span class="text-sm font-bold text-stone-900 dark:text-white">#CMD-2024-002</span>
-                </td>
-                <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">MD</div>
-                        <p class="text-sm font-medium text-stone-700 dark:text-stone-300">Marc Dubois</p>
+            <tr *ngIf="orders.length === 0">
+                <td colspan="6" class="px-8 py-20 text-center">
+                    <div class="flex flex-col items-center gap-4 text-[#3D312B]/30">
+                        <span class="material-icons-round text-5xl">receipt_long</span>
+                        <p class="font-bold uppercase tracking-widest text-xs">Aucune commande trouvée</p>
                     </div>
-                </td>
-                <td class="px-6 py-4 text-sm text-stone-500">21 Jan 2026</td>
-                <td class="px-6 py-4 text-sm font-bold text-stone-900 dark:text-white">45.00 €</td>
-                <td class="px-6 py-4">
-                    <span class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-bold rounded-full uppercase">En Attente</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <button class="p-2 text-stone-400 hover:text-[#d946ef] transition-colors rounded-full hover:bg-stone-100 dark:hover:bg-stone-800">
-                        <span class="material-icons-round text-lg">visibility</span>
-                    </button>
-                </td>
-            </tr>
-
-            <!-- Row 3 [Delivered] -->
-            <tr class="hover:bg-stone-50 dark:hover:bg-stone-800/30 transition-colors">
-                <td class="px-6 py-4">
-                    <span class="text-sm font-bold text-stone-900 dark:text-white">#CMD-2024-003</span>
-                </td>
-                <td class="px-6 py-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">EL</div>
-                        <p class="text-sm font-medium text-stone-700 dark:text-stone-300">Emma Lefebvre</p>
-                    </div>
-                </td>
-                <td class="px-6 py-4 text-sm text-stone-500">20 Jan 2026</td>
-                <td class="px-6 py-4 text-sm font-bold text-stone-900 dark:text-white">320.00 €</td>
-                <td class="px-6 py-4">
-                    <span class="px-3 py-1 bg-stone-200 dark:bg-stone-700 text-stone-600 dark:text-stone-300 text-xs font-bold rounded-full uppercase">Livré</span>
-                </td>
-                <td class="px-6 py-4 text-right">
-                    <button class="p-2 text-stone-400 hover:text-[#d946ef] transition-colors rounded-full hover:bg-stone-100 dark:hover:bg-stone-800">
-                        <span class="material-icons-round text-lg">visibility</span>
-                    </button>
                 </td>
             </tr>
             
@@ -107,18 +76,18 @@
         </table>
     </div>
 
-    <!-- Pagination (Static) -->
-    <div class="px-6 py-4 border-t border-stone-100 dark:border-stone-800 bg-stone-50/50 dark:bg-stone-900 flex justify-between items-center text-sm text-stone-500">
-         <span>Affichage de 1 à 3 sur 12 commandes</span>
+    <!-- Pagination -->
+    <div class="px-8 py-6 bg-[#FDFBF7]/50 flex justify-between items-center text-[10px] font-bold text-[#3D312B]/40 uppercase tracking-widest">
+         <span>{{ orders.length }} Commandes enregistrées</span>
          <div class="flex gap-2">
-             <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors disabled:opacity-50" disabled>
+             <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-[#F5EBE0] text-[#3D312B] opacity-50 cursor-not-allowed">
                  <span class="material-icons-round text-md">chevron_left</span>
              </button>
-             <button class="w-8 h-8 flex items-center justify-center rounded-full bg-[#d946ef] text-white font-bold shadow-md shadow-[#d946ef]/20">1</button>
-             <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors">2</button>
-             <button class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone-200 dark:hover:bg-stone-800 transition-colors">
+             <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-[#C1664C] text-white shadow-lg shadow-[#C1664C]/20">1</button>
+             <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white text-[#3D312B] hover:bg-[#F5EBE0] transition-colors border border-[#D5BDAF]/20">
                  <span class="material-icons-round text-md">chevron_right</span>
              </button>
          </div>
     </div>
 </div>
+

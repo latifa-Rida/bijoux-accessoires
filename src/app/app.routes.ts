@@ -9,20 +9,28 @@ import { Authentification } from './pages/authentification/authentification';
 import { Registration } from './pages/registration/registration';
 import { authGuard } from './guards/auth.guard';
 
+import { ClientLayoutComponent } from './component/layout/client-layout/client-layout.component';
 import { AdminLayoutComponent } from './Backoffice/admin/layout/layout.component';
 import { AdminDashboardComponent } from './Backoffice/admin/dashboard/dashboard.component';
 import { AdminCommandsComponent } from './Backoffice/admin/commands/commands.component';
 import { AdminUsersComponent } from './Backoffice/admin/users/users.component';
 
 export const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'product/:id', component: ProductDetailComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'order', component: OrderComponent, canActivate: [authGuard] },
-  { path: 'orders', component: OrderHistoryComponent },
-  { path: 'product', component: ProductsComponent },
-  { path: 'authentification', component: Authentification },
-  { path: 'registration', component: Registration },
+  // Public Client Routes
+  {
+    path: '',
+    component: ClientLayoutComponent,
+    children: [
+      { path: '', component: LandingComponent },
+      { path: 'product/:id', component: ProductDetailComponent },
+      { path: 'cart', component: CartComponent },
+      { path: 'order', component: OrderComponent, canActivate: [authGuard] },
+      { path: 'orders', component: OrderHistoryComponent },
+      { path: 'product', component: ProductsComponent },
+      { path: 'authentification', component: Authentification },
+      { path: 'registration', component: Registration },
+    ]
+  },
 
   // Admin Backoffice Routes
   {
@@ -36,4 +44,5 @@ export const routes: Routes = [
     ]
   }
 ];
+
 

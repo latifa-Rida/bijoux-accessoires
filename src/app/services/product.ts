@@ -1,13 +1,27 @@
 import { Injectable } from '@angular/core';
 
+interface Product {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  category: string;
+  description?: string;
+  colors?: string[];
+  sizes?: string[];
+  selectedColor?: string;
+  selectedSize?: string;
+  inStock?: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  products = [
-    { id: 1, name: 'Collier Doré', price: 120, image: 'assets/images/collier1.jpg', category: 'bijoux' },
-    { id: 2, name: 'Bracelet Élégant', price: 80, image: 'assets/images/bracelet1.jpg', category: 'bijoux' },
+  products: Product[] = [
+    { id: 1, name: 'Collier Doré', price: 120, image: 'assets/hero.jpg', category: 'bijoux', description: 'Un collier élégant en or 18 carats avec un pendentif en cristal Swarovski.', colors: ['Or', 'Argent', 'Rose'], sizes: ['S', 'M', 'L'], selectedColor: 'Or', selectedSize: 'M' },
+    { id: 2, name: 'Bracelet Élégant', price: 80, image: 'assets/images/bracelet1.jpg', category: 'bijoux', description: 'Bracelet fin en acier inoxydable avec fermoir sécurisé.', colors: ['Argent', 'Or', 'Noir'], sizes: ['S', 'M', 'L'], selectedColor: 'Argent', selectedSize: 'M' },
     { id: 3, name: 'Boucles d’Oreilles Perle', price: 60, image: 'assets/images/boucles1.jpg', category: 'bijoux' },
     { id: 4, name: 'Bague Argent', price: 90, image: 'assets/images/bague1.jpg', category: 'bijoux' },
     { id: 5, name: 'Montre Femme Chic', price: 350, image: 'assets/images/montre1.jpg', category: 'montres' },
@@ -44,6 +58,13 @@ export class ProductService {
   ];
 
   getProductById(id: number) {
-    return this.products.find(p => p.id === id);
+    const product = this.products.find(p => p.id === id);
+    if (product) {
+      // Add stock status if not present
+      if (product.inStock === undefined) {
+        product.inStock = Math.random() > 0.2; // 80% chance of being in stock
+      }
+    }
+    return product;
   }
 }
