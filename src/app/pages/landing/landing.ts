@@ -54,16 +54,17 @@ export class LandingComponent {
 ];
 
 items = [
-    { name: 'Collier', image: 'assets/hero.jpg', },
-    { name: 'Bracelet', image: 'assets/' },
-    { name: 'Bague', image: 'assets/hero.jpg' },
-    { name: 'Boucles', image: 'assets/hero.jpg' },
-    { name: 'Sac', image: 'assets/hero.jpg' },
-    { name: 'Montre', image: 'assets/hero.jpg' },
-    { name: 'Lunettes', image: 'assets/hero.jpg' },
-    { name: 'Palette', image: 'assets/hero.jpg' },
-    { name: 'Parfum', image: 'assets/hero.jpg' },
-    { name: 'Ceinture', image: 'assets/hero.jpg' }
+    { name: 'Collier', image: 'assets/collier2.webp', },
+    { name: 'Bracelet', image: 'assets/bracelet.webp' },
+    { name: 'Bague', image: 'assets/bague1.avif' },
+    { name: 'Boucles', image: 'assets/bcl.jfif' },
+    { name: 'Sac', image: 'assets/montre.jpg' },
+    { name: 'maquillage', image: 'assets/hero.jpg' },
+    { name: 'sac', image: 'assets/sac.webp' },
+    { name: 'Palette', image: 'assets/maquillage.jpg' },
+    { name: 'bague', image: 'assets/bague2.jfif' },
+    { name: 'montre lux', image: 'assets/montre2.jfif' },
+
   ];
 
 
