@@ -84,7 +84,7 @@
     <div class="flex items-center gap-4">
       <button
         routerLink="/cart"
-        class="relative cursor-pointer bg-white/40 hover:bg-white/60 text-[#3D312B] p-2 rounded-4xl transition-all"
+        class="relative cursor-pointer bg-white/40 hover:bg-white/60 text-[#3D312B] p-2 rounded-full transition-all"
       >
         <span
           class="material-symbols-outlined"
@@ -110,7 +110,7 @@
       <div class="relative" *ngIf="!isAuthenticated">
         <div
           routerLink="/authentification"
-          class="w-8 h-8 rounded-full bg-cover bg-center cursor-pointer hover:opacity-80 transition"
+          class="w-8 h-8 rounded-full border-black bg-cover bg-center cursor-pointer p-1 hover:opacity-80 transition"
           style="background-image: url('assets/user.png')"
         ></div>
       </div>
@@ -121,11 +121,11 @@
           class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition"
         >
           <div
-            class="w-8 h-8 rounded-full bg-cover bg-center"
+            class="w-7 h-7 rounded-full border-black bg-cover bg-center"
             style="background-image: url('assets/user.png')"
           ></div>
           <span
-            class="material-symbols-outlined text-sm text-[#3D312B]/80"
+            class="material-symbols-outlined text-sm text-black"
             style="
               font-variation-settings:
                 'FILL' 0,

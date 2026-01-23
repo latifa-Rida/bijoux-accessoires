@@ -53,4 +53,19 @@ export class LandingComponent {
   }
 ];
 
+items = [
+    { name: 'Collier', image: 'assets/collier2.webp', },
+    { name: 'Bracelet', image: 'assets/bracelet.webp' },
+    { name: 'Bague', image: 'assets/bague1.avif' },
+    { name: 'Boucles', image: 'assets/bcl.jfif' },
+    { name: 'Sac', image: 'assets/montre.jpg' },
+    { name: 'maquillage', image: 'assets/hero.jpg' },
+    { name: 'sac', image: 'assets/sac.webp' },
+    { name: 'Palette', image: 'assets/maquillage.jpg' },
+    { name: 'bague', image: 'assets/bague2.jfif' },
+    { name: 'montre lux', image: 'assets/montre2.jfif' },
+
+  ];
+
+
 }
