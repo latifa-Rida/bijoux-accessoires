@@ -12,13 +12,13 @@ import { authGuard } from './guards/auth.guard';
 
 
 export const routes: Routes = [
-  { path: '', component: LandingComponent },
-  { path: 'product/:id', component: ProductDetailComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'order', component: OrderComponent, canActivate: [authGuard] },
-  { path: 'orders', component: OrderHistoryComponent },
-  { path: 'product', component: ProductsComponent },
-  { path: 'authentification', component: Authentification },
-  { path: 'registration', component: Registration },
+  { path: '', component: LandingComponent, data: { animation: 'LandingPage' } },
+  { path: 'product/:id', component: ProductDetailComponent, data: { animation: 'ProductDetailPage' } },
+  { path: 'cart', component: CartComponent, data: { animation: 'CartPage' } },
+  { path: 'order', component: OrderComponent, canActivate: [authGuard], data: { animation: 'OrderPage' } },
+  { path: 'orders', component: OrderHistoryComponent, canActivate: [authGuard], data: { animation: 'OrderHistoryPage' } },
+  { path: 'product', component: ProductsComponent, data: { animation: 'ProductsPage' } },
+  { path: 'authentification', component: Authentification, data: { animation: 'AuthPage' } },
+  { path: 'registration', component: Registration, data: { animation: 'RegistrationPage' } },
 ];
 

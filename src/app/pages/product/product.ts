@@ -16,7 +16,7 @@ interface Product {
 })
 export class ProductsComponent implements OnInit {
  products = [
-  { id: 1, name: 'Collier Doré', price: 120, image: 'assets/images/collier1.jpg', category: 'bijoux' },
+  { id: 1, name: 'Collier Doré', price: 120, image: 'assets/hero.jpg', category: 'bijoux' },
   { id: 2, name: 'Bracelet Élégant', price: 80, image: 'assets/images/bracelet1.jpg', category: 'bijoux' },
   { id: 3, name: 'Boucles d’Oreilles Perle', price: 60, image: 'assets/images/boucles1.jpg', category: 'bijoux' },
   { id: 4, name: 'Bague Argent', price: 90, image: 'assets/images/bague1.jpg', category: 'bijoux' },
@@ -61,11 +61,17 @@ export class ProductsComponent implements OnInit {
   filteredProducts: any[] = [];
 
   selectedCategory = 'all';
+  searchQuery = '';
 
   ngOnInit() {
-    // Check for category in route params
+    // Check for category and search in route params
     const category = this.route.snapshot.queryParams['category'];
-    if (category) {
+    const search = this.route.snapshot.queryParams['search'];
+
+    if (search) {
+      this.searchQuery = search;
+      this.filterProducts();
+    } else if (category) {
       this.filterByCategory(category);
     } else {
       this.filteredProducts = this.products;
@@ -74,21 +80,46 @@ export class ProductsComponent implements OnInit {
 
   filterByCategory(category: string) {
     this.selectedCategory = category;
+    this.filterProducts();
+  }
 
-    if (category === 'all') {
-      this.filteredProducts = this.products;
-    } else {
-      this.filteredProducts = this.products.filter(
-        product => product.category === category
+  filterProducts() {
+    let filtered = this.products;
+
+    // Filter by category
+    if (this.selectedCategory !== 'all') {
+      filtered = filtered.filter(product => product.category === this.selectedCategory);
+    }
+
+    // Filter by search query
+    if (this.searchQuery.trim()) {
+      const query = this.searchQuery.toLowerCase().trim();
+      filtered = filtered.filter(product =>
+        product.name.toLowerCase().includes(query)
       );
     }
 
+    this.filteredProducts = filtered;
+
     // Update URL without navigation
+    const queryParams: any = {};
+    if (this.selectedCategory !== 'all') {
+      queryParams.category = this.selectedCategory;
+    }
+    if (this.searchQuery.trim()) {
+      queryParams.search = this.searchQuery.trim();
+    }
+
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams: category !== 'all' ? { category } : {},
+      queryParams,
       queryParamsHandling: 'merge'
     });
+  }
+
+  clearSearch() {
+    this.searchQuery = '';
+    this.filterProducts();
   }
   constructor(
     private router: Router,

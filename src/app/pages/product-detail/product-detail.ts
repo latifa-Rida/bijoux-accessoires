@@ -25,8 +25,24 @@ export class ProductDetailComponent implements OnInit {
     this.product = this.productService.getProductById(id);
   }
 
+  selectColor(color: string) {
+    if (this.product) {
+      this.product.selectedColor = color;
+    }
+  }
+
+  selectSize(size: string) {
+    if (this.product) {
+      this.product.selectedSize = size;
+    }
+  }
+
   addToCart() {
+    if (!this.product.inStock) {
+      alert('Ce produit est en rupture de stock.');
+      return;
+    }
     this.cartService.addToCart(this.product);
-    alert('Produit ajouté au panier !');
+    alert(`Produit ajouté au panier ! Couleur: ${this.product.selectedColor}, Taille: ${this.product.selectedSize}`);
   }
 }
