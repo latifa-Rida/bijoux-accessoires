@@ -27,6 +27,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean = false;
   currentUser: any = null;
   showUserMenu: boolean = false;
+  savedUsers: any[] = [];
 
   private authSubscription: Subscription = new Subscription();
 
@@ -39,6 +40,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {}
 
   toggleSearch() {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/791d7982-ede2-4639-bf1f-fee51a673e8e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'navbar.ts:toggleSearch',message:'toggleSearch called',data:{currentIsOpen:this.isOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B_D_E'})}).catch(()=>{});
+    // #endregion
     this.isOpen = !this.isOpen;
 
     if (this.isOpen) {
@@ -49,6 +53,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   closeSearch() {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/791d7982-ede2-4639-bf1f-fee51a673e8e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'navbar.ts:closeSearch',message:'closeSearch called',data:{currentIsOpen:this.isOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+    // #endregion
     this.isOpen = false;
   }
 
@@ -56,6 +63,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.cartCount = this.cartService.getCartCount();
     this.isAuthenticated = this.authService.isAuthenticated();
     this.currentUser = this.authService.getCurrentUser();
+    this.savedUsers = this.authService.getSavedUsers();
 
     this.cartService.cartChanged.subscribe(() => {
       this.cartCount = this.cartService.getCartCount();
@@ -67,6 +75,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.currentUser = isAuth
           ? this.authService.getCurrentUser()
           : null;
+        this.savedUsers = this.authService.getSavedUsers();
       });
   }
 
@@ -75,11 +84,20 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   performSearch() {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/791d7982-ede2-4639-bf1f-fee51a673e8e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'navbar.ts:performSearch',message:'performSearch called',data:{searchQuery:this.searchQuery, currentIsOpen:this.isOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
+    // #endregion
     if (this.searchQuery.trim()) {
       this.router.navigate(['/product'], {
         queryParams: { search: this.searchQuery.trim() }
       });
       this.closeSearch();
+    }
+  }
+
+  switchAccount(email: string) {
+    if (this.authService.switchAccount(email)) {
+      this.showUserMenu = false;
     }
   }
 
@@ -92,3 +110,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.showUserMenu = !this.showUserMenu;
   }
 }
+
+
+ 

@@ -100,6 +100,15 @@
             </div>
             <div class="flex items-start gap-3">
               <span class="material-symbols-outlined text-[#C1664C] mt-1" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                mail
+              </span>
+              <div>
+                <p class="text-xs text-[#3D312B]/60 mb-1">Email</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.email }}</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-[#C1664C] mt-1" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
                 location_on
               </span>
               <div>
@@ -126,10 +135,12 @@
               class="flex items-center justify-between p-4 bg-[#F5EBE0]/50 rounded-xl border border-[#D5BDAF]/20 hover:bg-[#F5EBE0] transition-colors"
             >
               <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[#C1664C]" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
-                    inventory_2
-                  </span>
+                <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center overflow-hidden">
+                  <img
+                    [src]="produit.image || 'https://via.placeholder.com/48'"
+                    [alt]="produit.name"
+                    class="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <p class="font-semibold text-[#3D312B]">{{ produit.name }}</p>

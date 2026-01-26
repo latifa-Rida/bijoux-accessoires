@@ -17,6 +17,7 @@ export class OrderHistoryComponent {
     if (stored) {
       try {
         this.commandes = JSON.parse(stored);
+        this.commandes.reverse();
         // Add default status if missing
         this.commandes = this.commandes.map((order: any) => ({
           ...order,
