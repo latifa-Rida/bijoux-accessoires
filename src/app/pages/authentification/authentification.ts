@@ -53,21 +53,22 @@ export class Authentification implements OnInit {
 
     // Simulate API call delay
     setTimeout(() => {
-      const success = this.authService.login(this.email, this.password);
+      const result = this.authService.login(this.email.trim(), this.password);
 
-      if (success) {
+      if (result.success) {
         this.successMessage = 'Connexion réussie !';
         this.loginAnimationClass = 'success';
         setTimeout(() => {
           // Redirect to returnUrl or default to home
           this.router.navigate([this.returnUrl]);
-        }, 1000);
+        }, 800);
       } else {
-        this.errorMessage = 'Email ou mot de passe incorrect';
+        // show clear error message returned by service
+        this.errorMessage = result.message || 'Email ou mot de passe incorrect';
         this.loginAnimationClass = 'error';
-        setTimeout(() => this.loginAnimationClass = '', 500);
+        setTimeout(() => (this.loginAnimationClass = ''), 700);
       }
       this.isLoading = false;
-    }, 800);
+    }, 600);
   }
 }

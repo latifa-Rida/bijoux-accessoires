@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { OrderHistoryComponent } from './order-history';
 
@@ -8,7 +9,7 @@ describe('OrderHistoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderHistoryComponent]
+      imports: [OrderHistoryComponent, RouterTestingModule]
     })
     .compileComponents();
 

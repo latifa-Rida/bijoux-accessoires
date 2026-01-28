@@ -14,7 +14,8 @@ export class UserService {
     }
 
     private loadUsers(): void {
-        const saved = localStorage.getItem(this.USERS_KEY);
+        const hasLocalStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+        const saved = hasLocalStorage ? window.localStorage.getItem(this.USERS_KEY) : null;
         if (saved) {
             this.usersSubject.next(JSON.parse(saved));
         } else {
@@ -35,6 +36,7 @@ export class UserService {
                     createdAt: '2024-01-15'
                 }
             ];
+            // Save to storage only when available
             this.saveUsers(mockUsers);
         }
     }
@@ -50,7 +52,10 @@ export class UserService {
     }
 
     private saveUsers(users: User[]): void {
-        localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+        const hasLocalStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+        if (hasLocalStorage) {
+            window.localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
+        }
         this.usersSubject.next(users);
     }
 
