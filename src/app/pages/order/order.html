@@ -1,4 +1,4 @@
-<section class="min-h-screen bg-gradient-to-br from-[#F5EBE0] via-[#E3D5CA]/30 to-[#F5EBE0] py-8 md:py-12 px-4 md:px-6">
+<section class="min-h-screen bg-linear-to-br from-[#F5EBE0] via-[#E3D5CA]/30 to-[#F5EBE0] py-8 md:py-12 px-4 md:px-6">
   <div class="max-w-6xl mx-auto">
     <!-- Header -->
     <div class="mb-8 md:mb-12 text-center">
@@ -212,14 +212,14 @@
               *ngFor="let item of getCartItems()"
               class="flex items-start gap-3 p-3 bg-[#F5EBE0]/50 rounded-xl"
             >
-              <div class="w-16 h-16 rounded-lg overflow-hidden bg-[#F5EBE0] flex-shrink-0">
+              <div class="w-16 h-16 rounded-lg overflow-hidden bg-[#F5EBE0] shrink-0">
                 <img
                   [src]="item.image || 'https://via.placeholder.com/64'"
                   [alt]="item.name"
                   class="w-full h-full object-cover"
                 />
               </div>
-              <div class="flex-grow min-w-0">
+              <div class="grow min-w-0">
                 <p class="font-semibold text-sm text-[#3D312B] truncate">{{ item.name }}</p>
                 <p class="text-xs text-[#3D312B]/60">
                   Qté: {{ item.quantity || 1 }} × {{ item.price }} DH

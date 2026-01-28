@@ -4,6 +4,7 @@ import { CartService } from '../../services/cart';
 import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { OrderService } from '../../shared/services/order.service';
+import { Order } from '../../shared/models/order.model';
 
 @Component({
   standalone: true,
@@ -75,14 +76,14 @@ export class OrderComponent implements OnInit {
     this.isSubmitting = true;
     const formValue = this.orderForm.value;
 
-    const newOrder: any = {
-      id: `ORD-${Math.floor(Math.random() * 10000)}`,
+    const newOrder: Order = {
+      id: `ORD-${Date.now().toString().slice(-6)}`,
       customerName: formValue.fullName,
       customerEmail: formValue.email,
       customerPhone: formValue.phone,
       address: `${formValue.address}, ${formValue.city} ${formValue.postalCode}`,
       products: this.cartService.getCart(),
-      date: new Date().toISOString().split('T')[0],
+      date: new Date().toISOString(),
       status: 'en attente',
       total: this.cartService.getTotal()
     };
