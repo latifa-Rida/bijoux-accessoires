@@ -2,24 +2,34 @@
 <section class="relative w-full min-h-[70vh] overflow-hidden">
   <!-- Background -->
   <div class="absolute inset-0 z-0">
-    <div class="w-full h-full bg-cover bg-center" style="background-image: url('assets/hero.jpg')"></div>
+    <div
+      class="w-full h-full bg-cover bg-center"
+      style="background-image: url('assets/hero.jpg')"
+    ></div>
     <div class="absolute inset-0 bg-[#E3D5CA]/30 backdrop-blur-[2px]"></div>
   </div>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16 px-6 lg:px-16 py-20">
+  <div
+    class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 items-center gap-16 px-6 lg:px-16 py-20"
+  >
     <!-- LEFT : 3D CAROUSEL -->
     <div class="flex justify-start items-center overflow-hidden">
       <!-- هذا div الخارجي يتحرك شوية لليسار -->
       <div
-        class="relative w-[1100px] h-[320px] [transform-style:preserve-3d] animate-spin3d hover:[animation-play-state:paused]"
-        style="margin-left: -30px">
-        <div *ngFor="let item of items; let i = index"
-          class="absolute top-1/2 left-1/2 w-[140px] h-[320px] rounded-4xl shadow-2xl bg-cover bg-center transition-transform duration-300 hover:scale-110"
+        class="relative w-275 h-80 transform-3d animate-spin3d hover:[animation-play-state:paused]"
+        style="margin-left: -30px"
+      >
+        <div
+          *ngFor="let item of items; let i = index"
+          class="absolute top-1/2 left-1/2 w-35 h-80 rounded-4xl shadow-2xl bg-cover bg-center transition-transform duration-300 hover:scale-110"
           [style.backgroundImage]="'url(' + item.image + ')'"
-          [style.transform]="'translate(-50%, -50%) rotateY(' + i * 36 + 'deg) translateZ(220px)'">
+          [style.transform]="'translate(-50%, -50%) rotateY(' + i * 36 + 'deg) translateZ(220px)'"
+        >
           <!-- الاسم يبقى تحت كل صورة -->
-          <span class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-semibold text-neutral-700">
+          <span
+            class="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-semibold text-neutral-700"
+          >
             {{ item.name }}
           </span>
         </div>
@@ -29,64 +39,51 @@
     <!-- RIGHT : TEXT + BUTTONS -->
 
     <div class="text-left">
-      <h1 class="text-[#3D312B] text-5xl font-playfair font-extrabold leading-tight tracking-tight mb-6">
+      <h1
+        class="text-[#3D312B] text-5xl font-playfair font-extrabold leading-tight tracking-tight mb-6"
+      >
         Bijoux &amp; Accessoires Shop
       </h1>
 
       <!-- Description lisible -->
       <!-- Paragraphe élégant et lisible -->
-      <p class="text-[#3D312B]/90 text-lg  font-medium max-w-xl mb-10 leading-relaxed tracking-wide">
+      <p class="text-[#3D312B]/90 text-lg font-medium max-w-xl mb-10 leading-relaxed tracking-wide">
         Découvrez notre collection exclusive de bijoux et accessoires, soigneusement sélectionnés
         pour apporter élégance et raffinement à votre style quotidien.
       </p>
 
       <!-- Définition de la font pour Tailwind -->
 
-
-
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
-
         <!-- ================= PANIER ================= -->
-        <button routerLink="/cart"
-          style="-webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4));" class="group px-10 py-4 bg-gradient-to-r from-[#C1664C] to-amber-600
-           rounded-full shadow-xl group-hover:shadow-2xl
-           group-hover:shadow-[#aa5943] shadow-amber-700
-           uppercase font-serif tracking-widest relative overflow-hidden
-           text-transparent cursor-pointer z-10
-           after:absolute after:rounded-full after:bg-amber-600
-           after:h-[85%] after:w-[95%] after:left-1/2 after:top-1/2
-           after:-translate-x-1/2 after:-translate-y-1/2
-           hover:saturate-[1.15] active:saturate-[1.4]">
-
+        <button
+          routerLink="/cart"
+          style="
+            -webkit-box-reflect: below 0px
+              linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+          "
+          class="group px-10 py-4 bg-linear-to-r from-[#C1664C] to-amber-600 rounded-full shadow-xl group-hover:shadow-2xl group-hover:shadow-[#aa5943] shadow-amber-700 uppercase font-serif tracking-widest relative overflow-hidden text-transparent cursor-pointer z-10 after:absolute after:rounded-full after:bg-amber-600 after:h-[85%] after:w-[95%] after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 hover:saturate-[1.15] active:saturate-[1.4]"
+        >
           PANIER
 
-          <p class="absolute z-40 font-semibold
-             bg-gradient-to-r from-black to-[#C1664C]
-             bg-clip-text text-transparent
-             top-1/2 left-1/2 -translate-x-1/2
-             group-hover:-translate-y-full
-             h-full w-full transition-all duration-300
-             -translate-y-[30%] tracking-widest text-center">
+          <p
+            class="absolute z-40 font-semibold bg-linear-to-r from-black to-[#C1664C] bg-clip-text text-transparent top-1/2 left-1/2 -translate-x-1/2 group-hover:-translate-y-full h-full w-full transition-all duration-300 -translate-y-[30%] tracking-widest text-center"
+          >
             VOIR PANIER
           </p>
 
-          <p class="absolute z-40 top-1/2 left-1/2
-             bg-gradient-to-r from-amber-900 to-[#C1664C]
-             bg-clip-text text-transparent
-             -translate-x-1/2 translate-y-full
-             h-full w-full transition-all duration-300
-             group-hover:-translate-y-[25%]
-             tracking-widest font-extrabold text-center">
+          <p
+            class="absolute z-40 top-1/2 left-1/2 bg-linear-to-r from-amber-900 to-[#C1664C] bg-clip-text text-transparent -translate-x-1/2 translate-y-full h-full w-full transition-all duration-300 group-hover:-translate-y-[25%] tracking-widest font-extrabold text-center"
+          >
             WELCOME
           </p>
 
           <!-- WAVE -->
-          <svg class="absolute w-full h-full scale-x-125 rotate-180
-             top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-             z-30 group-hover:animate-none animate-pulse
-             group-hover:-translate-y-[45%]
-             transition-all duration-300" viewBox="0 0 2400 800" xmlns="http://www.w3.org/2000/svg">
-
+          <svg
+            class="absolute w-full h-full scale-x-125 rotate-180 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 group-hover:animate-none animate-pulse group-hover:-translate-y-[45%] transition-all duration-300"
+            viewBox="0 0 2400 800"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <defs>
               <linearGradient id="grad-panier" x1="50%" y1="0%" x2="50%" y2="100%">
                 <stop offset="0%" stop-color="hsl(45, 96%, 62%)" />
@@ -95,55 +92,47 @@
             </defs>
 
             <g fill="url(#grad-panier)">
-              <path *ngFor="let o of opacities; let i = index" [attr.opacity]="o"
-                [attr.transform]="'translate(0,' + (35 + i*35) + ')'" d="M0 306 Q227 450 600 302 Q1010 450 1200 343
+              <path
+                *ngFor="let o of opacities; let i = index"
+                [attr.opacity]="o"
+                [attr.transform]="'translate(0,' + (35 + i * 35) + ')'"
+                d="M0 306 Q227 450 600 302 Q1010 450 1200 343
              Q1380 450 1800 320 Q2153 450 2400 314
-             L2400 800 L0 800 Z" />
+             L2400 800 L0 800 Z"
+              />
             </g>
           </svg>
         </button>
 
         <!-- ================= PRODUITS ================= -->
-        <button routerLink="/product"
-          style="-webkit-box-reflect: below 0px linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.4));" class="group px-10 py-4 bg-gradient-to-r fill-orange-950from-stone-200 to-stone-100
-           rounded-full shadow-xl group-hover:shadow-2xl
-           group-hover:shadow-stone-400 shadow-stone-400
-           uppercase font-serif tracking-widest relative overflow-hidden
-           text-transparent cursor-pointer z-10
-           after:absolute after:rounded-full after:bg-white
-           after:h-[85%] after:w-[95%] after:left-1/2 after:top-1/2
-           after:-translate-x-1/2 after:-translate-y-1/2
-           hover:saturate-[1.15] active:saturate-[1.4]">
-
+        <button
+          routerLink="/product"
+          style="
+            -webkit-box-reflect: below 0px
+              linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+          "
+          class="group px-10 py-4 bg-linear-to-r fill-orange-950from-stone-200 to-stone-100 rounded-full shadow-xl group-hover:shadow-2xl group-hover:shadow-stone-400 shadow-stone-400 uppercase font-serif tracking-widest relative overflow-hidden text-transparent cursor-pointer z-10 after:absolute after:rounded-full after:bg-white after:h-[85%] after:w-[95%] after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2 hover:saturate-[1.15] active:saturate-[1.4]"
+        >
           PRODUITS
 
-          <p class="absolute z-40 font-semibold
-             bg-gradient-to-r from-[#3D312B] to-[#893830]
-             bg-clip-text text-transparent
-             top-1/2 left-1/2 -translate-x-1/2
-             group-hover:-translate-y-full
-             h-full w-full transition-all duration-300
-             -translate-y-[30%] tracking-widest text-center">
+          <p
+            class="absolute z-40 font-semibold bg-linear-to-r from-[#3D312B] to-[#893830] bg-clip-text text-transparent top-1/2 left-1/2 -translate-x-1/2 group-hover:-translate-y-full h-full w-full transition-all duration-300 -translate-y-[30%] tracking-widest text-center"
+          >
             VOIR PRODUITS
           </p>
 
-          <p class="absolute z-40 top-1/2 left-1/2
-             bg-gradient-to-r from-[#3D312B] to-[#5A4A42]
-             bg-clip-text text-transparent
-             -translate-x-1/2 translate-y-full
-             h-full w-full transition-all duration-300
-             group-hover:-translate-y-[25%]
-             tracking-widest font-extrabold text-center">
+          <p
+            class="absolute z-40 top-1/2 left-1/2 bg-linear-to-r from-[#3D312B] to-[#5A4A42] bg-clip-text text-transparent -translate-x-1/2 translate-y-full h-full w-full transition-all duration-300 group-hover:-translate-y-[25%] tracking-widest font-extrabold text-center"
+          >
             WELCOME
           </p>
 
           <!-- WAVE -->
-          <svg class="absolute w-full h-full scale-x-125 rotate-180
-             top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-             z-30 group-hover:animate-none animate-pulse
-             group-hover:-translate-y-[45%]
-             transition-all duration-300" viewBox="0 0 2400 800" xmlns="http://www.w3.org/2000/svg">
-
+          <svg
+            class="absolute w-full h-full scale-x-125 rotate-180 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 group-hover:animate-none animate-pulse group-hover:-translate-y-[45%] transition-all duration-300"
+            viewBox="0 0 2400 800"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <defs>
               <linearGradient id="grad-produits" x1="50%" y1="0%" x2="50%" y2="100%">
                 <stop offset="0%" stop-color="#E7D7C9" />
@@ -152,16 +141,18 @@
             </defs>
 
             <g fill="url(#grad-produits)">
-              <path *ngFor="let o of opacities; let i = index" [attr.opacity]="o"
-                [attr.transform]="'translate(0,' + (35 + i*35) + ')'" d="M0 306 Q227 450 600 302 Q1010 450 1200 343
+              <path
+                *ngFor="let o of opacities; let i = index"
+                [attr.opacity]="o"
+                [attr.transform]="'translate(0,' + (35 + i * 35) + ')'"
+                d="M0 306 Q227 450 600 302 Q1010 450 1200 343
              Q1380 450 1800 320 Q2153 450 2400 314
-             L2400 800 L0 800 Z" />
+             L2400 800 L0 800 Z"
+              />
             </g>
           </svg>
         </button>
-
       </div>
-
     </div>
   </div>
 </section>
@@ -174,41 +165,77 @@
     </h2>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <a [routerLink]="['/product']" [queryParams]="{ category: 'bijoux' }"
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'bijoux' }"
       class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
-      style="background-image: linear-gradient(0deg, rgba(61,49,43,0.7) 0%, transparent 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhwHQ0uQzmGMGNd8UdXeWoh1HuinGmVgbRcmYsi1A4n_UBSrfY9SsMktN9eTAZ9dhkno5BRI1B8mbHd01UfMus0A_yrH7Ck4pb-wCb178UPStggPWcGBXogZmEB3s3Ln8xU_181hlILiZdJL0YQEN3A8Zxgavgm5nrxOMVpLLTgxFuWxaELbE81GHeSvR3L9YTyW1EekgUr4E1YwqGl-hlecHyqdB71t26zp9QYocYAtEiKov-TOqePdDYFpNl5V-QIra3xIwQ-bs');">
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhwHQ0uQzmGMGNd8UdXeWoh1HuinGmVgbRcmYsi1A4n_UBSrfY9SsMktN9eTAZ9dhkno5BRI1B8mbHd01UfMus0A_yrH7Ck4pb-wCb178UPStggPWcGBXogZmEB3s3Ln8xU_181hlILiZdJL0YQEN3A8Zxgavgm5nrxOMVpLLTgxFuWxaELbE81GHeSvR3L9YTyW1EekgUr4E1YwqGl-hlecHyqdB71t26zp9QYocYAtEiKov-TOqePdDYFpNl5V-QIra3xIwQ-bs');
+      "
+    >
       >
-      <div class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
       <div class="absolute bottom-6 left-6">
         <p class="text-white text-xl font-bold tracking-wide">Bijoux</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
     </a>
-    <a [routerLink]="['/product']" [queryParams]="{ category: 'montres' }"
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'montres' }"
       class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
-      style="background-image: linear-gradient(0deg, rgba(61,49,43,0.7) 0%, transparent 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEr2BfMEN8Gw_aw_-qrChq5G-16Xgx47GLLkXLxtK60XYFLqzg4ZXZJebSyaQa-ytYE3Pm0EEuQM19XnArNi36ciIxSykkMOjAn0-vplolIDbFSG_lLCbJUU6ypCwvwhponaVoS5vlPphpVMF8usIaaI1OhLYecpxZQS7JPCl375s4oScfF1qQrda1qzCNrgmgduB7bACZUYTMyiH2-hWECHpoCd0Ns4oWW_HLzyg_TiKirwtS3Jh-AEL5oqWhNrPQYWzXGKyaSrk');">
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuCEr2BfMEN8Gw_aw_-qrChq5G-16Xgx47GLLkXLxtK60XYFLqzg4ZXZJebSyaQa-ytYE3Pm0EEuQM19XnArNi36ciIxSykkMOjAn0-vplolIDbFSG_lLCbJUU6ypCwvwhponaVoS5vlPphpVMF8usIaaI1OhLYecpxZQS7JPCl375s4oScfF1qQrda1qzCNrgmgduB7bACZUYTMyiH2-hWECHpoCd0Ns4oWW_HLzyg_TiKirwtS3Jh-AEL5oqWhNrPQYWzXGKyaSrk');
+      "
+    >
       >
-      <div class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
       <div class="absolute bottom-6 left-6">
         <p class="text-white text-xl font-bold tracking-wide">Montres</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
     </a>
-    <a [routerLink]="['/product']" [queryParams]="{ category: 'sacs' }"
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'sacs' }"
       class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
-      style="background-image: linear-gradient(0deg, rgba(61,49,43,0.7) 0%, transparent 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQx_iq00N60obHg1vYNtzisXfcCcfJhr4Lp7YWX37qIgpvhceCGAm5kszNMQr7804uGfKTkzsGbDXJ7QY8Kgsr-pYI9uLxD72PDb4EWmK9syqqpeu8POeQbdXn_dWeK8wuB6OdDgFns3QbKdsmgzm-Vibz5DU6_FQvrkmXo95W5kRVDnUWQJE7YNHChSvmVLP5Q2SGeeUCivwR5phMbP17IzboxoakNNngCoaOKyZYJaq4L95WVvYyYgtLZ5ZZwZp0aF4SI52dHQg');">
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQx_iq00N60obHg1vYNtzisXfcCcfJhr4Lp7YWX37qIgpvhceCGAm5kszNMQr7804uGfKTkzsGbDXJ7QY8Kgsr-pYI9uLxD72PDb4EWmK9syqqpeu8POeQbdXn_dWeK8wuB6OdDgFns3QbKdsmgzm-Vibz5DU6_FQvrkmXo95W5kRVDnUWQJE7YNHChSvmVLP5Q2SGeeUCivwR5phMbP17IzboxoakNNngCoaOKyZYJaq4L95WVvYyYgtLZ5ZZwZp0aF4SI52dHQg');
+      "
+    >
       >
-      <div class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
       <div class="absolute bottom-6 left-6">
         <p class="text-white text-xl font-bold tracking-wide">Sacs</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
       </div>
     </a>
-    <a [routerLink]="['/product']" [queryParams]="{ category: 'maquillages' }"
+    <a
+      [routerLink]="['/product']"
+      [queryParams]="{ category: 'maquillages' }"
       class="group relative bg-cover bg-center aspect-4/5 rounded-4xl overflow-hidden cursor-pointer shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] transition-all hover:scale-[1.02]"
-      style="background-image: linear-gradient(0deg, rgba(61,49,43,0.7) 0%, transparent 100%), url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCDQ4vsYyeGU9ODdaK1X5UioIEn8d6aAV1rLPkjDOdkuko-eRjnHMt7tGErORLnbAVGcH2XC47PuitqQbtrKiGEDTjgoY1gfrJKumiFcDJSF37OqlUlgyLdRZ7-s50H2apm_5U8CQ_Sr4PCfwD436fZxtE5stkyMh2o6AclRW7hi4WZcVJK4Lsipy_kStj9P8voD6XsioEBnltip0s9qKnWaWYIV6-hXTv6wkFnRRzN5tDSNQlX_IsbvzHQVgEzbIJqr7qVlDaLEA');">
+      style="
+        background-image:
+          linear-gradient(0deg, rgba(61, 49, 43, 0.7) 0%, transparent 100%),
+          url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCDQ4vsYyeGU9ODdaK1X5UioIEn8d6aAV1rLPkjDOdkuko-eRjnHMt7tGErORLnbAVGcH2XC47PuitqQbtrKiGEDTjgoY1gfrJKumiFcDJSF37OqlUlgyLdRZ7-s50H2apm_5U8CQ_Sr4PCfwD436fZxtE5stkyMh2o6AclRW7hi4WZcVJK4Lsipy_kStj9P8voD6XsioEBnltip0s9qKnWaWYIV6-hXTv6wkFnRRzN5tDSNQlX_IsbvzHQVgEzbIJqr7qVlDaLEA');
+      "
+    >
       >
-      <div class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+      <div
+        class="absolute inset-0 bg-[#C1664C]/20 opacity-0 group-hover:opacity-100 transition-opacity"
+      ></div>
       <div class="absolute bottom-6 left-6">
         <p class="text-white text-xl font-bold tracking-wide">Maquillage</p>
         <div class="w-10 h-1 transition-all group-hover:w-full bg-[#D4AF37] mt-1"></div>
@@ -227,20 +254,25 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-    <div *ngFor="let product of products"
-      class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300">
+    <div
+      *ngFor="let product of products"
+      class="flex flex-col bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] overflow-hidden border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300"
+    >
       <div class="h-72 overflow-hidden relative group">
         <div
-          class="absolute top-3 right-3 bg-[#C1664C] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter z-10">
+          class="absolute top-3 right-3 bg-[#C1664C] text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-tighter z-10"
+        >
           Vedette
         </div>
-        <img [alt]="product.name"
+        <img
+          [alt]="product.name"
           class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-          [src]="product.image" />
+          [src]="product.image"
+        />
       </div>
       <div class="p-6 flex flex-col gap-3">
-        <div>
-          class="text-[#C1664C] font-black text-xl" <h3 class="text-[#3D312B] font-bold text-lg mb-1">
+        <div class="text-[#C1664C] font-black text-xl">
+          <h3 class="text-[#3D312B] font-bold text-lg mb-1">
             {{ product.name }}
           </h3>
           <p>{{ product.price }} DH</p>
@@ -248,18 +280,24 @@
         <div class="flex gap-2 mt-2">
           <button
             class="flex-1 bg-[#D5BDAF]/20 hover:bg-[#D5BDAF]/40 text-[#3D312B] text-xs font-bold py-3 px-3 rounded-[1.25rem] transition-colors"
-            [routerLink]="['/product', product.id]">
+            [routerLink]="['/product', product.id]"
+          >
             Voir détails
           </button>
-          <button routerLink="/cart"
-            class="bg-transparent hover:bg-amber-600 border-amber-600 border-1 text-amber-600 py-3 px-4 rounded-[1.25rem] shadow-amber-100 hover:text-white transition-colors flex items-center justify-center">
-            <span class="material-symbols-outlined text-xl" style="
+          <button
+            routerLink="/cart"
+            class="bg-transparent hover:bg-amber-600 border-amber-600 border text-amber-600 py-3 px-4 rounded-[1.25rem] shadow-amber-100 hover:text-white transition-colors flex items-center justify-center"
+          >
+            <span
+              class="material-symbols-outlined text-xl"
+              style="
                 font-variation-settings:
                   'FILL' 0,
                   'wght' 400,
                   'GRAD' 0,
                   'opsz' 24;
-              ">
+              "
+            >
               shopping_cart
             </span>
           </button>
@@ -273,57 +311,85 @@
 <section class="px-4 md:px-10 lg:px-40 py-24 bg-[#F5EBE0]">
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
     <div
-      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10">
-      <div class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6">
-        <span class="material-symbols-outlined text-4xl" style="
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
             font-variation-settings:
               'FILL' 0,
               'wght' 400,
               'GRAD' 0,
               'opsz' 24;
-          ">local_shipping</span>
+          "
+          >local_shipping</span
+        >
       </div>
       <h4 class="font-bold text-[#3D312B] mb-2">Livraison Rapide</h4>
       <p class="text-sm text-[#3D312B]/60">Expédition sous 24/48h avec suivi complet.</p>
     </div>
     <div
-      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10">
-      <div class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6">
-        <span class="material-symbols-outlined text-4xl" style="
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
             font-variation-settings:
               'FILL' 0,
               'wght' 400,
               'GRAD' 0,
               'opsz' 24;
-          ">verified</span>
+          "
+          >verified</span
+        >
       </div>
       <h4 class="font-bold text-[#3D312B] mb-2">Qualité Premium</h4>
       <p class="text-sm text-[#3D312B]/60">Matériaux sélectionnés pour leur durabilité.</p>
     </div>
     <div
-      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10">
-      <div class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6">
-        <span class="material-symbols-outlined text-4xl" style="
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
             font-variation-settings:
               'FILL' 0,
               'wght' 400,
               'GRAD' 0,
               'opsz' 24;
-          ">lock</span>
+          "
+          >lock</span
+        >
       </div>
       <h4 class="font-bold text-[#3D312B] mb-2">Paiement Sécurisé</h4>
       <p class="text-sm text-[#3D312B]/60">Transactions encryptées et 100% sécurisées.</p>
     </div>
     <div
-      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10">
-      <div class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6">
-        <span class="material-symbols-outlined text-4xl" style="
+      class="flex flex-col items-center text-center p-8 bg-white rounded-4xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10"
+    >
+      <div
+        class="w-16 h-16 bg-[#C1664C]/10 rounded-full flex items-center justify-center text-[#C1664C] mb-6"
+      >
+        <span
+          class="material-symbols-outlined text-4xl"
+          style="
             font-variation-settings:
               'FILL' 0,
               'wght' 400,
               'GRAD' 0,
               'opsz' 24;
-          ">support_agent</span>
+          "
+          >support_agent</span
+        >
       </div>
       <h4 class="font-bold text-[#3D312B] mb-2">Support 24/7</h4>
       <p class="text-sm text-[#3D312B]/60">Une équipe à votre écoute à tout moment.</p>
@@ -340,15 +406,20 @@
     </svg>
   </div>
   <div class="relative z-10">
-    <h2 class="text-white text-3xl md:text-5xl font-black mb-6 leading-tight tracking-tight uppercase">
+    <h2
+      class="text-white text-3xl md:text-5xl font-black mb-6 leading-tight tracking-tight uppercase"
+    >
       Trouvez l’accessoire parfait pour vous
     </h2>
     <p class="text-white/80 text-lg mb-10 max-w-2xl mx-auto font-medium">
       Rejoignez des milliers de clients satisfaits et sublimez votre quotidien avec nos pièces
       uniques.
     </p>
-    <button routerLink="/cart" routerLinkActive="router-link-active"
-      class="bg-white text-[#C1664C] hover:bg-[#D4AF37] hover:text-white px-12 py-5 rounded-4xl font-black text-lg transition-all transform hover:scale-105 shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] uppercase tracking-widest">
+    <button
+      routerLink="/cart"
+      routerLinkActive="router-link-active"
+      class="bg-white text-[#C1664C] hover:bg-[#D4AF37] hover:text-white px-12 py-5 rounded-4xl font-black text-lg transition-all transform hover:scale-105 shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] uppercase tracking-widest"
+    >
       Commencer vos achats
     </button>
   </div>
@@ -358,34 +429,41 @@
 <footer class="bg-[#3D312B] text-[#E3D5CA]/60 py-16 px-4 md:px-10 lg:px-40">
   <div class="flex flex-col md:flex-row justify-between items-center gap-10 mb-12">
     <div class="flex items-center gap-3">
-      <span class="material-symbols-outlined text-[#D4AF37] text-3xl" style="
+      <span
+        class="material-symbols-outlined text-[#D4AF37] text-3xl"
+        style="
           font-variation-settings:
             'FILL' 0,
             'wght' 400,
             'GRAD' 0,
             'opsz' 24;
-        ">diamond</span>
-      <span class="text-white text-lg font-black uppercase tracking-tight">Bijoux &amp; Accessoires</span>
+        "
+        >diamond</span
+      >
+      <span class="text-white text-lg font-black uppercase tracking-tight"
+        >Bijoux &amp; Accessoires</span
+      >
     </div>
     <div class="flex gap-8">
       <a class="hover:text-[#D4AF37] transition-colors" href="#">
         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
           <path
-            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-          </path>
+            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+          ></path>
         </svg>
       </a>
       <a class="hover:text-[#D4AF37] transition-colors" href="#">
         <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
           <path
-            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z">
-          </path>
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+          ></path>
         </svg>
       </a>
     </div>
   </div>
   <div
-    class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between text-xs font-semibold tracking-[0.2em] uppercase">
+    class="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between text-xs font-semibold tracking-[0.2em] uppercase"
+  >
     <p>© 2024 Bijoux &amp; Accessoires Shop. Tous droits réservés.</p>
     <div class="flex gap-8 mt-6 md:mt-0">
       <a class="hover:text-white transition-colors" href="#">Confidentialité</a>
