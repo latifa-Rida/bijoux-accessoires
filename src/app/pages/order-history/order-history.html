@@ -1,4 +1,4 @@
-<section class="min-h-screen bg-gradient-to-br from-[#F5EBE0] via-[#E3D5CA]/30 to-[#F5EBE0] py-8 md:py-12 px-4 md:px-6">
+<section class="min-h-screen bg-linear-to-br from-[#F5EBE0] via-[#E3D5CA]/30 to-[#F5EBE0] py-8 md:py-12 px-4 md:px-6">
   <div class="max-w-6xl mx-auto">
     <!-- Header -->
     <div class="mb-8 md:mb-12">
@@ -41,7 +41,8 @@
     <!-- Orders List -->
     <div *ngIf="commandes.length > 0" class="space-y-6">
       <div
-        *ngFor="let order of commandes; let i = index"
+        *ngFor="let order of commandes; let i = index; trackBy: trackById"
+        [ngClass]="{ 'animate-new-order': animateMap[order.id] }"
         class="bg-white rounded-3xl shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] border border-[#D5BDAF]/10 hover:border-[#C1664C]/30 transition-all duration-300 hover:shadow-xl overflow-hidden"
       >
         <!-- Order Header -->
@@ -53,20 +54,20 @@
                   receipt_long
                 </span>
                 <h3 class="text-xl md:text-2xl font-bold text-[#3D312B]">
-                  Commande #{{ i + 1 }}
+                  Commande #{{ order.id }}
                 </h3>
               </div>
               <p class="text-sm text-[#3D312B]/60">
-                Passée le {{ order.date || 'Date non disponible' }}
+                Passée le {{ order.date | date:'medium' }}
               </p>
             </div>
             <!-- Status Badge -->
             <span
               [ngClass]="{
-                'bg-emerald-100 text-emerald-700 border-emerald-200': order.status === 'livrée' || order.status === 'completed',
-                'bg-blue-100 text-blue-700 border-blue-200': order.status === 'en cours' || order.status === 'processing',
-                'bg-yellow-100 text-yellow-700 border-yellow-200': order.status === 'en attente' || order.status === 'pending',
-                'bg-red-100 text-red-700 border-red-200': order.status === 'annulée' || order.status === 'cancelled',
+                'bg-emerald-100 text-emerald-700 border-emerald-200': order.status === 'livrée',
+                'bg-blue-100 text-blue-700 border-blue-200': order.status === 'confirmée' || order.status === 'expédiée',
+                'bg-yellow-100 text-yellow-700 border-yellow-200': order.status === 'en attente',
+                'bg-red-100 text-red-700 border-red-200': order.status === 'annulée',
                 'bg-purple-100 text-purple-700 border-purple-200': !order.status
               }"
               class="px-4 py-2 rounded-xl font-bold text-sm border-2 flex items-center gap-2"
@@ -86,7 +87,7 @@
               </span>
               <div>
                 <p class="text-xs text-[#3D312B]/60 mb-1">Client</p>
-                <p class="font-semibold text-[#3D312B]">{{ order.nom }}</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.customerName }}</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -95,7 +96,16 @@
               </span>
               <div>
                 <p class="text-xs text-[#3D312B]/60 mb-1">Téléphone</p>
-                <p class="font-semibold text-[#3D312B]">{{ order.tel }}</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.customerPhone }}</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-[#C1664C] mt-1" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                mail
+              </span>
+              <div>
+                <p class="text-xs text-[#3D312B]/60 mb-1">Email</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.customerEmail }}</p>
               </div>
             </div>
             <div class="flex items-start gap-3">
@@ -104,7 +114,7 @@
               </span>
               <div>
                 <p class="text-xs text-[#3D312B]/60 mb-1">Adresse</p>
-                <p class="font-semibold text-[#3D312B]">{{ order.adresse }}</p>
+                <p class="font-semibold text-[#3D312B]">{{ order.address }}</p>
               </div>
             </div>
           </div>
@@ -117,19 +127,21 @@
               shopping_bag
             </span>
             <h4 class="text-lg font-bold text-[#3D312B]">
-              Produits ({{ order.produits?.length || 0 }})
+              Produits ({{ order.products.length || 0 }})
             </h4>
           </div>
           <div class="space-y-3">
             <div
-              *ngFor="let produit of order.produits"
+              *ngFor="let produit of order.products"
               class="flex items-center justify-between p-4 bg-[#F5EBE0]/50 rounded-xl border border-[#D5BDAF]/20 hover:bg-[#F5EBE0] transition-colors"
             >
               <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center">
-                  <span class="material-symbols-outlined text-[#C1664C]" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
-                    inventory_2
-                  </span>
+                <div class="w-12 h-12 rounded-lg bg-white flex items-center justify-center overflow-hidden">
+                  <img
+                    [src]="produit.image || 'https://via.placeholder.com/48'"
+                    [alt]="produit.name"
+                    class="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <p class="font-semibold text-[#3D312B]">{{ produit.name }}</p>
@@ -138,7 +150,7 @@
                   </p>
                 </div>
               </div>
-              <p class="text-lg font-black text-[#C1664C]">
+                <p class="text-lg font-black text-[#C1664C]">
                 {{ (produit.price * (produit.quantity || 1)).toFixed(2) }} DH
               </p>
             </div>
@@ -147,7 +159,7 @@
           <!-- Order Total -->
           <div class="mt-6 pt-6 border-t border-[#D5BDAF]/20 flex justify-between items-center">
             <span class="text-lg font-bold text-[#3D312B]">Total:</span>
-            <span class="text-2xl md:text-3xl font-black text-[#C1664C]">
+              <span class="text-2xl md:text-3xl font-black text-[#C1664C]">
               {{ getOrderTotal(order) }} DH
             </span>
           </div>

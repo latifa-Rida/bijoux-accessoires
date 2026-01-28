@@ -109,7 +109,7 @@
             <button
               (click)="addToCart()"
               [disabled]="!product.inStock"
-              class="flex-1 bg-[#D63384] hover:bg-[#D63384]/90 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-3 rounded-3xl font-bold text-sm md:text-base transition-all transform hover:scale-[1.02] disabled:hover:scale-100 shadow-[0_12px_30px_rgba(214,51,132,0.35)]"
+              class="flex-1 bg-orange-700 hover:bg-amber-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white px-6 py-3 rounded-3xl font-bold text-sm md:text-base transition-all transform hover:scale-[1.02] disabled:hover:scale-100 shadow-[0_12px_30px_rgba(214,51,132,0.35)]"
             >
               {{ product.inStock ? 'Ajouter au panier' : 'Rupture de stock' }}
             </button>
