@@ -20,7 +20,7 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string): boolean {
+  login(email: string, password: string): { success: boolean; message?: string } {
     // Simple authentication - in production, this would call an API
     // For now, accept any email/password combination
     if (email && password) {
@@ -29,9 +29,9 @@ export class AuthService {
       localStorage.setItem(this.USER_KEY, JSON.stringify(user));
       this.addSavedUser(email); // Save user on login
       this.authChanged.emit(true);
-      return true;
+      return { success: true };
     }
-    return false;
+    return { success: false, message: 'Email ou mot de passe incorrect' };
   }
 
   logout(): void {

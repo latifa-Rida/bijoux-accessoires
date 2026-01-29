@@ -39,7 +39,7 @@
 
   <div class="flex items-center gap-4">
     <!-- Search Bar -->
-    <div class="relative" >
+    <div class="relative">
       <div
         class="flex items-center transition-all duration-300 ease-in-out overflow-hidden"
         [ngClass]="{
@@ -83,17 +83,30 @@
 
     <!-- Live search dropdown -->
     <div class="relative" *ngIf="isOpen">
-      <div *ngIf="showResults" class="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-[#D5BDAF]/20 z-50 overflow-hidden">
-        <div *ngFor="let p of searchResults" class="flex items-center gap-3 px-4 py-3 hover:bg-[#F5EBE0] cursor-pointer" (click)="onSelectProduct(p)">
+      <div
+        *ngIf="showResults"
+        class="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-[#D5BDAF]/20 z-50 overflow-hidden"
+      >
+        <div
+          *ngFor="let p of searchResults"
+          class="flex items-center gap-3 px-4 py-3 hover:bg-[#F5EBE0] cursor-pointer"
+          (click)="onSelectProduct(p)"
+        >
           <div class="w-12 h-12 rounded-lg overflow-hidden bg-[#F5EBE0] shrink-0">
-            <img [src]="p.image || 'https://via.placeholder.com/48'" [alt]="p.name" class="w-full h-full object-cover" />
+            <img
+              [src]="p.image || 'https://via.placeholder.com/48'"
+              [alt]="p.name"
+              class="w-full h-full object-cover"
+            />
           </div>
           <div class="grow min-w-0">
             <p class="font-semibold text-sm text-[#3D312B] truncate">{{ p.name }}</p>
             <p class="text-xs text-[#3D312B]/60">{{ p.category }} · {{ p.price }} DH</p>
           </div>
         </div>
-        <div *ngIf="searchResults.length === 0" class="p-4 text-sm text-[#3D312B]/60">Aucun résultat</div>
+        <div *ngIf="searchResults.length === 0" class="p-4 text-sm text-[#3D312B]/60">
+          Aucun résultat
+        </div>
       </div>
     </div>
 
@@ -140,7 +153,7 @@
         >
           <div
             class="w-7 h-7 rounded-full border-black bg-cover bg-center"
-            style="background-image: url('assets/user.png')"
+            style="background-image: url('assets/usr.png')"
           ></div>
           <span
             class="material-symbols-outlined text-sm text-black"
@@ -167,25 +180,41 @@
 
           <!-- Saved Accounts -->
           <div *ngIf="savedUsers.length > 1" class="border-b border-[#D5BDAF]/20">
-            <p class="px-4 py-2 text-xs font-semibold text-[#3D312B]/60 uppercase tracking-wider">Comptes</p>
+            <p class="px-4 py-2 text-xs font-semibold text-[#3D312B]/60 uppercase tracking-wider">
+              Comptes
+            </p>
             <div *ngFor="let user of savedUsers" class="px-2">
               <button
                 (click)="switchAccount(user.email)"
                 [ngClass]="{
                   'bg-[#C1664C]/10 border-[#C1664C]': currentUser?.email === user.email,
-                  'hover:bg-[#F5EBE0]': currentUser?.email !== user.email
+                  'hover:bg-[#F5EBE0]': currentUser?.email !== user.email,
                 }"
                 class="w-full text-left px-3 py-2 text-sm text-[#3D312B]/80 rounded-lg transition-colors border-l-2 border-transparent"
               >
                 <div class="flex items-center gap-2">
-                  <div class="w-6 h-6 rounded-full bg-[#C1664C]/20 flex items-center justify-center">
-                    <span class="text-xs font-bold text-[#C1664C]">{{ user.name?.charAt(0) || user.email.charAt(0).toUpperCase() }}</span>
+                  <div
+                    class="w-6 h-6 rounded-full bg-[#C1664C]/20 flex items-center justify-center"
+                  >
+                    <span class="text-xs font-bold text-[#C1664C]">{{
+                      user.name?.charAt(0) || user.email.charAt(0).toUpperCase()
+                    }}</span>
                   </div>
                   <div>
                     <p class="font-medium">{{ user.name || user.email.split('@')[0] }}</p>
                     <p class="text-xs text-[#3D312B]/60">{{ user.email }}</p>
                   </div>
-                  <span *ngIf="currentUser?.email === user.email" class="material-symbols-outlined text-sm text-[#C1664C] ml-auto" style="font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;">
+                  <span
+                    *ngIf="currentUser?.email === user.email"
+                    class="material-symbols-outlined text-sm text-[#C1664C] ml-auto"
+                    style="
+                      font-variation-settings:
+                        'FILL' 1,
+                        'wght' 400,
+                        'GRAD' 0,
+                        'opsz' 24;
+                    "
+                  >
                     check_circle
                   </span>
                 </div>
@@ -216,6 +245,3 @@
     </div>
   </div>
 </header>
-
-
- 
