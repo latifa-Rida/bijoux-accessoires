@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { debounceTime, distinctUntilChanged, map, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { ProductService } from '../../services/product';
 
 @Injectable({ providedIn: 'root' })
@@ -30,22 +30,23 @@ export class SearchService {
 
     const tokens = q.split(/\s+/).filter(t => t.length > 0);
 
-    const products = this.productService.products || [];
+    // ✅ get products safely from service
+    const products = this.productService.getAllProducts() || [];
 
     const matched = products.filter(p => {
       const hay = (
         (p.name || '') + ' ' + (p.description || '') + ' ' + (p.category || '')
       ).toLowerCase();
 
-      // require all tokens to appear somewhere (partial allowed)
-      return tokens.every(t => hay.indexOf(t) !== -1);
+      return tokens.every(t => hay.includes(t));
     });
 
-    // sort by relevance: simple heuristic - shorter indexOf sum
     const ranked = matched
       .map(p => ({
         p,
-        score: tokens.reduce((s, t) => s + (( (p.name || '').toLowerCase().indexOf(t) >= 0) ? 1 : 0), 0)
+        score: tokens.reduce((s, t) =>
+          s + (((p.name || '').toLowerCase().includes(t)) ? 1 : 0)
+        , 0)
       }))
       .sort((a, b) => b.score - a.score)
       .map(x => x.p);
