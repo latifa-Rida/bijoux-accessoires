@@ -61,20 +61,17 @@ export class ProductService {
   //sac
 
   { id: 43, name: ' Sac Pop Color ', price: 435, image: 'assets/images/sac4.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
-  { id: 45, name: ' Sac Riviera ', price: 445, image: 'assets/images/sac6.jfif', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 46, name: ' Pochette Élégance Rouge ', price: 450, image: 'assets/images/sac7.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
 
   { id: 48, name: ' Sac Summer Soft ', price: 460, image: 'assets/images/sac9.webp', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 49, name: ' Sac Office Chic ', price: 465, image: 'assets/images/sac10.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 50, name: ' Sac Natural Style ', price: 470, image: 'assets/images/sac11.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 51, name: ' Sac Minimal Orange ', price: 475, image: 'assets/images/sac12.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
-  { id: 52, name: ' Sac Bohème Chic ', price: 480, image: 'assets/images/sac13.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
 
   { id: 54, name: 'Sac Bella Mini  ', price: 490, image: 'assets/images/sac15.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 55, name: ' Sac Snow Chic ', price: 495, image: 'assets/images/sac16.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 56, name: ' Sac Luna Noir ', price: 500, image: 'assets/images/sac17.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 57, name: 'Sac Héritage Classique  ', price: 505, image: 'assets/images/sac18.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
-  { id: 58, name: ' Sac Royal Marron ', price: 510, image: 'assets/images/sac19.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 59, name: ' Sac City Chic ', price: 515, image: 'assets/images/sac20.jpg', category: 'sacs', colors: ['Noir', 'Rouge'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
 
 
