@@ -9,9 +9,9 @@ export class ProductService {
   private products: Product[] = [
 
 
-  { id: 6, name: 'Bracelet perles pastel multirangs ', price: 145, image: 'assets/images/bracelet6.avif', category: 'bijoux', description: 'Un magnifique collier doré pour toutes les occasions.', color: 'Or', colors: ['Or', 'Argent'], sizes: ['Unique'], selectedColor: 'Or', selectedSize: 'Unique', inStock: true },
+  { id: 6, name: 'Bracelet perles pastel multirangs ', price: 120, oldPrice: 145, image: 'assets/images/bracelet6.avif', category: 'bijoux', description: 'Un magnifique collier doré pour toutes les occasions.', color: 'Or', colors: ['Or', 'Argent'], sizes: ['Unique'], selectedColor: 'Or', selectedSize: 'Unique', inStock: true },
 
-  { id: 10, name: 'Bracelet perles blanches et or', price: 99, image: 'assets/images/bracelet10.jpg', category: 'bijoux', description: 'Un magnifique collier doré pour toutes les occasions.', color: 'Or', colors: ['Or', 'Argent'], sizes: ['Unique'], selectedColor: 'Or', selectedSize: 'Unique', inStock: true },
+  { id: 10, name: 'Bracelet perles blanches et or', price: 79, oldPrice: 99, image: 'assets/images/bracelet10.jpg', category: 'bijoux', description: 'Un magnifique collier doré pour toutes les occasions.', color: 'Or', colors: ['Or', 'Argent'], sizes: ['Unique'], selectedColor: 'Or', selectedSize: 'Unique', inStock: false },
 
   { id: 11, name: 'Bracelet noir perles masculines', price: 90, image: 'assets/images/bracelet11.jpg', category: 'bijoux', description: 'Un magnifique collier doré pour toutes les occasions.', color: 'Or', colors: ['Or', 'Argent'], sizes: ['Unique'], selectedColor: 'Or', selectedSize: 'Unique', inStock: true },
 
@@ -48,7 +48,7 @@ export class ProductService {
 
 
   // Montres Femme Chic
-  { id: 28, name: 'Montre Élégance Émeraude', price: 199, image: 'assets/images/montre1.jpg', category: 'montres', colors: ['Noir', 'Rose'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
+  { id: 28, name: 'Montre Élégance Émeraude', price: 179, oldPrice: 199, image: 'assets/images/montre1.jpg', category: 'montres', colors: ['Noir', 'Rose'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
 
   { id: 30, name: 'Montre Élégance Minimal (Cuir)', price: 199, image: 'assets/images/montre3.jpg', category: 'montres', colors: ['Noir', 'Rose'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },
   { id: 31, name: 'Montre Rose Prestige', price: 229, image: 'assets/images/montre4.jpg', category: 'montres', colors: ['Noir', 'Rose'], sizes: ['Unique'], selectedColor: 'Noir', selectedSize: 'Unique', inStock: true },

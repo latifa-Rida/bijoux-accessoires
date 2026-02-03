@@ -4,13 +4,26 @@ import { CartService } from '../../services/cart';
 import { ProductService } from '../../shared/services/product.service';
 import { Product } from '../../shared/models/product.model';
 import { CommonModule } from '@angular/common';
+import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
   templateUrl: './product-detail.html',
   styleUrls: ['./product-detail.css'],
-  imports: [CommonModule]
+  imports: [CommonModule],
+  animations: [
+    trigger('detailEnterAnimation', [
+      transition(':enter', [
+        query('*', [ // Apply to all child elements
+          style({ opacity: 0, transform: 'translateY(20px)' }),
+          stagger('100ms',
+            animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+          )
+        ], { optional: true })
+      ])
+    ])
+  ]
 })
 export class ProductDetailComponent implements OnInit {
 

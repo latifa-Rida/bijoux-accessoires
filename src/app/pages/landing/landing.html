@@ -14,7 +14,7 @@
       <div class="relative w-275 h-80 transform-3d animate-spin3d hover:[animation-play-state:paused]"
         style="margin-left: -30px">
         <div *ngFor="let item of items; let i = index"
-          class="absolute top-1/2 left-1/2 w-35 h-80 rounded-[5px] border-transparent shadow-2xl bg-cover bg-center transition-transform duration-300 hover:scale-110"
+          class="absolute top-1/2 left-1/2 w-35 h-80 rounded-6xl border shadow-2xl bg-cover bg-center transition-transform duration-300 hover:scale-110"
           [style.backgroundImage]="'url(' + item.image + ')'"
           [style.transform]="'translate(-50%, -50%) rotateY(' + i * 36 + 'deg) translateZ(220px)'">
 
@@ -41,124 +41,16 @@
       <div class="flex flex-col sm:flex-row gap-6 justify-center">
         <!-- ================= PANIER ================= -->
 
-        <button routerLink="/cart" style="
-    -webkit-box-reflect: below 0px
-      linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35));
-  " class="group px-10 py-4
-  bg-linear-to-r from-[#E8B4A0] to-[#C97C5D]
-  rounded-full shadow-xl shadow-[#C97C5D]
-  group-hover:shadow-[#E8B4A0]
-  uppercase font-serif tracking-widest
-  relative overflow-hidden text-transparent
-  cursor-pointer z-10
-  after:absolute after:rounded-full after:bg-[#D8A18A]
-  after:h-[85%] after:w-[95%]
-  after:left-1/2 after:top-1/2
-  after:-translate-x-1/2 after:-translate-y-1/2
-  hover:saturate-[1.15] active:saturate-[1.4]">
-          PANIER
-
-          <p class="absolute z-40 font-semibold
-    bg-linear-to-r from-[#5A2E21] to-[#C97C5D]
-    bg-clip-text text-transparent
-    top-1/2 left-1/2 -translate-x-1/2
-    group-hover:-translate-y-full
-    h-full w-full transition-all duration-300
-    -translate-y-[30%] tracking-widest text-center">
-            VOIR PANIER
-          </p>
-
-          <p class="absolute z-40 top-1/2 left-1/2
-    bg-linear-to-r from-[#8B4A34] to-[#E8B4A0]
-    bg-clip-text text-transparent
-    -translate-x-1/2 translate-y-full
-    h-full w-full transition-all duration-300
-    group-hover:-translate-y-[25%]
-    tracking-widest font-extrabold text-center">
-            WELCOME
-          </p>
-
-          <!-- WAVE -->
-          <svg class="absolute w-full h-full scale-x-125 rotate-180
-    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-    z-30 group-hover:animate-none animate-pulse
-    group-hover:-translate-y-[45%]
-    transition-all duration-300" viewBox="0 0 2400 800" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="grad-panier" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" stop-color="#E8B4A0" />
-                <stop offset="100%" stop-color="#C97C5D" />
-              </linearGradient>
-            </defs>
-
-            <g fill="url(#grad-panier)">
-              <path *ngFor="let o of opacities; let i = index" [attr.opacity]="o"
-                [attr.transform]="'translate(0,' + (35 + i * 35) + ')'" d="M0 306 Q227 450 600 302 Q1010 450 1200 343
-           Q1380 450 1800 320 Q2153 450 2400 314
-           L2400 800 L0 800 Z" />
-            </g>
-          </svg>
+        <button routerLink="/cart"
+          class="px-10 py-4 bg-[#C1664C] text-white rounded-full font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-105 hover:bg-[#C1664C]/90 active:scale-95 shadow-lg hover:shadow-xl">
+          VOIR PANIER
         </button>
 
         <!-- ================= PRODUITS ================= -->
 
-        <button routerLink="/product" style="
-    -webkit-box-reflect: below 0px
-      linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
-  " class="group px-10 py-4
-  bg-linear-to-r from-[#EADBC8] to-[#D6B89C]
-  rounded-full shadow-xl shadow-[#D6B89C]
-  group-hover:shadow-[#CBB093]
-  uppercase font-serif tracking-widest
-  relative overflow-hidden text-transparent
-  cursor-pointer z-10
-  after:absolute after:rounded-full after:bg-[#E3CFB6]
-  after:h-[85%] after:w-[95%]
-  after:left-1/2 after:top-1/2
-  after:-translate-x-1/2 after:-translate-y-1/2
-  hover:saturate-[1.15] active:saturate-[1.4]">
-          PRODUITS
-
-          <p class="absolute z-40 font-semibold
-    bg-linear-to-r from-[#6B4F3F] to-[#B08968]
-    bg-clip-text text-transparent
-    top-1/2 left-1/2 -translate-x-1/2
-    group-hover:-translate-y-full
-    h-full w-full transition-all duration-300
-    -translate-y-[30%] tracking-widest text-center">
-            VOIR PRODUITS
-          </p>
-
-          <p class="absolute z-40 top-1/2 left-1/2
-    bg-linear-to-r from-[#8C6A55] to-[#EADBC8]
-    bg-clip-text text-transparent
-    -translate-x-1/2 translate-y-full
-    h-full w-full transition-all duration-300
-    group-hover:-translate-y-[25%]
-    tracking-widest font-extrabold text-center">
-            SHOP NOW
-          </p>
-
-          <!-- WAVE -->
-          <svg class="absolute w-full h-full scale-x-125 rotate-180
-    top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-    z-30 group-hover:animate-none animate-pulse
-    group-hover:-translate-y-[45%]
-    transition-all duration-300" viewBox="0 0 2400 800" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="grad-produits" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" stop-color="#EADBC8" />
-                <stop offset="100%" stop-color="#D6B89C" />
-              </linearGradient>
-            </defs>
-
-            <g fill="url(#grad-produits)">
-              <path *ngFor="let o of opacities; let i = index" [attr.opacity]="o"
-                [attr.transform]="'translate(0,' + (35 + i * 35) + ')'" d="M0 306 Q227 450 600 302 Q1010 450 1200 343
-           Q1380 450 1800 320 Q2153 450 2400 314
-           L2400 800 L0 800 Z" />
-            </g>
-          </svg>
+        <button routerLink="/product"
+          class="px-10 py-4 bg-[#3D312B] text-white rounded-full font-semibold uppercase tracking-widest transition-all duration-300 hover:scale-105 hover:bg-[#3D312B]/90 active:scale-95 shadow-lg hover:shadow-xl">
+          VOIR PRODUITS
         </button>
 
 
@@ -365,7 +257,7 @@
       uniques.
     </p>
     <button routerLink="/cart" routerLinkActive="router-link-active"
-      class="bg-white text-[#C1664C] hover:bg-[#D4AF37] hover:text-white px-12 py-5 rounded-4xl font-black text-lg transition-all transform hover:scale-105 shadow-[0_10px_25px_-5px_rgba(193,102,76,0.1),0_8px_10px_-6px_rgba(193,102,76,0.1)] uppercase tracking-widest">
+      class="bg-white text-[#C16644] hover:bg-[#D4AF37] hover:text-white px-12 py-5 rounded-4xl font-black text-lg transition-all transform hover:scale-105 shadow-lg hover:shadow-xl uppercase tracking-widest">
       Commencer vos achats
     </button>
   </div>

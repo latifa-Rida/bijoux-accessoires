@@ -11,4 +11,5 @@ export interface Product {
     selectedColor?: string;
     selectedSize?: string;
     inStock: boolean;
+    oldPrice?: number;
 }

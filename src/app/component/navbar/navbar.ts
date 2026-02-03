@@ -5,51 +5,60 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { CartService } from '../../services/cart';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject, debounceTime } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { SearchService } from '../../shared/services/search.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
   standalone: true,
-  imports: [RouterModule, FormsModule, CommonModule]
+  imports: [RouterModule, FormsModule, CommonModule],
+  animations: [
+    trigger('searchResultsAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(-6px)' }),
+        animate('160ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ]),
+      transition(':leave', [
+        animate('120ms ease-in', style({ opacity: 0, transform: 'translateY(-4px)' }))
+      ])
+    ])
+  ]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
   isOpen = false;
   searchQuery: string = '';
-  searchResults: any[] = [];
-  showResults = false;
   cartCount: number = 0;
   isAuthenticated: boolean = false;
   currentUser: any = null;
   showUserMenu: boolean = false;
   savedUsers: any[] = [];
 
+  // ===== LIVE SEARCH =====
+  searchResults: any[] = [];
+  showResults: boolean = false;
+  private searchSubject = new Subject<string>();
+
   private authSubscription: Subscription = new Subscription();
-  private destroy$ = new Subject<void>();
 
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
 
   constructor(
     private cartService: CartService,
     private router: Router,
-    private authService: AuthService
-    , private searchService: SearchService
+    private authService: AuthService,
+    private searchService: SearchService
   ) {}
 
   toggleSearch() {
-    // #region agent log
-    fetch('http://127.0.0.1:7242/ingest/791d7982-ede2-4639-bf1f-fee51a673e8e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'navbar.ts:toggleSearch',message:'toggleSearch called',data:{currentIsOpen:this.isOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B_D_E'})}).catch(()=>{});
-    // #endregion
     this.isOpen = !this.isOpen;
 
     if (this.isOpen) {
@@ -59,15 +68,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  closeSearch() {
-    // #region agent log
-    fetch('http://127.0.0.1:7242/ingest/791d7982-ede2-4639-bf1f-fee51a673e8e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'navbar.ts:closeSearch',message:'closeSearch called',data:{currentIsOpen:this.isOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-    // #endregion
-    // delay closing slightly so clicks on dropdown can register
-    setTimeout(() => { this.isOpen = false; this.showResults = false; }, 180);
-  }
+ closeSearch() {
+  this.isOpen = false;
+  this.showResults = false;
+  this.searchResults = [];
+}
+
 
   ngOnInit() {
+
     this.cartCount = this.cartService.getCartCount();
     this.isAuthenticated = this.authService.isAuthenticated();
     this.currentUser = this.authService.getCurrentUser();
@@ -75,12 +84,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     this.cartService.cartChanged.subscribe(() => {
       this.cartCount = this.cartService.getCartCount();
-    });
-
-    // subscribe to live search results
-    this.searchService.results$.pipe(takeUntil(this.destroy$)).subscribe(r => {
-      this.searchResults = r;
-      this.showResults = r && r.length > 0 && !!this.searchQuery.trim();
     });
 
     this.authSubscription =
@@ -91,40 +94,60 @@ export class NavbarComponent implements OnInit, OnDestroy {
           : null;
         this.savedUsers = this.authService.getSavedUsers();
       });
+
+    // ===== LIVE SEARCH REALTIME =====
+   this.searchSubject
+  .pipe(debounceTime(300))
+  .subscribe((query: string) => {
+
+    const q = query.trim().toLowerCase();
+
+    if (!q) {
+      this.searchResults = [];
+      this.showResults = false;
+      return;
+    }
+
+    const results = this.searchService.searchProducts(q);
+
+    // مهم بزاف: assign جديد باش Angular يدير refresh
+    this.searchResults = [...results];
+    this.showResults = true;
+  });
+
   }
 
   ngOnDestroy() {
     this.authSubscription.unsubscribe();
-    this.destroy$.next();
-    this.destroy$.complete();
   }
 
   performSearch() {
-    // #region agent log
-    fetch('http://127.0.0.1:7242/ingest/791d7982-ede2-4639-bf1f-fee51a673e8e',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'navbar.ts:performSearch',message:'performSearch called',data:{searchQuery:this.searchQuery, currentIsOpen:this.isOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-    // #endregion
     const q = this.searchQuery.trim();
     if (q) {
-      // full navigation to product listing with query param
       this.router.navigate(['/product'], {
         queryParams: { search: q }
       });
+      this.searchQuery = '';
       this.closeSearch();
     }
   }
 
-  onSearchChange() {
-    const q = this.searchQuery || '';
-    this.searchService.setQuery(q);
-    // keep dropdown open for live results
-    this.showResults = !!q.trim();
+  // ===== LIVE SEARCH METHODS =====
+onSearchChange(value: string) {
+  this.showResults = true;   // رجع dropdown يتحل كل مرة
+  this.searchSubject.next(value);
+}
+
+
+
+  trackById(index: number, item: any) {
+    return item.id;
   }
 
   onSelectProduct(p: any) {
-    this.closeSearch();
-    this.searchService.clear();
-    this.searchQuery = '';
     this.router.navigate(['/product', p.id]);
+    this.showResults = false;
+    this.closeSearch();
   }
 
   switchAccount(email: string) {
@@ -142,5 +165,3 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.showUserMenu = !this.showUserMenu;
   }
 }
-
-

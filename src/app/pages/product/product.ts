@@ -3,13 +3,28 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../shared/services/product.service';
 import { Product } from '../../shared/models/product.model';
+import { trigger, transition, style, animate, query, stagger } from '@angular/animations';
 
 @Component({
   selector: 'app-product',
   standalone: true,
   templateUrl: './product.html',
   imports: [CommonModule, RouterModule],
-  animations: [ /* نفس animations */ ]
+  animations: [
+    trigger('listAnimation', [
+      transition('* <=> *', [
+        query(':enter', [
+          style({ opacity: 0, transform: 'translateY(-20px)' }),
+          stagger('50ms',
+            animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+          )
+        ], { optional: true }),
+        query(':leave', [
+          animate('200ms ease-in', style({ opacity: 0, transform: 'translateY(-20px)' }))
+        ], { optional: true })
+      ])
+    ])
+  ]
 })
 export class ProductsComponent implements OnInit {
 
@@ -17,6 +32,7 @@ export class ProductsComponent implements OnInit {
   filteredProducts: Product[] = [];
 
   selectedCategory = 'all';
+  selectedPriceRange = 'all'; // New property for price filtering
   searchQuery = '';
 
   constructor(
@@ -47,6 +63,12 @@ export class ProductsComponent implements OnInit {
     this.filterProducts();
   }
 
+  // New method for price filtering
+  filterByPrice(priceRange: string) {
+    this.selectedPriceRange = priceRange;
+    this.filterProducts();
+  }
+
   filterProducts() {
     let filtered = this.products;
 
@@ -59,6 +81,20 @@ export class ProductsComponent implements OnInit {
       filtered = filtered.filter(p =>
         p.name.toLowerCase().includes(query)
       );
+    }
+
+    // Apply price filtering
+    if (this.selectedPriceRange !== 'all') {
+      filtered = filtered.filter(p => {
+        if (this.selectedPriceRange === '0-100') {
+          return p.price < 100;
+        } else if (this.selectedPriceRange === '100-300') {
+          return p.price >= 100 && p.price <= 300;
+        } else if (this.selectedPriceRange === '300-max') {
+          return p.price > 300;
+        }
+        return true;
+      });
     }
 
     this.filteredProducts = filtered;

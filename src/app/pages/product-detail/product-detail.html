@@ -1,7 +1,7 @@
 <section class="py-16 bg-gray-50 min-h-[60vh] flex items-center">
   <div class="max-w-6xl mx-auto px-4 w-full">
     <ng-container *ngIf="product; else notFound">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10" [@detailEnterAnimation]>
         <!-- Image -->
         <div class="flex justify-center">
           <img
@@ -21,6 +21,7 @@
               {{ product.name }}
             </h1>
             <p class="text-[#C1664C] font-black text-3xl">
+              <span *ngIf="product.oldPrice" class="text-gray-500 line-through text-xl mr-2">{{ product.oldPrice }} DH</span>
               {{ product.price }} DH
             </p>
           </div>
@@ -86,13 +87,13 @@
           <div class="flex flex-col gap-3">
             <span class="font-semibold text-[#3D312B]">Disponibilité</span>
             <div class="inline-flex items-center gap-2">
-              <span
-                class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm"
-                [ngClass]="{
-                  'bg-green-100 text-green-800 border border-green-200': product.inStock,
-                  'bg-red-100 text-red-800 border border-red-200': !product.inStock
-                }"
-              >
+                <span
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-medium text-sm"
+                  [ngClass]="{
+                    'bg-green-100 text-green-800 border border-green-200': product.inStock,
+                    'bg-red-100 text-red-800 border border-red-200 font-bold': !product.inStock
+                  }"
+                >
                 <span
                   class="w-2 h-2 rounded-full"
                   [ngClass]="{
