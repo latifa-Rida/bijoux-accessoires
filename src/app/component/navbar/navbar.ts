@@ -1,4 +1,4 @@
-import {
+﻿import {
   Component,
   OnInit,
   OnDestroy,
@@ -10,7 +10,17 @@ import { CartService } from '../../services/cart';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth';
-import { Subscription, Subject, debounceTime } from 'rxjs';
+import {
+  Subscription,
+  Subject,
+  Observable,
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+  map,
+  startWith,
+  shareReplay
+} from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { SearchService } from '../../shared/services/search.service';
 
@@ -43,9 +53,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
   savedUsers: any[] = [];
 
   // ===== LIVE SEARCH =====
-  searchResults: any[] = [];
   showResults: boolean = false;
+  hasQuery: boolean = false;
   private searchSubject = new Subject<string>();
+  searchResults$: Observable<any[]> = this.searchSubject.pipe(
+    map(q => (q || '').trim()),
+    debounceTime(200),
+    distinctUntilChanged(),
+    switchMap(q => this.searchService.searchProducts(q, { limit: 12 })),
+    startWith([] as any[]),
+    shareReplay({ bufferSize: 1, refCount: true })
+  );
 
   private authSubscription: Subscription = new Subscription();
 
@@ -68,12 +86,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
   }
 
- closeSearch() {
-  this.isOpen = false;
-  this.showResults = false;
-  this.searchResults = [];
-}
-
+  closeSearch() {
+    this.isOpen = false;
+    this.showResults = false;
+    this.hasQuery = false;
+    this.searchQuery = '';
+    this.searchSubject.next('');
+  }
 
   ngOnInit() {
 
@@ -95,26 +114,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.savedUsers = this.authService.getSavedUsers();
       });
 
-    // ===== LIVE SEARCH REALTIME =====
-   this.searchSubject
-  .pipe(debounceTime(300))
-  .subscribe((query: string) => {
-
-    const q = query.trim().toLowerCase();
-
-    if (!q) {
-      this.searchResults = [];
-      this.showResults = false;
-      return;
-    }
-
-    const results = this.searchService.searchProducts(q);
-
-    // مهم بزاف: assign جديد باش Angular يدير refresh
-    this.searchResults = [...results];
-    this.showResults = true;
-  });
-
   }
 
   ngOnDestroy() {
@@ -133,12 +132,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   // ===== LIVE SEARCH METHODS =====
-onSearchChange(value: string) {
-  this.showResults = true;   // رجع dropdown يتحل كل مرة
-  this.searchSubject.next(value);
-}
-
-
+  onSearchChange(value: string) {
+    this.hasQuery = value.trim().length > 0;
+    this.showResults = this.hasQuery;
+    this.searchSubject.next(value);
+  }
 
   trackById(index: number, item: any) {
     return item.id;

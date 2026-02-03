@@ -1,4 +1,4 @@
-<header
+﻿<header
   class="sticky top-0 z-50 w-full bg-[#E3D5CA]/80 border-b border-[#D5BDAF]/30 px-4 md:px-10 lg:px-40 py-3 flex items-center justify-between backdrop-blur-md"
 >
   <div class="flex items-center gap-3">
@@ -85,31 +85,33 @@
 
     <!-- Live search dropdown -->
     <div class="relative" *ngIf="isOpen">
-      <div
-        *ngIf="showResults"
-        class="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-[#D5BDAF]/20 z-50 overflow-hidden"
-        [@searchResultsAnimation]="searchResults.length">
+      <ng-container *ngIf="searchResults$ | async as results">
         <div
-          *ngFor="let p of searchResults; trackBy: trackById"
-          class="flex items-center gap-3 px-4 py-3 hover:bg-[#F5EBE0] cursor-pointer"
-          (click)="onSelectProduct(p)"
-        >
-          <div class="w-12 h-12 rounded-lg overflow-hidden bg-[#F5EBE0] shrink-0">
-            <img
-              [src]="p.image || 'https://via.placeholder.com/48'"
-              [alt]="p.name"
-              class="w-full h-full object-cover"
-            />
+          *ngIf="showResults"
+          class="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-[#D5BDAF]/20 z-50 overflow-hidden"
+          [@searchResultsAnimation]="results.length">
+          <div
+            *ngFor="let p of results; trackBy: trackById"
+            class="flex items-center gap-3 px-4 py-3 hover:bg-[#F5EBE0] cursor-pointer"
+            (click)="onSelectProduct(p)"
+          >
+            <div class="w-12 h-12 rounded-lg overflow-hidden bg-[#F5EBE0] shrink-0">
+              <img
+                [src]="p.image || 'https://via.placeholder.com/48'"
+                [alt]="p.name"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="grow min-w-0">
+              <p class="font-semibold text-sm text-[#3D312B] truncate">{{ p.name }}</p>
+              <p class="text-xs text-[#3D312B]/60">{{ p.category }} · {{ p.price }} DH</p>
+            </div>
           </div>
-          <div class="grow min-w-0">
-            <p class="font-semibold text-sm text-[#3D312B] truncate">{{ p.name }}</p>
-            <p class="text-xs text-[#3D312B]/60">{{ p.category }} · {{ p.price }} DH</p>
+          <div *ngIf="hasQuery && results.length === 0" class="p-4 text-sm text-[#3D312B]/60">
+            No results
           </div>
         </div>
-        <div *ngIf="searchResults.length === 0" class="p-4 text-sm text-[#3D312B]/60">
-          Aucun résultat
-        </div>
-      </div>
+      </ng-container>
     </div>
 
     <!-- hjhjhjhhhjhhh -->
@@ -237,7 +239,7 @@
             (click)="logout()"
             class="w-full text-left px-4 py-2 text-sm text-[#3D312B]/80 hover:bg-[#F5EBE0] transition-colors border-t border-[#D5BDAF]/20"
           >
-            Déconnexion
+            Dأ©connexion
           </button>
         </div>
       </div>
