@@ -1,0 +1,143 @@
+<main class="px-6 pb-12 max-w-6xl mx-auto">
+
+<header class="mb-10 mt-4">
+  <div class="flex items-center justify-between mb-8">
+
+    <!-- BACK BUTTON -->
+    <button (click)="goBack()" class="p-2 -ml-2 text-slate-600 dark:text-primary">
+      <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+    </button>
+
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary">diamond</span>
+      <span class="font-display text-sm tracking-widest uppercase text-primary font-semibold">
+        Luxury Store
+      </span>
+    </div>
+
+    <div class="w-10"></div>
+  </div>
+
+  <h1 class="font-display text-4xl text-primary mb-4">Get In Touch</h1>
+
+  <p class="text-slate-500 dark:text-slate-400 font-light leading-relaxed max-w-xl">
+    Discover our exclusive concierge service. Our experts are here to assist you with your personalized jewelry selection.
+  </p>
+</header>
+
+
+<!-- GRID -->
+<div class="grid lg:grid-cols-2 gap-12 items-start">
+
+  <!-- LEFT SIDE : LINKS -->
+  <div class="space-y-8">
+
+    <!-- ADDRESS -->
+    <div class="flex items-start gap-4">
+      <div class="bg-primary/10 p-3 rounded-full">
+        <span class="material-symbols-outlined text-primary">location_on</span>
+      </div>
+      <div>
+        <h3 class="font-display text-lg dark:text-white">Address</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm font-light">
+          Mamounia, Marrakech<br/>Morocco, 40000
+        </p>
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="flex items-start gap-4">
+      <div class="bg-primary/10 p-3 rounded-full">
+        <span class="material-symbols-outlined text-primary">mail</span>
+      </div>
+      <div>
+        <h3 class="font-display text-lg dark:text-white">Email</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm font-light">
+          concierge@luxurybrand.com<br/>events@luxurybrand.com
+        </p>
+      </div>
+    </div>
+
+    <!-- PHONE -->
+    <div class="flex items-start gap-4">
+      <div class="bg-primary/10 p-3 rounded-full">
+        <span class="material-symbols-outlined text-primary">call</span>
+      </div>
+      <div>
+        <h3 class="font-display text-lg dark:text-white">Phone</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm font-light">
+          +212 633 751 248
+        </p>
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <div (click)="openMap()"
+      class="relative overflow-hidden rounded-xl h-40 border border-slate-200 dark:border-white/10 cursor-pointer hover:scale-[1.02] transition">
+
+      <img class="w-full h-full object-cover grayscale brightness-90 contrast-125 dark:brightness-50"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsNbs1TLG8PUn3RfmSAgfPnOiUmYbcp4zrRBSRkrAKYN6K8nTmRCXVxcKHymFyacuriH_xEkFvjyUl4kFbqaoXsE4yjJ_xESzNQwEo_TA7OcUZXa6725I4xgLq8mMwFBd9Ptvl7odnXAcGMAGw2gPundsLnoGF1zPz7LbCA0foc-4LbwSp1MFhK0iAL3DpBV4LoBQ3ASF_SQi0KHVptaVFqqLxzSFBNThSw_syXdhcjzeKptGN3njHckG1URHFtR51kGORCBTH4g"/>
+
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="bg-white/90 dark:bg-black/80 px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary text-sm">location_on</span>
+          <span class="text-xs font-semibold tracking-tight">VIEW ON MAP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL -->
+    
+
+  </div>
+
+
+  <!-- RIGHT SIDE : FORM -->
+  <section class="bg-white dark:bg-[#163a35] p-6 rounded-xl shadow-xl border border-slate-100 dark:border-white/5">
+
+    <h2 class="font-display text-2xl mb-6 dark:text-white">
+      Send Us a Message
+    </h2>
+
+    <form (ngSubmit)="sendMessage()" class="space-y-4">
+
+      <input [(ngModel)]="name" name="name"
+        class="w-full bg-slate-50 dark:bg-[#0b2b26]/50 border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 text-sm"
+        placeholder="Your Name"/>
+
+      <input [(ngModel)]="email" name="email"
+        class="w-full bg-slate-50 dark:bg-[#0b2b26]/50 border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 text-sm"
+        placeholder="Your Email"/>
+
+      <select [(ngModel)]="feedback" name="feedback"  placeholder="feedback"
+        class="w-full bg-slate-50 dark:bg-[#0b2b26]/50 text-gray-600 border-amber-500 dark:border-white/10 rounded-lg py-3 px-4 text-sm">
+        <option>Feedback</option>
+        <option>Order Inquiry</option>
+        <option>Personal Stylist</option>
+        <option>Private Viewing</option>
+      </select>
+
+      <textarea [(ngModel)]="message" name="message"
+        class="w-full bg-slate-50 dark:bg-[#0b2b26]/50 border-slate-200 dark:border-white/10 rounded-lg py-3 px-4 text-sm"
+        placeholder="Your Message"></textarea>
+
+      <button type="submit"
+        class="w-full bg-amber-600 hover:bg-amber-700 text-white font-display uppercase tracking-widest py-4 rounded-lg transition-all active:scale-[0.98] shadow-lg shadow-primary/20">
+        Send Message
+      </button>
+
+    </form>
+  </section>
+
+</div>
+
+
+<!-- SUCCESS POPUP -->
+<div *ngIf="showSuccess"
+ class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+  <div class="bg-white dark:bg-[#163a35] px-8 py-6 rounded-xl shadow-xl">
+    <h3 class="font-display text-primary text-lg">✨ Message Sent Successfully</h3>
+  </div>
+</div>
+
+</main>
