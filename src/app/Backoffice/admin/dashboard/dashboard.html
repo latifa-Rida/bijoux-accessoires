@@ -1,69 +1,55 @@
-<div class="mb-10">
-    <h2 class="text-3xl font-black text-[#3D312B] tracking-tight">Tableau de Bord</h2>
-    <p class="text-[#3D312B]/60 mt-1 font-medium">Aperçu global de votre boutique Bijoux & Accessoires.</p>
-</div>
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-    <!-- Card 1: Total Commands -->
-    <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-2xl bg-[#F5EBE0] flex items-center justify-center text-[#C1664C]">
-                <span class="material-icons-round">shopping_cart</span>
-            </div>
-            <span class="text-[#C1664C] text-[10px] font-bold flex items-center bg-[#F5EBE0] px-2 py-1 rounded-lg uppercase tracking-wider">
-                Actif
-            </span>
-        </div>
-        <p class="text-[#3D312B]/60 text-xs font-bold uppercase tracking-widest">Total Commandes</p>
-        <h3 class="text-3xl font-black text-[#3D312B] mt-1">{{ totalOrders }}</h3>
+<div class="space-y-8">
+    <!-- Header -->
+    <div>
+        <h1 class="text-3xl font-black text-[#3D312B]">Tableau de bord</h1>
+        <p class="text-[#3D312B]/60">Aperçu global de votre activité</p>
     </div>
 
-    <!-- Card 2: Total Users -->
-    <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-2xl bg-[#E3D5CA]/40 flex items-center justify-center text-[#3D312B]">
-                <span class="material-icons-round">group</span>
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Products Card -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
+                 <span class="material-icons-round text-6xl text-[#C1664C]">inventory_2</span>
             </div>
-            <span class="text-[#3D312B] text-[10px] font-bold flex items-center bg-[#F5EBE0] px-2 py-1 rounded-lg uppercase tracking-wider">
-                Communauté
-            </span>
-        </div>
-        <p class="text-[#3D312B]/60 text-xs font-bold uppercase tracking-widest">Utilisateurs</p>
-        <h3 class="text-3xl font-black text-[#3D312B] mt-1">{{ totalUsers }}</h3>
-    </div>
-
-    <!-- Card 3: Revenue -->
-    <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 hover:shadow-md transition-shadow">
-        <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-2xl bg-[#C1664C]/10 flex items-center justify-center text-[#C1664C]">
-                <span class="material-icons-round">payments</span>
-            </div>
-            <span class="text-[#C1664C] text-[10px] font-bold flex items-center bg-[#C1664C]/10 px-2 py-1 rounded-lg uppercase tracking-wider">
-                Chiffre d'Affaire
-            </span>
-        </div>
-        <p class="text-[#3D312B]/60 text-xs font-bold uppercase tracking-widest">Revenus Totaux</p>
-        <h3 class="text-3xl font-black text-[#3D312B] mt-1">{{ totalRevenue }} DH</h3>
-    </div>
-
-    <!-- Card 4: Placeholder (Visits) -->
-    <div class="bg-[#3D312B] p-6 rounded-3xl shadow-lg shadow-[#3D312B]/20 transition-shadow">
-        <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
-                <span class="material-icons-round">diamond</span>
+            <div class="relative z-10">
+                <p class="text-[#3D312B]/60 font-bold text-xs uppercase tracking-widest mb-2">Total Produits</p>
+                <h3 class="text-4xl font-black text-[#3D312B]">{{ totalProducts }}</h3>
+                <p class="text-green-600 text-xs font-bold mt-2 flex items-center gap-1">
+                    <span class="material-icons-round text-sm">trending_up</span>
+                    +12% ce mois
+                </p>
             </div>
         </div>
-        <p class="text-white/60 text-xs font-bold uppercase tracking-widest">Status Boutique</p>
-        <h3 class="text-3xl font-black text-white mt-1">Ouvert</h3>
-    </div>
-</div>
 
+        <!-- Orders Card -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
+                 <span class="material-icons-round text-6xl text-blue-600">receipt_long</span>
+            </div>
+            <div class="relative z-10">
+                <p class="text-[#3D312B]/60 font-bold text-xs uppercase tracking-widest mb-2">Total Commandes</p>
+                <h3 class="text-4xl font-black text-[#3D312B]">{{ totalOrders }}</h3>
+                <p class="text-green-600 text-xs font-bold mt-2 flex items-center gap-1">
+                    <span class="material-icons-round text-sm">trending_up</span>
+                    +5% cette semaine
+                </p>
+            </div>
+        </div>
 
-<!-- Simple Placeholder for Stats/Activity -->
-<div class="bg-white dark:bg-stone-900 p-8 rounded-4xl shadow-sm border border-stone-200/60 dark:border-stone-800 min-h-75 flex flex-col items-center justify-center text-center">
-    <div class="w-16 h-16 bg-stone-100 dark:bg-stone-800 rounded-full flex items-center justify-center mb-4 text-stone-400">
-        <span class="material-icons-round text-3xl">bar_chart</span>
+        <!-- Users Card -->
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-[#D5BDAF]/20 relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+             <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
+                 <span class="material-icons-round text-6xl text-purple-600">group</span>
+            </div>
+            <div class="relative z-10">
+                <p class="text-[#3D312B]/60 font-bold text-xs uppercase tracking-widest mb-2">Total Utilisateurs</p>
+                <h3 class="text-4xl font-black text-[#3D312B]">{{ totalUsers }}</h3>
+                <p class="text-green-600 text-xs font-bold mt-2 flex items-center gap-1">
+                    <span class="material-icons-round text-sm">trending_up</span>
+                    +3 nouveaux
+                </p>
+            </div>
+        </div>
     </div>
-    <h3 class="text-lg font-bold text-stone-900 dark:text-white">Statistiques détaillées</h3>
-    <p class="text-stone-500 dark:text-stone-400 max-w-sm mt-2">Les graphiques et analyses détaillées seront disponibles prochainement.</p>
 </div>

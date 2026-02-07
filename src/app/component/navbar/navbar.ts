@@ -1,4 +1,5 @@
-﻿import {
+﻿
+import {
   Component,
   OnInit,
   OnDestroy,
@@ -50,7 +51,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean = false;
   currentUser: any = null;
   showUserMenu: boolean = false;
-  savedUsers: any[] = [];
 
   // ===== LIVE SEARCH =====
   showResults: boolean = false;
@@ -74,7 +74,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
     private searchService: SearchService
-  ) {}
+  ) { }
 
   toggleSearch() {
     this.isOpen = !this.isOpen;
@@ -99,7 +99,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.cartCount = this.cartService.getCartCount();
     this.isAuthenticated = this.authService.isAuthenticated();
     this.currentUser = this.authService.getCurrentUser();
-    this.savedUsers = this.authService.getSavedUsers();
 
     this.cartService.cartChanged.subscribe(() => {
       this.cartCount = this.cartService.getCartCount();
@@ -111,7 +110,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.currentUser = isAuth
           ? this.authService.getCurrentUser()
           : null;
-        this.savedUsers = this.authService.getSavedUsers();
       });
 
   }
@@ -146,12 +144,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.router.navigate(['/product', p.id]);
     this.showResults = false;
     this.closeSearch();
-  }
-
-  switchAccount(email: string) {
-    if (this.authService.switchAccount(email)) {
-      this.showUserMenu = false;
-    }
   }
 
   logout() {

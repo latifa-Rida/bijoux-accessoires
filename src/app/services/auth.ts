@@ -1,16 +1,19 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private readonly AUTH_KEY = 'isAuthenticated';
-    private readonly USER_KEY = 'currentUser';
-    private readonly SAVED_USERS_KEY = 'savedUsers';
-    authChanged = new EventEmitter<boolean>();
+  private readonly USER_KEY = 'currentUser';
+  authChanged = new EventEmitter<boolean>();
+  private apiUrl = '/api/login';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private http: HttpClient) {
     // Initialize from localStorage
     if (typeof window !== 'undefined') {
       const isAuth = localStorage.getItem(this.AUTH_KEY) === 'true';
@@ -20,23 +23,29 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string): { success: boolean; message?: string } {
-    // Simple authentication - in production, this would call an API
-    // For now, accept any email/password combination
-    if (email && password) {
-      const user = { email, loginTime: new Date().toISOString() };
-      localStorage.setItem(this.AUTH_KEY, 'true');
-      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-      this.addSavedUser(email); // Save user on login
-      this.authChanged.emit(true);
-      return { success: true };
-    }
-    return { success: false, message: 'Email ou mot de passe incorrect' };
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(this.apiUrl, { email, password }).pipe(
+      tap(response => {
+        console.log('Login Response:', response);
+        if (response.success) {
+          localStorage.setItem(this.AUTH_KEY, 'true');
+          localStorage.setItem(this.USER_KEY, JSON.stringify(response.user));
+          if (response.user.role === 'admin') {
+            console.log('User is admin, setting token');
+            localStorage.setItem('admin_token', response.token);
+          } else {
+            console.log('User is NOT admin:', response.user.role);
+          }
+          this.authChanged.emit(true);
+        }
+      })
+    );
   }
 
   logout(): void {
     localStorage.removeItem(this.AUTH_KEY);
     localStorage.removeItem(this.USER_KEY);
+    localStorage.removeItem('admin_token');
     this.authChanged.emit(false);
     this.router.navigate(['/']);
   }
@@ -54,36 +63,5 @@ export class AuthService {
       return userStr ? JSON.parse(userStr) : null;
     }
     return null;
-  }
-
-  private addSavedUser(email: string): void {
-    if (typeof window !== 'undefined') {
-      const savedUsers = this.getSavedUsers();
-      if (!savedUsers.includes(email)) {
-        savedUsers.push(email);
-        localStorage.setItem(this.SAVED_USERS_KEY, JSON.stringify(savedUsers));
-      }
-    }
-  }
-
-  getSavedUsers(): string[] {
-    if (typeof window !== 'undefined') {
-      const usersStr = localStorage.getItem(this.SAVED_USERS_KEY);
-      return usersStr ? JSON.parse(usersStr) : [];
-    }
-    return [];
-  }
-
-  switchAccount(email: string): boolean {
-    if (typeof window !== 'undefined') {
-      // For this example, we'll just log in the user with the given email
-      // In a real app, this would involve re-authenticating
-      const user = { email, loginTime: new Date().toISOString() };
-      localStorage.setItem(this.AUTH_KEY, 'true');
-      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-      this.authChanged.emit(true);
-      return true;
-    }
-    return false;
   }
 }

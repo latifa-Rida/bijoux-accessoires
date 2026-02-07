@@ -20,10 +20,18 @@ export class AdminUsersComponent implements OnInit {
         });
     }
 
+    deleteUser(id: string) {
+        if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
+            this.userService.deleteUser(id).subscribe(() => {
+                // List will update via behavior subject if userService reloads, 
+                // but userService.deleteUser triggers tap(() => this.loadUsers()) so it works automatically
+            });
+        }
+    }
+
     getRoleClass(role: string): string {
         return role === 'admin'
-            ? 'bg-[#C1664C]/10 text-[#C1664C]'
+            ? 'bg-[#C1664C]/10 text-[#C1664C] border border-[#C1664C]/20'
             : 'bg-[#F5EBE0] text-[#3D312B]';
     }
 }
-

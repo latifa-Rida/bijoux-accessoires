@@ -24,7 +24,7 @@ export class Authentification implements OnInit {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Check if user is already logged in
@@ -43,6 +43,7 @@ export class Authentification implements OnInit {
     this.loginAnimationClass = '';
     this.isLoading = true;
 
+    // Simulate API call delay handled by service/network now
     if (!this.email || !this.password) {
       this.errorMessage = 'Veuillez remplir tous les champs';
       this.loginAnimationClass = 'shake';
@@ -51,24 +52,24 @@ export class Authentification implements OnInit {
       return;
     }
 
-    // Simulate API call delay
-    setTimeout(() => {
-      const result = this.authService.login(this.email.trim(), this.password);
-
-      if (result.success) {
+    this.authService.login(this.email.trim(), this.password).subscribe({
+      next: (response) => {
+        // Service handles token storage
         this.successMessage = 'Connexion réussie !';
         this.loginAnimationClass = 'success';
         setTimeout(() => {
-          // Redirect to returnUrl or default to home
           this.router.navigate([this.returnUrl]);
         }, 800);
-      } else {
-        // show clear error message returned by service
-        this.errorMessage = result.message || 'Email ou mot de passe incorrect';
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorMessage = 'Email ou mot de passe incorrect'; // Generic or from err
         this.loginAnimationClass = 'error';
         setTimeout(() => (this.loginAnimationClass = ''), 700);
+        this.isLoading = false;
       }
-      this.isLoading = false;
-    }, 600);
+    });
+
+    /** Original synchronous logic removed */
   }
 }

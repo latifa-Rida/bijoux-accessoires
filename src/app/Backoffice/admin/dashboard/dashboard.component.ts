@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProductService } from '../../../shared/services/product.service';
 import { OrderService } from '../../../shared/services/order.service';
 import { UserService } from '../../../shared/services/user.service';
 
@@ -12,14 +13,20 @@ import { UserService } from '../../../shared/services/user.service';
 export class AdminDashboardComponent implements OnInit {
     totalOrders = 0;
     totalUsers = 0;
+    totalProducts = 0;
     totalRevenue = 0;
 
     constructor(
         private orderService: OrderService,
-        private userService: UserService
+        private userService: UserService,
+        private productService: ProductService
     ) { }
 
     ngOnInit(): void {
+        this.productService.getProducts().subscribe(products => {
+            this.totalProducts = products.length;
+        });
+
         this.orderService.getOrders().subscribe(orders => {
             this.totalOrders = orders.length;
             this.totalRevenue = orders.reduce((acc, o) => acc + o.total, 0);
@@ -30,4 +37,3 @@ export class AdminDashboardComponent implements OnInit {
         });
     }
 }
-

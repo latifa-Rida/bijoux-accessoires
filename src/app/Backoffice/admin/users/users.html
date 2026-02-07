@@ -1,86 +1,48 @@
-<div class="mb-10">
-    <h2 class="text-3xl font-black text-[#3D312B] tracking-tight">Utilisateurs & Accès</h2>
-    <p class="text-[#3D312B]/60 mt-1 font-medium">Gérez les comptes clients et les privilèges administratifs.</p>
-</div>
-
-<div class="bg-white rounded-3xl shadow-sm border border-[#D5BDAF]/20 overflow-hidden">
-    <!-- Toolbar -->
-    <div class="p-6 border-b border-[#D5BDAF]/10 flex flex-col sm:flex-row gap-4 justify-between items-center bg-[#FDFBF7]/50">
-        <div class="relative w-full sm:w-80">
-             <span class="material-icons-round absolute left-3 top-1/2 -translate-y-1/2 text-[#3D312B]/40 text-sm">search</span>
-             <input type="text" placeholder="Rechercher par nom ou email..." class="w-full pl-10 pr-4 py-3 bg-[#F5EBE0]/30 border-none rounded-2xl text-sm focus:ring-2 focus:ring-[#C1664C]/50 text-[#3D312B] placeholder-[#3D312B]/30 outline-none">
+<div class="space-y-6">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-bold text-[#3D312B]">Utilisateurs</h1>
+            <p class="text-[#3D312B]/60 text-sm">Gestion des comptes utilisateurs</p>
         </div>
-        <button class="bg-[#C1664C] text-white px-8 py-3 rounded-2xl font-bold shadow-lg shadow-[#C1664C]/20 hover:opacity-90 transition-opacity flex items-center gap-2 text-[10px] uppercase tracking-widest">
-            <span class="material-icons-round text-sm">person_add</span>
-            Nouveau Membre
-        </button>
     </div>
 
-    <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-            <thead>
-            <tr class="bg-[#F5EBE0]/20 text-[#3D312B]/40 text-[10px] font-bold uppercase tracking-[0.2em]">
-                <th class="px-8 py-5">Identité</th>
-                <th class="px-8 py-5">Email</th>
-                <th class="px-8 py-5">Rôle</th>
-                <th class="px-8 py-5">Inscription</th>
-                <th class="px-8 py-5 text-right">Actions</th>
-            </tr>
-            </thead>
-            <tbody class="divide-y divide-[#D5BDAF]/10">
-            
-            <tr *ngFor="let user of users" class="hover:bg-[#FDFBF7] transition-colors group">
-                <td class="px-8 py-5">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-xl bg-[#F5EBE0] flex items-center justify-center text-[#C1664C] font-black group-hover:bg-[#C1664C] group-hover:text-white transition-all text-xs">
-                            {{ user.fullName.charAt(0) }}
-                        </div>
-                        <div>
-                            <p class="text-sm font-black text-[#3D312B]">{{ user.fullName }}</p>
-                            <p class="text-[10px] text-[#3D312B]/40 font-bold uppercase tracking-wider">ID: {{ user.id }}</p>
-                        </div>
-                    </div>
-                </td>
-                <td class="px-8 py-5">
-                    <span class="text-sm font-medium text-[#3D312B]/80 italic">{{ user.email }}</span>
-                </td>
-                <td class="px-8 py-5">
-                    <span [class]="'px-3 py-1 text-[10px] font-black rounded-lg uppercase tracking-wider ' + getRoleClass(user.role)">
-                        {{ user.role }}
-                    </span>
-                </td>
-                <td class="px-8 py-5 text-sm font-medium text-[#3D312B]/60">
-                    {{ user.createdAt.split('T')[0] }}
-                </td>
-                <td class="px-8 py-5 text-right">
-                    <button class="p-2 text-[#3D312B]/20 hover:text-[#C1664C] transition-colors rounded-xl bg-[#F5EBE0]/0 hover:bg-[#F5EBE0]">
-                        <span class="material-icons-round text-lg">settings</span>
-                    </button>
-                </td>
-            </tr>
-
-            <tr *ngIf="users.length === 0">
-                <td colspan="5" class="px-8 py-20 text-center">
-                    <p class="font-bold uppercase tracking-widest text-xs text-[#3D312B]/30">Aucun utilisateur trouvé</p>
-                </td>
-            </tr>
-            
-            </tbody>
-        </table>
-    </div>
-
-    <!-- Pagination -->
-    <div class="px-8 py-6 bg-[#FDFBF7]/50 flex justify-between items-center text-[10px] font-bold text-[#3D312B]/40 uppercase tracking-widest">
-         <span>{{ users.length }} Membres inscrits</span>
-         <div class="flex gap-2">
-             <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-[#F5EBE0] text-[#3D312B] opacity-50 cursor-not-allowed">
-                 <span class="material-icons-round text-md">chevron_left</span>
-             </button>
-             <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-[#C1664C] text-white shadow-lg shadow-[#C1664C]/20">1</button>
-             <button class="w-10 h-10 flex items-center justify-center rounded-xl bg-white text-[#3D312B] hover:bg-[#F5EBE0] transition-colors border border-[#D5BDAF]/20">
-                 <span class="material-icons-round text-md">chevron_right</span>
-             </button>
-         </div>
+    <!-- Table -->
+    <div class="bg-white rounded-3xl shadow-sm border border-[#D5BDAF]/20 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-[#F9F6F2] text-[#3D312B]/60 text-xs uppercase tracking-wider font-bold">
+                        <th class="px-6 py-4">Nom d'utilisateur</th>
+                        <th class="px-6 py-4">Email</th>
+                        <th class="px-6 py-4">Rôle</th>
+                        <th class="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-[#D5BDAF]/10">
+                    <tr *ngFor="let user of users" class="hover:bg-[#F9F6F2]/50 transition-colors group">
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs text-white bg-gray-400">
+                                    {{ user.fullName.charAt(0).toUpperCase() }}
+                                </div>
+                                <span class="font-bold text-[#3D312B]">{{ user.fullName }}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-gray-600">{{ user.email }}</td>
+                        <td class="px-6 py-4">
+                            <span [className]="'px-3 py-1 rounded-full text-xs font-bold ' + getRoleClass(user.role)">
+                                {{ user.role === 'admin' ? 'Administrateur' : 'Client' }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                             <button *ngIf="user.role !== 'admin'" (click)="deleteUser(user.id)" class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
+                                <span class="material-icons-round text-lg">delete</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-

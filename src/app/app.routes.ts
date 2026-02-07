@@ -9,12 +9,15 @@ import { Authentification } from './pages/authentification/authentification';
 import { Registration } from './pages/registration/registration';
 import { Contact } from './pages/contact/contact';
 import { authGuard } from './guards/auth.guard';
+import { adminAuthGuard } from './guards/admin-auth.guard';
 
 import { ClientLayoutComponent } from './component/layout/client-layout/client-layout.component';
 import { AdminLayoutComponent } from './Backoffice/admin/layout/layout.component';
 import { AdminDashboardComponent } from './Backoffice/admin/dashboard/dashboard.component';
 import { AdminCommandsComponent } from './Backoffice/admin/commands/commands.component';
 import { AdminUsersComponent } from './Backoffice/admin/users/users.component';
+import { AdminLoginComponent } from './Backoffice/admin/login/login.component';
+import { ProductManagement } from './Backoffice/admin/product-management/product-management';
 
 
 export const routes: Routes = [
@@ -29,23 +32,31 @@ export const routes: Routes = [
       { path: 'order', component: OrderComponent, canActivate: [authGuard] },
       { path: 'orders', component: OrderHistoryComponent },
       { path: 'product', component: ProductsComponent },
-      { path: 'authentification', component: Authentification },
-      { path: 'registration', component: Registration },
       { path: 'contact', component: Contact },
     ]
+  },
+
+  // Public Routes (No Navbar)
+  { path: 'authentification', component: Authentification },
+  { path: 'registration', component: Registration },
+
+  // Admin Login Route (Standalone)
+  {
+    path: 'admin/login',
+    component: AdminLoginComponent
   },
 
   // Admin Backoffice Routes
   {
     path: 'admin',
     component: AdminLayoutComponent,
+    canActivate: [adminAuthGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: AdminDashboardComponent },
+      { path: 'products', component: ProductManagement },
       { path: 'commands', component: AdminCommandsComponent },
       { path: 'users', component: AdminUsersComponent }
     ]
   }
 ];
-
-

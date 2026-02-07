@@ -1,44 +1,33 @@
+
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.model';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { User } from '../models/user.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
-    private readonly USERS_KEY = 'users_v2';
     private usersSubject = new BehaviorSubject<User[]>([]);
+    private apiUrl = '/api/users';
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.loadUsers();
     }
 
-    private loadUsers(): void {
-        const hasLocalStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
-        const saved = hasLocalStorage ? window.localStorage.getItem(this.USERS_KEY) : null;
-        if (saved) {
-            this.usersSubject.next(JSON.parse(saved));
-        } else {
-            // Mock initial users
-            const mockUsers: User[] = [
-                {
-                    id: '1',
-                    fullName: 'Admin Her Corner',
-                    email: 'admin@hercorner.com',
-                    role: 'admin',
-                    createdAt: '2023-12-01'
-                },
-                {
-                    id: '2',
-                    fullName: 'Julie Martin',
-                    email: 'julie@gmail.com',
-                    role: 'user',
-                    createdAt: '2024-01-15'
-                }
-            ];
-            // Save to storage only when available
-            this.saveUsers(mockUsers);
-        }
+    // Public method to trigger reload
+    loadUsers(): void {
+        this.http.get<any[]>(this.apiUrl).subscribe(data => {
+            const users: User[] = data.map(u => ({
+                id: u.id.toString(),
+                fullName: u.username,
+                email: u.email,
+                role: u.role,
+                createdAt: '2024-01-01'
+            }));
+            this.usersSubject.next(users);
+        });
     }
 
     getUsers(): Observable<User[]> {
@@ -46,17 +35,13 @@ export class UserService {
     }
 
     addUser(user: User): void {
-        const current = this.usersSubject.value;
-        const updated = [user, ...current];
-        this.saveUsers(updated);
+        // No endpoint yet
     }
 
-    private saveUsers(users: User[]): void {
-        const hasLocalStorage = typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
-        if (hasLocalStorage) {
-            window.localStorage.setItem(this.USERS_KEY, JSON.stringify(users));
-        }
-        this.usersSubject.next(users);
+    deleteUser(id: string): Observable<any> {
+        return this.http.delete(`${this.apiUrl}/${id}`).pipe(
+            tap(() => this.loadUsers())
+        );
     }
 
     getUserCount(): number {

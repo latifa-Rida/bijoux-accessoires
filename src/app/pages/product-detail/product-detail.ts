@@ -37,7 +37,14 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.product = this.productService.getProductById(id);
+    this.productService.getProductById(id).subscribe(
+      (data) => {
+        this.product = data;
+      },
+      (error) => {
+        console.error('Product not found', error);
+      }
+    );
   }
 
   selectColor(color: string) {

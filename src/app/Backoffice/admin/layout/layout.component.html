@@ -3,12 +3,16 @@
     <aside class="w-72 bg-[#F5EBE0] border-r border-[#D5BDAF]/20 p-6 hidden lg:flex lg:flex-col fixed h-full z-10 shadow-xl shadow-[#3D312B]/5">
         <div class="flex items-center gap-3 mb-12 px-2">
             <span class="material-icons-round text-[#C1664C] text-3xl">diamond</span>
-            <h1 class="text-xl font-black tracking-tighter text-[#3D312B] uppercase">Her Corner <span class="text-[#C1664C] text-[10px] block tracking-widest font-bold">Admin</span></h1>
+            <h1 class="text-xl font-black tracking-tighter text-[#3D312B] uppercase">Perla Store <span class="text-[#C1664C] text-[10px] block tracking-widest font-bold">Admin</span></h1>
         </div>
         <nav class="flex-1 space-y-2">
             <a routerLink="/admin/dashboard" routerLinkActive="bg-[#C1664C] text-white shadow-lg shadow-[#C1664C]/20" [routerLinkActiveOptions]="{exact: true}" class="flex items-center gap-4 px-4 py-3 rounded-2xl text-[#3D312B]/60 hover:bg-[#D5BDAF]/30 transition-all cursor-pointer">
                 <span class="material-icons-round">dashboard</span>
                 <span class="font-bold uppercase text-xs tracking-widest">Tableau de bord</span>
+            </a>
+            <a routerLink="/admin/products" routerLinkActive="bg-[#C1664C] text-white shadow-lg shadow-[#C1664C]/20" class="flex items-center gap-4 px-4 py-3 rounded-2xl text-[#3D312B]/60 hover:bg-[#D5BDAF]/30 transition-all cursor-pointer">
+                <span class="material-icons-round">inventory_2</span>
+                <span class="font-bold uppercase text-xs tracking-widest">Produits</span>
             </a>
             <a routerLink="/admin/commands" routerLinkActive="bg-[#C1664C] text-white shadow-lg shadow-[#C1664C]/20" class="flex items-center gap-4 px-4 py-3 rounded-2xl text-[#3D312B]/60 hover:bg-[#D5BDAF]/30 transition-all cursor-pointer">
                 <span class="material-icons-round">receipt_long</span>
@@ -33,7 +37,7 @@
         <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
              <div>
                  <h2 class="text-2xl font-black text-[#3D312B] tracking-tight">Espace Gestion</h2>
-                 <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-[#C1664C]">Bijoux & Accessoires</p>
+                 <p class="text-[10px] uppercase tracking-[0.3em] font-bold text-[#C1664C]">Perla Store</p>
              </div>
              
              <!-- User Profile -->

@@ -88,19 +88,26 @@ export class OrderComponent implements OnInit {
       total: this.cartService.getTotal()
     };
 
-    this.sharedOrderService.addOrder(newOrder);
+    this.sharedOrderService.addOrder(newOrder).subscribe({
+      next: () => {
+        // Legacy support (optional, can remove if we fully trust API)
+        const currentCommandes = JSON.parse(localStorage.getItem('commandes') || '[]');
+        currentCommandes.push(newOrder);
+        localStorage.setItem('commandes', JSON.stringify(currentCommandes));
 
-    // Legacy support
-    const currentCommandes = JSON.parse(localStorage.getItem('commandes') || '[]');
-    currentCommandes.push(newOrder);
-    localStorage.setItem('commandes', JSON.stringify(currentCommandes));
-
-    setTimeout(() => {
-      this.cartService.clearCart();
-      alert('✅ Commande confirmée avec succès!');
-      this.router.navigate(['/orders']);
-      this.isSubmitting = false;
-    }, 500);
+        setTimeout(() => {
+          this.cartService.clearCart();
+          alert('✅ Commande confirmée avec succès!');
+          this.router.navigate(['/orders']);
+          this.isSubmitting = false;
+        }, 500);
+      },
+      error: (err) => {
+        console.error('Order failed', err);
+        alert('Erreur lors de la commande.');
+        this.isSubmitting = false;
+      }
+    });
   }
 
   getCartTotal(): number { return this.cartService.getTotal(); }

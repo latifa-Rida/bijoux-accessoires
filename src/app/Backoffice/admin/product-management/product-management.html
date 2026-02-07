@@ -1,295 +1,63 @@
-<body class="bg-[#F9F6F2] dark:bg-[#1A1614] text-[#3D3028] dark:text-gray-200 min-h-screen flex font-['Montserrat',sans-serif]">
-<aside class="w-72 bg-[#F3EBE3] dark:bg-[#251F1C] border-r border-gray-200 dark:border-gray-800 hidden lg:flex flex-col sticky top-0 h-screen">
-    <div class="p-8 flex items-center gap-2">
-        <span class="material-icons-outlined text-[#D14189] text-3xl">diamond</span>
-        <span class="font-['Playfair_Display',serif] text-xl font-bold tracking-tight">HER CORNER</span>
+<div class="space-y-6">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+            <h1 class="text-2xl font-bold text-[#3D312B]">Produits</h1>
+            <p class="text-[#3D312B]/60 text-sm">Gérez votre catalogue de produits</p>
+        </div>
+        <button class="flex items-center gap-2 bg-[#D14189] hover:bg-[#b02e6d] text-white px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-[#D14189]/20">
+            <span class="material-icons-round text-lg">add</span>
+            Ajouter un produit
+        </button>
     </div>
-    <nav class="flex-1 px-4 py-4 space-y-2">
-        <a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-white/50 dark:hover:bg-white/5 rounded-[20px] transition-all" href="#">
-            <span class="material-icons-outlined">dashboard</span>
-            <span class="font-medium">Tableau de bord</span>
-        </a>
-        <a class="bg-[rgba(209,65,137,0.1)] border-l-4 border-[#D14189] text-[#D14189] flex items-center gap-3 px-4 py-3 rounded-[20px] transition-all" href="#">
-            <span class="material-icons-outlined">inventory_2</span>
-            <span class="font-semibold">Gestion Produits</span>
-        </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-white/50 dark:hover:bg-white/5 rounded-[20px] transition-all" href="#">
-            <span class="material-icons-outlined">shopping_bag</span>
-            <span class="font-medium">Commandes</span>
-        </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-white/50 dark:hover:bg-white/5 rounded-[20px] transition-all" href="#">
-            <span class="material-icons-outlined">people</span>
-            <span class="font-medium">Clients</span>
-        </a>
-        <a class="flex items-center gap-3 px-4 py-3 text-gray-600 dark:text-gray-400 hover:bg-white/50 dark:hover:bg-white/5 rounded-[20px] transition-all" href="#">
-            <span class="material-icons-outlined">analytics</span>
-            <span class="font-medium">Statistiques</span>
-        </a>
-    </nav>
-    <div class="p-6 border-t border-gray-200 dark:border-gray-800">
-        <div class="flex items-center gap-3 p-3 bg-white/40 dark:bg-black/20 rounded-4xl">
-            <div class="w-10 h-10 rounded-full bg-[#BA704F] flex items-center justify-center text-white font-bold">JD</div>
-            <div class="flex-1 overflow-hidden">
-                <p class="text-sm font-bold truncate">Jane Doe</p>
-                <p class="text-xs text-gray-500 truncate">Administratrice</p>
-            </div>
-            <button class="text-gray-400 hover:text-[#D14189]">
-                <span class="material-icons-outlined text-sm">logout</span>
-            </button>
-        </div>
-    </div>
-</aside>
-<main class="flex-1 flex flex-col min-w-0">
-    <header class="h-20 bg-[#F9F6F2] dark:bg-[#1A1614] border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-8 sticky top-0 z-10">
-        <h1 class="text-2xl font-['Playfair_Display',serif] font-bold">Produits</h1>
-        <div class="flex items-center gap-4">
-            <div class="relative hidden md:block">
-                <span class="material-icons-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-                <input class="pl-10 pr-4 py-2 bg-white dark:bg-[#251F1C] border-none rounded-full text-sm w-64 focus:ring-2 focus:ring-[#D14189]/20" placeholder="Rechercher un bijou..." type="text"/>
-            </div>
-            <button class="p-2 text-gray-500 hover:bg-white dark:hover:bg-white/5 rounded-full relative">
-                <span class="material-icons-outlined">notifications</span>
-                <span class="absolute top-2 right-2 w-2 h-2 bg-[#D14189] rounded-full border-2 border-[#F9F6F2]"></span>
-            </button>
-            <button class="p-2 text-gray-500 hover:bg-white dark:hover:bg-white/5 rounded-full" onclick="document.documentElement.classList.toggle('dark')">
-                <span class="material-icons-outlined dark:hidden">dark_mode</span>
-                <span class="material-icons-outlined hidden dark:block">light_mode</span>
-            </button>
-        </div>
-    </header>
-    <div class="p-8 max-w-7xl mx-auto w-full">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white dark:bg-[#251F1C] p-6 rounded-4xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-4">
-                <div class="w-12 h-12 bg-[#D14189]/10 rounded-[20px] flex items-center justify-center text-[#D14189]">
-                    <span class="material-icons-outlined">auto_awesome</span>
-                </div>
-                <div>
-                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">Total Produits</p>
-                    <p class="text-2xl font-bold">1,284</p>
-                </div>
-            </div>
-            <div class="bg-white dark:bg-[#251F1C] p-6 rounded-4xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-4">
-                <div class="w-12 h-12 bg-[#BA704F]/10 rounded-[20px] flex items-center justify-center text-[#BA704F]">
-                    <span class="material-icons-outlined">trending_up</span>
-                </div>
-                <div>
-                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">Ventes du Mois</p>
-                    <p class="text-2xl font-bold">42,900 €</p>
-                </div>
-            </div>
-            <div class="bg-white dark:bg-[#251F1C] p-6 rounded-4xl shadow-sm border border-gray-100 dark:border-gray-800 flex items-center gap-4">
-                <div class="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-[20px] flex items-center justify-center text-green-600">
-                    <span class="material-icons-outlined">inventory</span>
-                </div>
-                <div>
-                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider">En Stock</p>
-                    <p class="text-2xl font-bold">892</p>
-                </div>
-            </div>
-        </div>
-        <div class="bg-[#FDFBF9] dark:bg-[#1E1A17] rounded-4xl shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden">
-            <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-lg font-bold">Inventaire</h2>
-                    <p class="text-sm text-gray-500">Gérez votre catalogue de bijoux et accessoires</p>
-                </div>
-                <div class="flex gap-3">
-                    <button class="px-4 py-2 border border-gray-200 dark:border-gray-700 rounded-[20px] text-sm font-medium hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
-                        Exporter CSV
-                    </button>
-                    <button class="bg-[#D14189] text-white px-5 py-2 rounded-[20px] text-sm font-semibold flex items-center gap-2 hover:opacity-90 transition-opacity">
-                        <span class="material-icons-outlined text-sm">add</span>
-                        Ajouter produit
-                    </button>
-                </div>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                    <tr class="bg-gray-50/50 dark:bg-black/10">
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100 dark:border-gray-800">Produit</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100 dark:border-gray-800">Catégorie</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100 dark:border-gray-800">Prix</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100 dark:border-gray-800">Stock</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100 dark:border-gray-800">Statut</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider border-b border-gray-100 dark:border-gray-800 text-right">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-                    <tr class="hover:bg-gray-50/50 dark:hover:bg-white/5 transition-colors group">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shrink-0">
-                                    <img alt="Maquillage Premium" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPaF6N3uvmbfZLuF4GOvT7qP7zG8D8ITEt8-aBdkDVIg5wlvOym5WztDuZSvaU3wzHhVpxbia6T1WFL2_7ZsNEWmbjYDqcmCgmpQYiGJNviMENNFQrAWVyePA3O3XR77rI9-tagG5MpdnrCU-3A8RdAMIlCijUUbhCZMAT9rPpGdHz3p6LyVL166pWQbNKT8DRpnikZZnbjQX_co0HyxoDewTVnk1UWlSsb2o72dStQUNZVFHM61z4bZQRW4il8J8cSQmz6CRMVII"/>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-sm">Palette Regard d'Or</div>
-                                    <div class="text-xs text-gray-400">SKU: BE-0012</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 bg-[#BA704F]/10 text-[#BA704F] text-[10px] font-bold uppercase rounded-full">Maquillage</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="font-bold text-[#BA704F]">59.00 €</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="text-sm font-medium">42 unités</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="flex items-center gap-1.5 text-xs font-semibold text-green-600">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
-                                        En vente
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button class="p-2 text-[#D14189] hover:bg-[#D14189]/10 rounded-lg transition-colors" title="Modifier">
-                                    <span class="material-icons-outlined text-lg">edit</span>
-                                </button>
-                                <button class="p-2 text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors" title="Supprimer">
-                                    <span class="material-icons-outlined text-lg">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50/50 dark:hover:bg-white/5 transition-colors group">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shrink-0">
-                                    <img alt="Montre Luxe" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlMZcVnGeXLv8pk1E7N8uF8Hx84V6GCyXGK37twgJHa5SYVkAZbbll4W5PfRvr5QwFpLUCGbpyujEZNaPM2x6COHHS1EQe5aOQMWmwLega8-qDS7RrCpUtZbudrShYAA-O3xEhDYZ7_AQrAQe0P6AWPQooepakV73DmtnL5frMPURKl8FBiCZSVhnU4QKT_vYdW-3AphuWWH2RQzS1rbJkfe7lnVojaiFyYxe6g9zprwPwxGKKyphUb4XDl_VktY_vUdlCS8IxaEs"/>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-sm">Montre Classic Minimal</div>
-                                    <div class="text-xs text-gray-400">SKU: WT-8842</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 bg-[#BA704F]/10 text-[#BA704F] text-[10px] font-bold uppercase rounded-full">Montres</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="font-bold text-[#BA704F]">149.00 €</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="text-sm font-medium">12 unités</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="flex items-center gap-1.5 text-xs font-semibold text-orange-500">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
-                                        Stock faible
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button class="p-2 text-[#D14189] hover:bg-[#D14189]/10 rounded-lg transition-colors" title="Modifier">
-                                    <span class="material-icons-outlined text-lg">edit</span>
-                                </button>
-                                <button class="p-2 text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors" title="Supprimer">
-                                    <span class="material-icons-outlined text-lg">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50/50 dark:hover:bg-white/5 transition-colors group">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shrink-0">
-                                    <img alt="Sac Élégant" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHLS_7WliMxqM016i716LZ_pr9d03NPYalbOSgWPgCzfVJpcTHBsWwdu7X1srvHTA9F6-DCgGEMcwAuZ8nZFz172wOkkOmE7uFqs-XxkbIoSKBCTajSgeQMXh6dUIDpRsVLTZR0KtUikW0BBpFSCY3qJWGs-si73P39jDDYCpmNMiwwoB2p_gYel4DVym5vYU6NNuYejblAXQ4FjJFAChBZY7CBOt2K2caIWgHS2fWWznC8NOWwwHdnfFPB8Gfx8JRMRiCq3hCskI"/>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-sm">Sac Cuir Camel</div>
-                                    <div class="text-xs text-gray-400">SKU: BG-1109</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 bg-[#BA704F]/10 text-[#BA704F] text-[10px] font-bold uppercase rounded-full">Sacs</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="font-bold text-[#BA704F]">220.00 €</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="text-sm font-medium">0 unités</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="flex items-center gap-1.5 text-xs font-semibold text-gray-400">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span>
-                                        Rupture
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button class="p-2 text-[#D14189] hover:bg-[#D14189]/10 rounded-lg transition-colors" title="Modifier">
-                                    <span class="material-icons-outlined text-lg">edit</span>
-                                </button>
-                                <button class="p-2 text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors" title="Supprimer">
-                                    <span class="material-icons-outlined text-lg">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="hover:bg-gray-50/50 dark:hover:bg-white/5 transition-colors group">
-                        <td class="px-6 py-4">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shrink-0">
-                                    <img alt="Boucles d'oreilles" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdWNF0DjgIc72PEAvlONfzjYv2mb3G-_zvj__bJGmkuWRpdqEpCuiUQZx4FvRfanh5RhiJomVyLRSxgsMXETASLdiJST6V2B9D-gyWHfYo8sgzLYSEexECl6OgZi8PaoIfj3qLn6kjLfm7IPoL0JYAo0lZshAkdyDnJpGXyAVmOBYdn1YuLGeL2QyQcd55ewtqRjmvK5047hU_IkGJKgK_HV_lxS1IsHQwOulLI4Zrpx0wZAQsZrPm02cdwRsP5rX8Bj02bAq8Vv0"/>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-sm">Boucles d'Or Luna</div>
-                                    <div class="text-xs text-gray-400">SKU: JE-4431</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 bg-[#BA704F]/10 text-[#BA704F] text-[10px] font-bold uppercase rounded-full">Bijoux</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="font-bold text-[#BA704F]">85.00 €</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="text-sm font-medium">124 unités</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <span class="flex items-center gap-1.5 text-xs font-semibold text-green-600">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
-                                        En vente
-                                    </span>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <button class="p-2 text-[#D14189] hover:bg-[#D14189]/10 rounded-lg transition-colors" title="Modifier">
-                                    <span class="material-icons-outlined text-lg">edit</span>
-                                </button>
-                                <button class="p-2 text-red-400 hover:bg-red-50 dark:hover:bg-red-900/10 rounded-lg transition-colors" title="Supprimer">
-                                    <span class="material-icons-outlined text-lg">delete</span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="p-6 bg-gray-50/50 dark:bg-black/10 flex items-center justify-between">
-                <p class="text-xs text-gray-500 font-medium">Affichage de 1 à 4 sur 1,284 produits</p>
-                <div class="flex gap-2">
-                    <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-gray-400 disabled:opacity-50" disabled="">
-                        <span class="material-icons-outlined text-sm">chevron_left</span>
-                    </button>
-                    <button class="w-8 h-8 flex items-center justify-center rounded-lg bg-[#D14189] text-white text-xs font-bold">1</button>
-                    <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-xs font-bold hover:bg-white dark:hover:bg-white/5">2</button>
-                    <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-xs font-bold hover:bg-white dark:hover:bg-white/5">3</button>
-                    <button class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 text-gray-400 hover:bg-white dark:hover:bg-white/5">
-                        <span class="material-icons-outlined text-sm">chevron_right</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="mt-auto p-8 text-center">
-        <p class="text-xs text-gray-400">© 2024 BIJOUX &amp; ACCESSOIRES SHOP. PORTAIL GESTION.</p>
-    </footer>
-</main>
 
-</body>
+    <!-- Table -->
+    <div class="bg-white rounded-3xl shadow-sm border border-[#D5BDAF]/20 overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+                <thead>
+                    <tr class="bg-[#F9F6F2] text-[#3D312B]/60 text-xs uppercase tracking-wider font-bold">
+                        <th class="px-6 py-4">Image</th>
+                        <th class="px-6 py-4">Nom</th>
+                        <th class="px-6 py-4">Prix</th>
+                        <th class="px-6 py-4">Catégorie</th>
+                        <th class="px-6 py-4">Stock</th>
+                        <th class="px-6 py-4 text-right">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-[#D5BDAF]/10">
+                    <tr *ngFor="let product of products" class="hover:bg-[#F9F6F2]/50 transition-colors group">
+                        <td class="px-6 py-4">
+                            <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center overflow-hidden">
+                                <img *ngIf="product.image" [src]="product.image" class="w-full h-full object-cover">
+                                <span *ngIf="!product.image" class="material-icons-round text-sm text-gray-400">image</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 font-bold text-[#3D312B]">{{ product.name }}</td>
+                        <td class="px-6 py-4 font-medium text-[#C1664C]">{{ product.price }} DH</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-bold">{{ product.category }}</span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span [class.bg-green-50]="product.inStock" [class.text-green-600]="product.inStock"
+                                  [class.bg-red-50]="!product.inStock" [class.text-red-600]="!product.inStock"
+                                  class="px-3 py-1 rounded-full text-xs font-bold">
+                                {{ product.inStock ? 'En stock' : 'Rupture' }}
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="p-2 text-gray-400 hover:text-[#C1664C] hover:bg-[#C1664C]/10 rounded-lg transition-colors">
+                                    <span class="material-icons-round text-lg">edit</span>
+                                </button>
+                                <button (click)="deleteProduct(product.id)" class="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                                    <span class="material-icons-round text-lg">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
