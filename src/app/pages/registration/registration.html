@@ -1,6 +1,9 @@
 <body
-    class="bg-[#fcf8fc] dark:bg-[#221022] font-['Plus_Jakarta_Sans'] text-[#1b0d1b] antialiased"
+    class="bg-[#fcf8fc] bg-cover dark:bg-[#221022] font-['Plus_Jakarta_Sans'] text-[#1b0d1b] antialiased"
   >
+  <button (click)="goBack()" class="p-2 -ml-2 text-slate-600 dark:text-primary">
+      <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+    </button>
     <div class="flex min-h-screen w-full flex-col lg:flex-row">
       <!-- Left Side: Hero Image Section -->
       <div class="relative hidden w-1/2 lg:block">
@@ -14,7 +17,7 @@
         <div class="absolute inset-0 bg-black/10"></div>
         <div class="absolute bottom-12 left-12 right-12 text-white">
           <div class="flex items-center gap-2 mb-4">
-            <span class="material-symbols-outlined text-[#ee2bee] text-3xl"
+            <span class="material-symbols-outlined text-amber-600 text-3xl"
               >diamond</span
             >
             <h2 class="text-2xl font-bold tracking-tight">
@@ -34,7 +37,7 @@
         <div class="mx-auto w-full max-w-md">
           <!-- Branding for Mobile -->
           <div class="flex items-center gap-3 mb-8 lg:hidden">
-            <span class="material-symbols-outlined text-[#ee2bee] text-3xl"
+            <span class="material-symbols-outlined text-amber-600 text-3xl"
               >diamond</span
             >
             <h2 class="text-[#1b0d1b] dark:text-white text-xl font-bold">
@@ -215,7 +218,7 @@
         <div
           class="mt-auto pt-10 text-center text-xs text-[#6d5a52]/60 dark:text-gray-500 uppercase tracking-widest"
         >
-          © 2024 Perla Store. Handcrafted Excellence.
+          © 2026 Perla Store. Handcrafted Excellence.
         </div>
       </div>
     </div>

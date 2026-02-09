@@ -43,4 +43,7 @@ export class AdminLoginComponent {
             }
         });
     }
+    goBack() {
+    window.history.back();
+  }
 }

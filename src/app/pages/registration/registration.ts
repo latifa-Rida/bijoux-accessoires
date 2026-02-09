@@ -40,5 +40,8 @@ export class Registration {
     alert('Inscription réussie !');
     this.router.navigate(['/authentification']);
   }
+  goBack() {
+    window.history.back();
+  }
 }
 

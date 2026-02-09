@@ -1,12 +1,15 @@
 <div class="min-h-screen flex items-center justify-center bg-[#F3EBE3] dark:bg-[#1A1614] p-4 font-['Plus_Jakarta_Sans']">
+  <button (click)="goBack()" class="p-2 -ml-2 text-slate-600 dark:text-primary">
+      <span class="material-symbols-outlined text-2xl">arrow_back_ios_new</span>
+    </button>
   <div class="max-w-md w-full bg-white dark:bg-[#251F1C] rounded-3xl shadow-xl overflow-hidden p-8 md:p-12">
     <!-- Header -->
     <div class="text-center mb-10">
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D14189]/10 text-[#D14189] mb-6">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D14189]/10 text-amber-800 mb-6">
         <span class="material-icons-outlined text-3xl">admin_panel_settings</span>
       </div>
-      <h1 class="text-2xl font-bold text-[#3D312B] dark:text-gray-100 mb-2 font-['Playfair_Display']">
-        Perla Store <span class="text-[#D14189]">Admin</span>
+      <h1 class="text-2xl font-bold text-amber-700 dark:text-gray-100 mb-2 font-['Playfair_Display']">
+        Perla Store <span class="text-amber-700">Admin</span>
       </h1>
       <p class="text-[#3D312B]/60 dark:text-gray-400 text-sm">
         Connectez-vous pour gérer votre boutique.
@@ -15,7 +18,7 @@
 
     <!-- Form -->
     <form (submit)="login()" class="space-y-6">
-      
+
         <!-- Error Alert -->
         <div *ngIf="errorMessage" class="p-4 rounded-xl bg-red-50 text-red-600 text-sm font-medium border border-red-100">
             {{ errorMessage }}
@@ -25,11 +28,11 @@
         <label class="block text-sm font-semibold text-[#3D312B] dark:text-gray-300 ml-1">
           Nom d'utilisateur
         </label>
-        <input 
-          [(ngModel)]="username" 
-          name="username" 
-          type="text" 
-          class="w-full px-5 py-3.5 rounded-2xl bg-[#F9F6F2] dark:bg-[#1E1A17] border-transparent focus:bg-white dark:focus:bg-[#251F1C] focus:ring-2 focus:ring-[#D14189] outline-none transition-all font-medium text-[#3D312B] dark:text-white"
+        <input
+          [(ngModel)]="username"
+          name="username"
+          type="text"
+          class="w-full px-5 py-3.5 rounded-2xl bg-[#F9F6F2] dark:bg-[#1E1A17] border-transparent focus:bg-white dark:focus:bg-[#251F1C] focus:ring-2 focus:ring-amber-500 outline-none transition-all font-medium text-[#3D312B] dark:text-white"
           placeholder="admin"
         >
       </div>
@@ -38,19 +41,19 @@
         <label class="block text-sm font-semibold text-[#3D312B] dark:text-gray-300 ml-1">
           Mot de passe
         </label>
-        <input 
-          [(ngModel)]="password" 
-          name="password" 
-          type="password" 
-          class="w-full px-5 py-3.5 rounded-2xl bg-[#F9F6F2] dark:bg-[#1E1A17] border-transparent focus:bg-white dark:focus:bg-[#251F1C] focus:ring-2 focus:ring-[#D14189] outline-none transition-all font-medium text-[#3D312B] dark:text-white"
+        <input
+          [(ngModel)]="password"
+          name="password"
+          type="password"
+          class="w-full px-5 py-3.5 rounded-2xl bg-[#F9F6F2] dark:bg-[#1E1A17] border-transparent focus:bg-white dark:focus:bg-[#251F1C] focus:ring-2 focus:ring-amber-500 outline-none transition-all font-medium text-[#3D312B] dark:text-white"
           placeholder="••••••••"
         >
       </div>
 
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         [disabled]="isLoading"
-        class="w-full py-4 rounded-2xl bg-[#D14189] text-white font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-[#D14189]/20 mt-4"
+        class="w-full py-4 rounded-2xl bg-amber-700 text-white font-bold text-lg hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-[#D14189]/20 mt-4"
       >
         <span *ngIf="!isLoading">Se connecter</span>
         <span *ngIf="isLoading" class="flex items-center justify-center gap-2">
@@ -63,7 +66,7 @@
       </button>
 
       <div class="text-center mt-6">
-        <a routerLink="/" class="text-sm font-semibold text-[#3D312B]/40 hover:text-[#D14189] transition-colors">
+        <a routerLink="/" class="text-sm cursor-pointer font-semibold text-[#3D312B]/40 hover:text-amber-800 transition-colors">
             Retour au site
         </a>
       </div>

@@ -72,4 +72,7 @@ export class Authentification implements OnInit {
 
     /** Original synchronous logic removed */
   }
+  goBack() {
+    window.history.back();
+  }
 }

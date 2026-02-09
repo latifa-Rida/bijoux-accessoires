@@ -1,5 +1,6 @@
 <div class="min-h-screen flex items-center justify-center bg-[#f5ece4] p-4 font-['Plus_Jakarta_Sans']">
   <div class="max-w-md w-full bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden">
+    
     <!-- Header -->
     <div class="text-center mb-8">
       <div class="flex justify-center items-center gap-2 mb-4 text-[#C1664C]">
@@ -15,7 +16,7 @@
 
     <!-- Form -->
     <form (ngSubmit)="login()" class="space-y-5">
-      
+
         <!-- Messages -->
         <div *ngIf="errorMessage" class="bg-red-50 text-red-700 px-4 py-3 rounded-xl text-sm font-medium border border-red-100">
             {{ errorMessage }}
@@ -26,10 +27,10 @@
 
       <div class="space-y-2">
         <label class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300 ml-1">Email</label>
-        <input 
-            [(ngModel)]="email" 
-            name="email" 
-            type="email" 
+        <input
+            [(ngModel)]="email"
+            name="email"
+            type="email"
             placeholder="votre@email.com"
             class="w-full px-5 py-4 bg-[#Fdfaf7] dark:bg-zinc-800 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#C1664C] outline-none transition-all shadow-sm text-black dark:text-white"
             required
@@ -40,18 +41,18 @@
         <div class="flex justify-between items-center ml-1">
             <label class="block text-sm font-bold text-[#6b5e54] dark:text-zinc-300">Mot de passe</label>
         </div>
-        <input 
-            [(ngModel)]="password" 
-            name="password" 
-            type="password" 
+        <input
+            [(ngModel)]="password"
+            name="password"
+            type="password"
             placeholder="••••••••"
             class="w-full px-5 py-4 bg-[#Fdfaf7] dark:bg-zinc-800 border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#C1664C] outline-none transition-all shadow-sm text-black dark:text-white"
             required
         >
       </div>
 
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         [disabled]="isLoading"
         class="w-full py-4 rounded-2xl bg-[#3D312B] text-white font-bold text-lg hover:bg-[#2d2a26] transition-all shadow-lg hover:shadow-xl active:scale-[0.98] disabled:opacity-70 mt-2"
       >
@@ -61,7 +62,7 @@
 
       <div class="text-center mt-6">
         <p class="text-sm text-[#6b5e54]/80 dark:text-zinc-500">
-            Pas encore de compte ? 
+            Pas encore de compte ?
             <a routerLink="/registration" class="font-bold text-[#C1664C] hover:underline">S'inscrire</a>
         </p>
       </div>
