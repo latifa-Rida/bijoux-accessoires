@@ -19,16 +19,19 @@ export class OrderService {
 
   loadOrders(): void {
     this.http.get<any[]>(this.apiUrl).subscribe(data => {
-      // Map backend response to Order model
-      // Backend returns: { id, user_id, total, date, status, user_name }
-      // Frontend Model: Order { id, customerName, ... }
       const orders: Order[] = data.map(o => ({
         id: o.id.toString(),
-        customerName: o.user_name || 'Client',
-        customerEmail: '', // Not in DB response yet
-        customerPhone: '',
-        address: '',
-        products: [], // Not in list response
+        customerName: o.customer_name || o.user_name || 'Client',
+        customerEmail: o.customer_email || '',
+        customerPhone: o.customer_phone || '',
+        address: o.address || '',
+        products: (o.items || []).map((item: any) => ({
+          id: item.product_id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+          image: item.image
+        })),
         total: o.total,
         status: o.status,
         date: o.date
@@ -45,11 +48,14 @@ export class OrderService {
     const user = this.authService.getCurrentUser();
     const payload = {
       user_id: user ? user.id : null,
+      customerName: order.customerName,
+      customerEmail: order.customerEmail,
+      customerPhone: order.customerPhone,
+      address: order.address,
       total: order.total,
       items: order.products.map(p => ({
         product_id: p.id,
         quantity: p.quantity || 1,
-        // Assuming price is available on product, otherwise fetch or trust frontend
         price: p.price
       }))
     };

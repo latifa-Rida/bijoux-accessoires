@@ -18,10 +18,17 @@ export class ProductService {
   private loadProducts() {
     this.http.get<Product[]>(this.apiUrl).subscribe(
       data => {
-        console.log('Products loaded from API:', data);
+        console.log(`ProductService: Loaded ${data.length} products successfully`);
         this.productsSubject.next(data);
       },
-      error => console.error('Error loading products:', error)
+      error => {
+        console.error('ProductService: Error loading products:', error);
+        // Retry after 5 seconds if fetch failed
+        setTimeout(() => {
+          console.log('ProductService: Retrying load...');
+          this.loadProducts();
+        }, 5000);
+      }
     );
   }
 

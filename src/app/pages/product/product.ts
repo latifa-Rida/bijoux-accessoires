@@ -39,12 +39,13 @@ export class ProductsComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private productService: ProductService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.productService.getProducts().subscribe(data => {
+      console.log(`ProductsComponent: Received ${data.length} products`);
       this.products = data;
-      this.filteredProducts = data;
+      this.filteredProducts = [...data]; // Use spread to ensure reference change for animation
 
       const category = this.route.snapshot.queryParams['category'];
       const search = this.route.snapshot.queryParams['search'];
@@ -54,8 +55,18 @@ export class ProductsComponent implements OnInit {
         this.filterProducts();
       } else if (category) {
         this.filterByCategory(category);
+      } else {
+        this.filterProducts(); // Ensure initial filtering (even if 'all')
       }
     });
+
+    // If still empty after a moment (maybe initial load failed), try one refresh
+    setTimeout(() => {
+      if (this.products.length === 0) {
+        console.log('ProductsComponent: List still empty, forcing refresh');
+        this.productService.refreshProducts();
+      }
+    }, 1500);
   }
 
   filterByCategory(category: string) {

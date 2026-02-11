@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ProductService } from '../../services/product';
+import { ProductService } from './product.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class SearchService {
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService) { }
 
   searchProducts(query: string, options?: { limit?: number }): Observable<any[]> {
     const q = (query || '').trim().toLowerCase();
@@ -20,8 +20,8 @@ export class SearchService {
         const matched = products.filter(p => {
           const hay =
             ((p.name || '') + ' ' +
-            (p.description || '') + ' ' +
-            (p.category || '')).toLowerCase();
+              (p.description || '') + ' ' +
+              (p.category || '')).toLowerCase();
 
           return tokens.every(t => hay.includes(t));
         });

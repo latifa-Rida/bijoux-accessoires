@@ -9,6 +9,12 @@ const PORT = 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Log all requests
+app.use((req, res, next) => {
+    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    next();
+});
+
 // === AUTH ROUTES ===
 
 app.post('/api/login', (req, res) => {
@@ -43,6 +49,10 @@ app.get('/api/products', (req, res) => {
     const sql = "SELECT * FROM products";
     db.all(sql, [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
+        if (rows.length > 0) {
+            console.log(`Product 0 sample keys: ${Object.keys(rows[0]).join(', ')}`);
+            console.log(`Product 0 category value: '${rows[0].category}'`);
+        }
         // Parse JSON fields
         const products = rows.map(p => ({
             ...p,
@@ -144,26 +154,51 @@ app.delete('/api/users/:id', (req, res) => {
 });
 
 // Get Orders (All for admin, or filter by user usually)
+// Get Orders with items
 app.get('/api/orders', (req, res) => {
-    const sql = `
+    const ordersSql = `
         SELECT o.*, u.username as user_name 
         FROM orders o 
         LEFT JOIN users u ON o.user_id = u.id
         ORDER BY o.date DESC
     `;
-    db.all(sql, [], (err, rows) => {
+
+    db.all(ordersSql, [], (err, orders) => {
         if (err) return res.status(500).json({ error: err.message });
-        res.json(rows);
+
+        const itemsSql = `
+            SELECT oi.*, p.name, p.image 
+            FROM order_items oi
+            JOIN products p ON oi.product_id = p.id
+        `;
+
+        db.all(itemsSql, [], (err, allItems) => {
+            if (err) return res.status(500).json({ error: err.message });
+
+            // Group items by order_id
+            const ordersWithItems = orders.map(order => {
+                return {
+                    ...order,
+                    items: allItems.filter(item => item.order_id === order.id)
+                };
+            });
+
+            res.json(ordersWithItems);
+        });
     });
 });
 
 // Create Order
 app.post('/api/orders', (req, res) => {
-    const { user_id, total, items } = req.body;
+    const { user_id, total, items, customerName, customerEmail, customerPhone, address } = req.body;
     const date = new Date().toISOString();
-    const status = 'En cours';
+    const status = 'en attente';
 
-    db.run("INSERT INTO orders (user_id, total, date, status) VALUES (?, ?, ?, ?)", [user_id, total, date, status], function (err) {
+    const sql = `INSERT INTO orders (user_id, customer_name, customer_email, customer_phone, address, total, date, status) 
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+    const params = [user_id, customerName, customerEmail, customerPhone, address, total, date, status];
+
+    db.run(sql, params, function (err) {
         if (err) return res.status(500).json({ error: err.message });
 
         const orderId = this.lastID;

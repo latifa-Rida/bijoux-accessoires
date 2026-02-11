@@ -41,6 +41,10 @@ function initDb() {
         db.run(`CREATE TABLE IF NOT EXISTS orders (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
+            customer_name TEXT,
+            customer_email TEXT,
+            customer_phone TEXT,
+            address TEXT,
             total REAL,
             date TEXT,
             status TEXT,

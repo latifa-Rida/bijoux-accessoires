@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { OrderService } from '../../shared/services/order.service';
 import { Order } from '../../shared/models/order.model';
+import { AuthService } from '../../services/auth';
 
 @Component({
   standalone: true,
@@ -22,7 +23,8 @@ export class OrderComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private route: ActivatedRoute,
-    private sharedOrderService: OrderService
+    private sharedOrderService: OrderService,
+    private authService: AuthService
   ) {
     this.initForm();
   }
@@ -31,6 +33,12 @@ export class OrderComponent implements OnInit {
     if (this.cartService.getCart().length === 0) {
       this.router.navigate(['/cart']);
       return;
+    }
+
+    // Pre-fill email if logged in
+    const user = this.authService.getCurrentUser();
+    if (user && user.email) {
+      this.orderForm.patchValue({ email: user.email });
     }
   }
 

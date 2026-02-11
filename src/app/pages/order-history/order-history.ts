@@ -21,7 +21,7 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
 
   private userEmail: string | null = null;
 
-  constructor(private orderService: OrderService, private authService: AuthService) {}
+  constructor(private orderService: OrderService, private authService: AuthService) { }
 
   ngOnInit(): void {
     // get current user email (if any) and subscribe to orders
@@ -29,13 +29,19 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
     this.userEmail = current?.email ?? null;
 
     this.sub = this.orderService.getOrders().subscribe((orders: Order[]) => {
-      // service keeps newest first; just detect new ids for animation
-      // filter to current user's orders only
-      const filtered = this.userEmail ? orders.filter(o => o.customerEmail === this.userEmail) : [];
-      const incomingIds = new Set(filtered.map(o => o.id));
+      let displayOrders: Order[] = [];
 
-      // detect newly added orders
-      filtered.forEach(o => {
+      if (this.userEmail) {
+        // Authenticated user: show orders matching their email
+        displayOrders = orders.filter(o => o.customerEmail === this.userEmail);
+      } else {
+        // Guest user: show orders from localStorage
+        displayOrders = JSON.parse(localStorage.getItem('commandes') || '[]');
+      }
+
+      // Detect newly added orders for animation
+      const incomingIds = new Set(displayOrders.map(o => o.id));
+      displayOrders.forEach(o => {
         if (!this.knownIds.has(o.id)) {
           this.animateMap[o.id] = true;
           setTimeout(() => (this.animateMap[o.id] = false), 800);
@@ -43,7 +49,7 @@ export class OrderHistoryComponent implements OnInit, OnDestroy {
       });
 
       this.knownIds = incomingIds;
-      this.commandes = filtered;
+      this.commandes = displayOrders;
     });
   }
 
